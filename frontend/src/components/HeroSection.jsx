@@ -115,10 +115,11 @@ const HeroSection = () => {
               <img
                 src="https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/ggab2ftc_double.jpeg"
                 alt="H2 Element Hydrogen Generator"
-                className="relative z-10 w-full max-w-lg drop-shadow-2xl"
+                className="relative z-10 w-full max-w-lg drop-shadow-2xl rounded-lg"
                 style={{ 
                   filter: 'drop-shadow(0 0 30px rgba(57,255,20,0.15))',
-                  animation: 'float 6s ease-in-out infinite'
+                  animation: 'float 6s ease-in-out infinite',
+                  mixBlendMode: 'lighten'
                 }}
               />
               
