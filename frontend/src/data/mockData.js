@@ -68,7 +68,7 @@ export const products = [
   engineVolume: 'Engine volume from 6 to 16L',
   dimensions: '265×100×285 mm',
   warranty: '3 year warranty',
-  image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/u8sfkulq_2%20img.jpeg',
+  image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/g0ercxb8_double.jpeg',
   vehicleTypes: ['car', 'truck']
 }];
 
