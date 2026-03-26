@@ -198,8 +198,5 @@ export const faqItems = [
 
 
 export const teamMembers = [
-{ name: 'Maxim K.', role: 'Company Founder' },
-{ name: 'Andrey T.', role: 'Financial Director' },
-{ name: 'Yuri K.', role: 'Technical Director' },
-{ name: 'Denis B.', role: 'Marketing Director' },
-{ name: 'Roman Y.', role: 'Sales Director' }];
+{ name: 'Dmitrii Tolstikhin', role: 'Founder' },
+{ name: 'Timothy Tolstikhin', role: 'Product Manager' }];
