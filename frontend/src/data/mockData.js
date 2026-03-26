@@ -64,7 +64,7 @@ export const products = [
   id: 'h2c',
   series: 'PRO MAX',
   model: 'H2',
-  price: '$990',
+  price: "$4499",
   engineVolume: 'Engine volume from 6 to 16L',
   dimensions: '265×100×285 mm',
   warranty: '3 year warranty',
