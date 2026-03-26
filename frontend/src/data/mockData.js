@@ -198,5 +198,5 @@ export const faqItems = [
 
 
 export const teamMembers = [
-{ name: 'Dmitrii Tolstikhin', role: 'Founder', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/0u4q3hyt_me.jpeg' },
+{ name: 'Dmitrii Tolstikhin', role: 'Founder', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/mfg2bfrj_me1.jpeg' },
 { name: 'Timothy Tolstikhin', role: 'Product Manager' }];
