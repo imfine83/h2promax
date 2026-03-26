@@ -65,7 +65,7 @@ export const products = [
     series: 'PRO MAX',
     model: 'H2',
     price: '$990',
-    engineVolume: 'Engine volume 2–6.5L',
+    engineVolume: 'Engine volume from 6 to 16L',
     dimensions: '265×100×285 mm',
     warranty: '3 year warranty',
     image: 'https://static.tildacdn.com/tild6661-3430-4331-a232-303761303932/0002.png',
