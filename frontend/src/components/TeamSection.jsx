@@ -2,76 +2,59 @@ import React, { useState } from 'react';
 import { teamMembers } from '../data/mockData';
 import { ChevronLeft, ChevronRight, User } from 'lucide-react';
 
+const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff'];
+
 const TeamSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const next = () => setActiveIndex((prev) => (prev + 1) % teamMembers.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
 
   return (
-    <section className="py-24 bg-white" id="team">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#0d0d1a] relative" id="team">
+      <div className="absolute inset-0 circuit-pattern" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900">
-            Our Team
+          <span className="text-[10px] tracking-[0.5em] text-[#b026ff]/50 font-mono-cyber">// TEAM_ROSTER</span>
+          <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
+            Our <span className="text-[#00f0ff]" style={{ textShadow: '0 0 20px rgba(0,240,255,0.3)' }}>Team</span>
           </h2>
-          <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-            Behind every H2 ELEMENT solution is a team of experts with real industrial and engineering experience
-          </p>
         </div>
 
         <div className="flex items-center justify-center gap-6">
-          <button
-            onClick={prev}
-            className="w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors"
-          >
-            <ChevronLeft size={20} className="text-green-600" />
+          <button onClick={prev} className="w-10 h-10 border border-[#39ff14]/30 flex items-center justify-center hover:bg-[#39ff14]/10 transition-all"
+                  style={{ boxShadow: '0 0 8px rgba(57,255,20,0.1)' }}>
+            <ChevronLeft size={18} className="text-[#39ff14]" />
           </button>
 
-          <div className="flex gap-4 overflow-hidden">
+          <div className="flex gap-6 overflow-hidden">
             {teamMembers.map((member, index) => {
               const isActive = index === activeIndex;
+              const color = colors[index % colors.length];
               return (
-                <div
-                  key={index}
-                  className={`flex-shrink-0 w-48 text-center transition-all duration-500 cursor-pointer ${
-                    isActive ? 'scale-110 opacity-100' : 'scale-95 opacity-60'
-                  }`}
-                  onClick={() => setActiveIndex(index)}
-                >
-                  <div className={`w-24 h-24 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-colors ${
-                    isActive ? 'bg-green-600' : 'bg-gray-200'
-                  }`}>
-                    <User size={32} className={isActive ? 'text-white' : 'text-gray-400'} />
+                <div key={index}
+                  className={`flex-shrink-0 w-44 text-center transition-all duration-500 cursor-pointer ${isActive ? 'scale-110 opacity-100' : 'scale-90 opacity-40'}`}
+                  onClick={() => setActiveIndex(index)}>
+                  <div className="w-20 h-20 mx-auto flex items-center justify-center mb-3 transition-all"
+                       style={{ border: `1px solid ${isActive ? color : 'rgba(255,255,255,0.1)'}`, boxShadow: isActive ? `0 0 15px ${color}30` : 'none' }}>
+                    <User size={28} style={{ color: isActive ? color : 'rgba(255,255,255,0.2)' }} />
                   </div>
-                  <h4 className={`font-bold transition-colors ${
-                    isActive ? 'text-gray-900' : 'text-gray-500'
-                  }`}>
+                  <h4 className="font-bold text-sm" style={{ color: isActive ? '#fff' : 'rgba(255,255,255,0.3)', fontFamily: 'Orbitron', fontSize: '11px' }}>
                     {member.name}
                   </h4>
-                  <p className={`text-sm transition-colors ${
-                    isActive ? 'text-green-600' : 'text-gray-400'
-                  }`}>
-                    {member.role}
-                  </p>
+                  <p className="text-xs mt-1" style={{ color: isActive ? color : 'rgba(255,255,255,0.15)' }}>{member.role}</p>
                 </div>
               );
             })}
           </div>
 
-          <button
-            onClick={next}
-            className="w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors"
-          >
-            <ChevronRight size={20} className="text-green-600" />
+          <button onClick={next} className="w-10 h-10 border border-[#39ff14]/30 flex items-center justify-center hover:bg-[#39ff14]/10 transition-all"
+                  style={{ boxShadow: '0 0 8px rgba(57,255,20,0.1)' }}>
+            <ChevronRight size={18} className="text-[#39ff14]" />
           </button>
         </div>
 
-        {/* Counter */}
         <div className="text-center mt-8">
-          <span className="text-sm text-gray-400">
-            {activeIndex + 1} / {teamMembers.length}
-          </span>
+          <span className="text-xs text-white/15 font-mono-cyber">[{activeIndex + 1}/{teamMembers.length}]</span>
         </div>
       </div>
     </section>

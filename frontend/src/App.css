@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
 
 * {
   margin: 0;
@@ -7,32 +7,209 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background: #0a0a0f;
+  color: #e0e0e0;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Hide scrollbar for webkit */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Selection color */
 ::selection {
-  background-color: #22C55E;
-  color: white;
+  background-color: #39ff14;
+  color: #0a0a0f;
 }
 
-/* Focus styles */
-input:focus,
-textarea:focus {
-  outline: none;
-  ring: 2px;
-  ring-color: #22C55E;
+/* ======== CYBERPUNK VARIABLES ======== */
+:root {
+  --cyber-bg: #0a0a0f;
+  --cyber-bg-2: #0d0d1a;
+  --cyber-bg-3: #111128;
+  --cyber-card: rgba(15, 15, 30, 0.8);
+  --cyber-card-border: rgba(57, 255, 20, 0.15);
+  --neon-green: #39ff14;
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff2d95;
+  --neon-yellow: #ffe600;
+  --neon-purple: #b026ff;
+  --text-primary: #e8e8e8;
+  --text-secondary: #8888aa;
+  --text-dim: #555577;
+}
+
+/* ======== GLOBAL CYBERPUNK EFFECTS ======== */
+
+/* Neon glow utility */
+.neon-glow-green {
+  text-shadow: 0 0 7px #39ff14, 0 0 10px #39ff14, 0 0 21px #39ff14, 0 0 42px #0fa, 0 0 82px #0fa;
+}
+
+.neon-glow-cyan {
+  text-shadow: 0 0 7px #00f0ff, 0 0 10px #00f0ff, 0 0 21px #00f0ff;
+}
+
+/* Box neon glow */
+.neon-box-green {
+  box-shadow: 0 0 5px rgba(57, 255, 20, 0.3), 0 0 15px rgba(57, 255, 20, 0.1), inset 0 0 5px rgba(57, 255, 20, 0.05);
+}
+
+.neon-box-cyan {
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.3), 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+/* Scanline overlay */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glitch animation */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-1deg); }
+  40% { transform: skew(0.5deg); }
+  60% { transform: skew(-0.5deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes cyber-line-move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes data-stream {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+/* Grid pattern */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Circuit board pattern */
+.circuit-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Diagonal stripes */
+.cyber-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(57, 255, 20, 0.02) 10px,
+    rgba(57, 255, 20, 0.02) 20px
+  );
+}
+
+/* Cyber border with animated line */
+.cyber-border {
+  position: relative;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff14, transparent);
+  animation: cyber-line-move 3s linear infinite;
+}
+
+/* Cyberpunk button style */
+.cyber-btn {
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: all 0.3s ease;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), transparent);
+  z-index: -1;
+}
+
+/* Clipped corners */
+.cyber-clip {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+.cyber-clip-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+/* Headings font */
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Mono font for special text */
+.font-mono-cyber {
+  font-family: 'Share Tech Mono', monospace;
 }

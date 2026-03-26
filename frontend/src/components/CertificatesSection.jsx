@@ -12,30 +12,28 @@ const certificates = [
 
 const CertificatesSection = () => {
   return (
-    <section className="py-24 bg-gray-50" id="certificates">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#0d0d1a] relative" id="certificates">
+      <div className="absolute inset-0 cyber-stripes" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#ffe600]/20 to-transparent" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            <Award size={16} />
-            Compliance certificates and test protocols
+          <div className="inline-flex items-center gap-2 border border-[#ffe600]/20 px-4 py-1.5 text-[10px] font-mono-cyber text-[#ffe600]/60 mb-4">
+            <Award size={12} /> VERIFIED_CERTIFICATES
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'Orbitron' }}>
             Certificates
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {certificates.map((cert, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border border-gray-100"
-            >
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src={cert}
-                  alt={`Certificate ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+            <div key={index} className="group overflow-hidden hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+                 style={{ border: '1px solid rgba(255,230,0,0.1)' }}>
+              <div className="aspect-[3/4] overflow-hidden relative">
+                <img src={cert} alt={`Certificate ${index + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70 group-hover:opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d1a] to-transparent opacity-60" />
               </div>
             </div>
           ))}

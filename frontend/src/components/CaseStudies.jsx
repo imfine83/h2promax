@@ -15,120 +15,88 @@ const CaseStudies = () => {
     }
   };
 
-  useEffect(() => {
-    checkScroll();
-  }, []);
+  useEffect(() => { checkScroll(); }, []);
 
   const scroll = (dir) => {
     if (scrollRef.current) {
-      const amount = dir === 'left' ? -320 : 320;
-      scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' });
       setTimeout(checkScroll, 400);
     }
   };
 
   const calcSavings = (before, after) => {
-    const pct = ((parseFloat(before) - parseFloat(after)) / parseFloat(before) * 100).toFixed(0);
-    return `${pct}%`;
+    return ((parseFloat(before) - parseFloat(after)) / parseFloat(before) * 100).toFixed(0);
   };
 
+  const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff', '#39ff14', '#00f0ff', '#ff2d95'];
+
   return (
-    <section className="py-24 bg-white" id="cases">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#0d0d1a] relative" id="cases">
+      <div className="absolute inset-0 circuit-pattern" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#ff2d95]/20 to-transparent" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
           <div>
-            <p className="text-green-600 font-semibold text-sm tracking-wider uppercase mb-2">
-              Real-world implementation experience
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900">
-              Case Studies
+            <span className="text-[10px] tracking-[0.5em] text-[#ff2d95]/50 font-mono-cyber">// CASE_STUDIES</span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
+              Case <span className="text-[#ff2d95]" style={{ textShadow: '0 0 20px rgba(255,45,149,0.3)' }}>Studies</span>
             </h2>
-            <p className="mt-4 text-gray-600 max-w-2xl">
-              Data from measurements on standard routes. The final effect is individual and determined during implementation.
-            </p>
           </div>
           <div className="flex items-center gap-4 mt-6 md:mt-0">
-            <button
-              onClick={() => {
-                const el = document.getElementById('contacts');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-lg transition-all duration-300"
-            >
-              <FileText size={16} />
-              GET 50+ CASES
+            <button onClick={() => { const el = document.getElementById('contacts'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#ff2d95] text-white font-bold text-xs tracking-wider cyber-clip-sm"
+              style={{ fontFamily: 'Orbitron', fontSize: '10px', boxShadow: '0 0 15px rgba(255,45,149,0.2)' }}>
+              <FileText size={14} /> GET 50+ CASES
             </button>
             <div className="flex gap-2">
-              <button
-                onClick={() => scroll('left')}
-                disabled={!canScrollLeft}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                  canScrollLeft
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-gray-200 text-gray-400'
-                }`}
-              >
-                <ChevronLeft size={18} />
+              <button onClick={() => scroll('left')} disabled={!canScrollLeft}
+                className={`w-9 h-9 flex items-center justify-center transition-all ${canScrollLeft ? 'border-[#39ff14]/40 text-[#39ff14] hover:bg-[#39ff14]/10' : 'border-white/5 text-white/10'}`}
+                style={{ border: '1px solid' }}>
+                <ChevronLeft size={16} />
               </button>
-              <button
-                onClick={() => scroll('right')}
-                disabled={!canScrollRight}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                  canScrollRight
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-gray-200 text-gray-400'
-                }`}
-              >
-                <ChevronRight size={18} />
+              <button onClick={() => scroll('right')} disabled={!canScrollRight}
+                className={`w-9 h-9 flex items-center justify-center transition-all ${canScrollRight ? 'border-[#39ff14]/40 text-[#39ff14] hover:bg-[#39ff14]/10' : 'border-white/5 text-white/10'}`}
+                style={{ border: '1px solid' }}>
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Scrollable case cards */}
-        <div
-          ref={scrollRef}
-          onScroll={checkScroll}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {caseStudies.map((cs, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-72 bg-gray-50 rounded-2xl p-6 snap-start hover:shadow-lg transition-all duration-500 hover:-translate-y-1 border border-gray-100"
-            >
-              <h4 className="font-bold text-gray-900 text-lg mb-4">{cs.car}</h4>
-              
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Before</span>
-                  <span className="text-lg font-bold text-gray-400">{cs.before} {cs.unit}</span>
+        <div ref={scrollRef} onScroll={checkScroll}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: 'none' }}>
+          {caseStudies.map((cs, index) => {
+            const color = colors[index];
+            const pct = calcSavings(cs.before, cs.after);
+            return (
+              <div key={index}
+                className="flex-shrink-0 w-64 p-5 snap-start hover:-translate-y-1 transition-all duration-500 bg-[#0a0a0f]/80"
+                style={{ border: `1px solid ${color}15` }}>
+                <h4 className="font-bold text-white/80 text-sm mb-4" style={{ fontFamily: 'Orbitron', fontSize: '11px' }}>{cs.car}</h4>
+                <div className="space-y-2 font-mono-cyber">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-white/20">BEFORE</span>
+                    <span className="text-sm font-bold text-white/30">{cs.before} L/100km</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px]" style={{ color }}>AFTER</span>
+                    <span className="text-sm font-bold" style={{ color }}>{cs.after} L/100km</span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-green-600 font-medium">After</span>
-                  <span className="text-lg font-bold text-green-600">{cs.after} {cs.unit}</span>
-                </div>
-              </div>
-
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-2">
-                  <TrendingDown size={18} className="text-green-600" />
-                  <span className="text-2xl font-black text-green-600">
-                    -{calcSavings(cs.before, cs.after)}
-                  </span>
-                  <span className="text-sm text-gray-500">savings</span>
+                <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${color}15` }}>
+                  <div className="flex items-center gap-2">
+                    <TrendingDown size={16} style={{ color }} />
+                    <span className="text-xl font-black font-mono-cyber" style={{ color, textShadow: `0 0 10px ${color}40` }}>-{pct}%</span>
+                  </div>
+                  <div className="mt-2 h-1 bg-white/5 overflow-hidden">
+                    <div className="h-full transition-all duration-1000" style={{ width: `${pct}%`, background: color, boxShadow: `0 0 6px ${color}` }} />
+                  </div>
                 </div>
               </div>
-
-              {/* Progress bar */}
-              <div className="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-green-400 to-green-600 rounded-full transition-all duration-1000"
-                  style={{ width: calcSavings(cs.before, cs.after) }}
-                />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

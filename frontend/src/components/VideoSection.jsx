@@ -16,65 +16,57 @@ const VideoSection = () => {
   const [activeVideo, setActiveVideo] = useState(null);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-[#0a0a0f] relative">
+      <div className="absolute inset-0 cyber-grid opacity-20" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="text-green-600 font-semibold text-sm tracking-wider uppercase mb-2">
-            See H2 ELEMENT in action
-          </p>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900">
-            Promotional Videos
+          <span className="text-[10px] tracking-[0.5em] text-[#ff2d95]/50 font-mono-cyber">// MEDIA_CONTENT</span>
+          <h2 className="text-3xl md:text-4xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
+            Promotional <span className="text-[#ff2d95]" style={{ textShadow: '0 0 15px rgba(255,45,149,0.3)' }}>Videos</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {videos.map((video, index) => (
-            <div
-              key={index}
-              className="group relative rounded-2xl overflow-hidden bg-gray-900 aspect-video cursor-pointer hover:shadow-2xl transition-all duration-500"
-              onClick={() => setActiveVideo(video)}
-            >
-              <video
-                src={video.url}
-                className="w-full h-full object-cover opacity-70 group-hover:opacity-50 transition-opacity"
-                muted
-                preload="metadata"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center shadow-lg shadow-green-600/40 group-hover:scale-110 transition-transform">
-                  <Play size={24} className="text-white ml-1" fill="white" />
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {videos.map((video, index) => {
+            const color = index === 0 ? '#39ff14' : '#00f0ff';
+            return (
+              <div key={index}
+                className="group relative overflow-hidden aspect-video cursor-pointer"
+                style={{ border: `1px solid ${color}20` }}
+                onClick={() => setActiveVideo(video)}>
+                <video src={video.url}
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-30 transition-opacity"
+                  muted preload="metadata" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 flex items-center justify-center group-hover:scale-110 transition-transform"
+                       style={{ border: `2px solid ${color}`, boxShadow: `0 0 20px ${color}30` }}>
+                    <Play size={20} className="ml-0.5" style={{ color }} fill={color} />
+                  </div>
                 </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-white/70 font-bold text-xs" style={{ fontFamily: 'Orbitron', fontSize: '10px' }}>{video.title}</h3>
+                </div>
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-4 h-[1px]" style={{ background: color }} />
+                <div className="absolute top-0 left-0 w-[1px] h-4" style={{ background: color }} />
+                <div className="absolute bottom-0 right-0 w-4 h-[1px]" style={{ background: color }} />
+                <div className="absolute bottom-0 right-0 w-[1px] h-4" style={{ background: color }} />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                <h3 className="text-white font-bold">{video.title}</h3>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Video Modal */}
       {activeVideo && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setActiveVideo(null)}
-        >
-          <button
-            onClick={() => setActiveVideo(null)}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-          >
-            <X size={20} />
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setActiveVideo(null)}>
+          <button onClick={() => setActiveVideo(null)}
+            className="absolute top-6 right-6 w-10 h-10 border border-[#ff2d95]/30 flex items-center justify-center text-[#ff2d95] hover:bg-[#ff2d95]/10 transition-colors">
+            <X size={18} />
           </button>
-          <div
-            className="w-full max-w-4xl rounded-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <video
-              src={activeVideo.url}
-              className="w-full"
-              controls
-              autoPlay
-            />
+          <div className="w-full max-w-4xl" style={{ border: '1px solid rgba(57,255,20,0.2)' }}
+               onClick={(e) => e.stopPropagation()}>
+            <video src={activeVideo.url} className="w-full" controls autoPlay />
           </div>
         </div>
       )}

@@ -27,48 +27,49 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          ? 'bg-[#0a0a0f]/95 backdrop-blur-md border-b border-[#39ff14]/20'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('#top')}>
+          <div className="flex items-center gap-2 cursor-pointer group" onClick={() => scrollToSection('#top')}>
             <div className="relative">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M12 8h6v12h12V8h6v32h-6V28H18v12h-6V8z" fill="#22C55E" />
-                <text x="34" y="18" fontSize="12" fill="#22C55E" fontWeight="bold">2</text>
-              </svg>
+              <span className="text-3xl font-black text-[#39ff14] tracking-tighter" style={{ fontFamily: 'Orbitron' }}>
+                H<sub className="text-[#00f0ff] text-lg">2</sub>
+              </span>
             </div>
-            <span className={`font-bold text-lg tracking-wider ${
-              isScrolled ? 'text-gray-900' : 'text-gray-900'
-            }`}>ELEMENT</span>
+            <span className="font-bold text-lg tracking-[0.3em] text-white/90 group-hover:text-[#39ff14] transition-colors" style={{ fontFamily: 'Orbitron' }}>
+              ELEMENT
+            </span>
+            {/* Animated underline */}
+            <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#39ff14] group-hover:w-full transition-all duration-500" />
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className={`text-xs font-semibold tracking-wider transition-colors hover:text-green-600 ${
-                  isScrolled ? 'text-gray-700' : 'text-gray-700'
-                }`}
+                className="relative px-3 py-2 text-[11px] font-semibold tracking-[0.2em] text-white/60 hover:text-[#39ff14] transition-all duration-300 group"
+                style={{ fontFamily: 'Rajdhani' }}
               >
                 {item.label}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#39ff14] group-hover:w-3/4 transition-all duration-300" />
               </button>
             ))}
           </nav>
 
           {/* Language + Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 cursor-pointer">
-              <span className="text-sm font-semibold text-green-600">ENG</span>
-              <ChevronDown size={14} className="text-green-600" />
+            <div className="flex items-center gap-1 cursor-pointer px-3 py-1 border border-[#00f0ff]/30 hover:border-[#00f0ff] transition-colors">
+              <span className="text-xs font-semibold text-[#00f0ff] tracking-wider" style={{ fontFamily: 'Share Tech Mono' }}>ENG</span>
+              <ChevronDown size={12} className="text-[#00f0ff]" />
             </div>
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,13 +80,13 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white shadow-xl border-t">
-          <div className="px-4 py-4 space-y-2">
+        <div className="lg:hidden bg-[#0a0a0f]/98 backdrop-blur-xl border-t border-[#39ff14]/20">
+          <div className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 px-3 text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors"
+                className="block w-full text-left py-2 px-3 text-sm font-semibold text-white/60 hover:text-[#39ff14] hover:bg-[#39ff14]/5 border-l-2 border-transparent hover:border-[#39ff14] transition-all"
               >
                 {item.label}
               </button>
