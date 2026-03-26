@@ -31,7 +31,7 @@ const ProductCatalog = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {products.map((product) => (
             <div
               key={product.id}
@@ -53,11 +53,7 @@ const ProductCatalog = () => {
                   style={{ filter: 'drop-shadow(0 0 15px rgba(57,255,20,0.1))' }}
                 />
                 <div className="absolute top-3 left-3">
-                  <span className={`px-3 py-1 text-[10px] font-bold tracking-[0.2em] ${
-                    product.series === 'SMART'
-                      ? 'bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30'
-                      : 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/30'
-                  }`} style={{ fontFamily: 'Orbitron' }}>
+                  <span className={`px-3 py-1 text-[10px] font-bold tracking-[0.2em] bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/30`} style={{ fontFamily: 'Orbitron' }}>
                     {product.series}
                   </span>
                 </div>
