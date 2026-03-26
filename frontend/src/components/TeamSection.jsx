@@ -34,9 +34,13 @@ const TeamSection = () => {
                 <div key={index}
                   className={`flex-shrink-0 w-44 text-center transition-all duration-500 cursor-pointer ${isActive ? 'scale-110 opacity-100' : 'scale-90 opacity-40'}`}
                   onClick={() => setActiveIndex(index)}>
-                  <div className="w-20 h-20 mx-auto flex items-center justify-center mb-3 transition-all"
+                  <div className="w-20 h-20 mx-auto flex items-center justify-center mb-3 transition-all overflow-hidden"
                        style={{ border: `1px solid ${isActive ? color : 'rgba(255,255,255,0.1)'}`, boxShadow: isActive ? `0 0 15px ${color}30` : 'none' }}>
-                    <User size={28} style={{ color: isActive ? color : 'rgba(255,255,255,0.2)' }} />
+                    {member.image ? (
+                      <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <User size={28} style={{ color: isActive ? color : 'rgba(255,255,255,0.2)' }} />
+                    )}
                   </div>
                   <h4 className="font-bold text-sm" style={{ color: isActive ? '#fff' : 'rgba(255,255,255,0.3)', fontFamily: 'Orbitron', fontSize: '11px' }}>
                     {member.name}
