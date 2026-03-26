@@ -113,7 +113,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 rounded-full border border-[#39ff14]/10 scale-110" style={{ animation: 'neon-pulse 3s ease-in-out infinite' }} />
               
               <img
-                src="https://static.tildacdn.com/tild6330-3530-4134-b638-343035323064/main.png"
+                src="https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/ggab2ftc_double.jpeg"
                 alt="H2 Element Hydrogen Generator"
                 className="relative z-10 w-full max-w-lg drop-shadow-2xl"
                 style={{ 
