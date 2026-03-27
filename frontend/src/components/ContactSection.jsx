@@ -30,51 +30,51 @@ const ContactSection = () => {
 
             <div className="space-y-5">
               {[
-                { icon: Phone, label: 'Phone', value: '+1 (800) 100-13-89', href: 'tel:+18001001389', color: '#39ff14' },
-                { icon: Mail, label: 'Email', value: 'dealer@h2element.com', href: 'mailto:dealer@h2element.com', color: '#00f0ff' },
-                { icon: MapPin, label: 'Head Office', value: 'H2 Element International', href: null, color: '#ff2d95' },
-              ].map((item, i) => {
+              { icon: Phone, label: 'Phone', value: "+1 (847)650-66-99", href: 'tel:+18001001389', color: '#39ff14' },
+              { icon: Mail, label: 'Email', value: 'dealer@h2element.com', href: 'mailto:dealer@h2element.com', color: '#00f0ff' },
+              { icon: MapPin, label: 'Head Office', value: 'H2 Element International', href: null, color: '#ff2d95' }].
+              map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div key={i} className="flex items-center gap-4">
                     <div className="w-10 h-10 flex items-center justify-center"
-                         style={{ border: `1px solid ${item.color}30`, boxShadow: `0 0 8px ${item.color}10` }}>
+                    style={{ border: `1px solid ${item.color}30`, boxShadow: `0 0 8px ${item.color}10` }}>
                       <Icon size={16} style={{ color: item.color }} />
                     </div>
                     <div>
                       <p className="text-white/20 text-[10px] font-mono-cyber">{item.label}</p>
-                      {item.href ? (
-                        <a href={item.href} className="text-white/70 font-bold text-sm hover:text-white transition-colors">{item.value}</a>
-                      ) : (
-                        <p className="text-white/70 font-bold text-sm">{item.value}</p>
-                      )}
+                      {item.href ?
+                      <a href={item.href} className="text-white/70 font-bold text-sm hover:text-white transition-colors">{item.value}</a> :
+
+                      <p className="text-white/70 font-bold text-sm">{item.value}</p>
+                      }
                     </div>
-                  </div>
-                );
+                  </div>);
+
               })}
             </div>
 
             {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
               <a href="https://www.instagram.com/d.tolstoi_llc/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center border border-[#ff2d95]/30 hover:bg-[#ff2d95]/10 hover:border-[#ff2d95] transition-all"
-                style={{ boxShadow: '0 0 8px rgba(255,45,149,0.05)' }}>
+              className="w-10 h-10 flex items-center justify-center border border-[#ff2d95]/30 hover:bg-[#ff2d95]/10 hover:border-[#ff2d95] transition-all"
+              style={{ boxShadow: '0 0 8px rgba(255,45,149,0.05)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff2d95" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
               </a>
               <a href="https://t.me/imfine_corp" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center border border-[#00f0ff]/30 hover:bg-[#00f0ff]/10 hover:border-[#00f0ff] transition-all"
-                style={{ boxShadow: '0 0 8px rgba(0,240,255,0.05)' }}>
+              className="w-10 h-10 flex items-center justify-center border border-[#00f0ff]/30 hover:bg-[#00f0ff]/10 hover:border-[#00f0ff] transition-all"
+              style={{ boxShadow: '0 0 8px rgba(0,240,255,0.05)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#00f0ff">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                 </svg>
               </a>
               <a href="https://www.facebook.com/dima.tolstihin" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center border border-[#39ff14]/30 hover:bg-[#39ff14]/10 hover:border-[#39ff14] transition-all"
-                style={{ boxShadow: '0 0 8px rgba(57,255,20,0.05)' }}>
+              className="w-10 h-10 flex items-center justify-center border border-[#39ff14]/30 hover:bg-[#39ff14]/10 hover:border-[#39ff14] transition-all"
+              style={{ boxShadow: '0 0 8px rgba(57,255,20,0.05)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#39ff14">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
             </div>
@@ -86,8 +86,8 @@ const ContactSection = () => {
                 <span className="text-[10px] text-[#39ff14]/30 font-mono-cyber">system.info</span>
               </div>
               <p className="text-[10px] text-white/15 font-mono-cyber leading-relaxed">
-                {'>'} sales@h2element.com<br/>
-                {'>'} Operating hours: 24/7 support<br/>
+                {'>'} sales@h2element.com<br />
+                {'>'} Operating hours: 24/7 support<br />
                 {'>'} Response time: {'<'} 2h
               </p>
             </div>
@@ -95,16 +95,16 @@ const ContactSection = () => {
 
           <div>
             <form onSubmit={handleSubmit} className="space-y-3">
-              {['name', 'phone', 'email'].map((field) => (
-                <input key={field} type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
-                  name={field} value={formData[field]} onChange={handleChange}
-                  placeholder={field === 'name' ? 'Your name' : field === 'phone' ? 'Phone number' : 'Email'}
-                  className="w-full px-4 py-3 bg-transparent border border-white/8 text-white placeholder-white/15 focus:outline-none focus:border-[#39ff14]/40 transition-colors text-sm font-mono-cyber"
-                />
-              ))}
+              {['name', 'phone', 'email'].map((field) =>
+              <input key={field} type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
+              name={field} value={formData[field]} onChange={handleChange}
+              placeholder={field === 'name' ? 'Your name' : field === 'phone' ? 'Phone number' : 'Email'}
+              className="w-full px-4 py-3 bg-transparent border border-white/8 text-white placeholder-white/15 focus:outline-none focus:border-[#39ff14]/40 transition-colors text-sm font-mono-cyber" />
+
+              )}
               <textarea name="message" value={formData.message} onChange={handleChange}
-                placeholder="Your message" rows={4}
-                className="w-full px-4 py-3 bg-transparent border border-white/8 text-white placeholder-white/15 focus:outline-none focus:border-[#39ff14]/40 transition-colors resize-none text-sm font-mono-cyber" />
+              placeholder="Your message" rows={4}
+              className="w-full px-4 py-3 bg-transparent border border-white/8 text-white placeholder-white/15 focus:outline-none focus:border-[#39ff14]/40 transition-colors resize-none text-sm font-mono-cyber" />
 
               <div className="flex items-start gap-2">
                 <input type="checkbox" id="consent" className="mt-1 accent-[#39ff14]" defaultChecked />
@@ -114,16 +114,16 @@ const ContactSection = () => {
               </div>
 
               <button type="submit"
-                className="w-full py-4 bg-[#39ff14] text-[#0a0a0f] font-bold text-xs tracking-[0.15em] cyber-clip-sm transition-all flex items-center justify-center gap-2"
-                style={{ fontFamily: 'Orbitron', boxShadow: '0 0 20px rgba(57,255,20,0.25)' }}>
+              className="w-full py-4 bg-[#39ff14] text-[#0a0a0f] font-bold text-xs tracking-[0.15em] cyber-clip-sm transition-all flex items-center justify-center gap-2"
+              style={{ fontFamily: 'Orbitron', boxShadow: '0 0 20px rgba(57,255,20,0.25)' }}>
                 {submitted ? '// REQUEST_SENT' : <><Send size={14} /> SUBMIT REQUEST</>}
               </button>
             </form>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ContactSection;
