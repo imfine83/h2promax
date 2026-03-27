@@ -31,7 +31,7 @@ const ContactSection = () => {
             <div className="space-y-5">
               {[
               { icon: Phone, label: 'Phone', value: "+1 (847)650-66-99", href: 'tel:+18001001389', color: '#39ff14' },
-              { icon: Mail, label: 'Email', value: "", href: 'mailto:dealer@h2element.com', color: '#00f0ff' },
+              { icon: Mail, label: "Email ", value: "", href: 'mailto:dealer@h2element.com', color: '#00f0ff' },
               { icon: MapPin, label: 'Head Office', value: 'H2 Element International', href: null, color: '#ff2d95' }].
               map((item, i) => {
                 const Icon = item.icon;
