@@ -15,7 +15,6 @@ import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import TeamSection from "./components/TeamSection";
-import VideoSection from "./components/VideoSection";
 import DealerPackageSection from "./components/DealerPackageSection";
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
     <div className="App">
       <Header />
       <HeroSection />
-      <VideoSection />
       <BenefitsSection />
       <HowItWorks />
       <ProductCatalog />
