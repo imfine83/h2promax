@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import BenefitsSection from "./components/BenefitsSection";
@@ -19,6 +20,7 @@ import DealerPackageSection from "./components/DealerPackageSection";
 
 function App() {
   return (
+    <LanguageProvider>
     <div className="App">
       <Header />
       <HeroSection />
@@ -37,6 +39,7 @@ function App() {
       <ContactSection />
       <Footer />
     </div>
+    </LanguageProvider>
   );
 }
 

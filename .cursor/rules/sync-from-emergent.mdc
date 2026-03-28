@@ -1,0 +1,29 @@
+---
+description: Синхронизация изменений из Emergent на живой сайт
+alwaysApply: true
+---
+
+# Синхронизация изменений из Emergent
+
+Если пользователь сделал изменения через Emergent (они уходят в `imfine83/h2promax`),
+нужно подтянуть их и задеплоить на живой сайт через Vercel.
+
+## Команда синхронизации
+
+Выполни в терминале из папки проекта `/Users/tim/Desktop/h2promax`:
+
+```bash
+git pull https://github.com/imfine83/h2promax.git main --no-rebase && git push origin main
+```
+
+## Как это работает
+
+- `git pull https://github.com/imfine83/h2promax.git main` — подтягивает изменения из репо друга
+- `git push origin main` — пушит в `qaawpaas/h2promax`
+- Vercel автоматически деплоит сайт после пуша
+
+## Структура репозиториев
+
+- `imfine83/h2promax` — репо друга, куда пишет Emergent
+- `qaawpaas/h2promax` — твоё репо, которое смотрит Vercel (живой сайт)
+- Vercel → h2element.works

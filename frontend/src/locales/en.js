@@ -1,0 +1,201 @@
+export const en = {
+  nav: ['HOME', 'CATALOG', 'PRODUCTION', 'DEALERS', 'CASES', 'NEWS', 'CERTIFICATES', 'FAQ', 'CONTACTS'],
+
+  hero: {
+    title1: 'FUEL',
+    title2: 'SAVINGS',
+    subtitle: 'Hydrogen systems for transport and fleets',
+    feature1: 'Fuel and resource savings',
+    feature2: 'Installation without affecting the warranty',
+    feature3: 'For all ICE: commercial and passenger transport',
+    cta1: 'CALCULATE SAVINGS',
+    cta2: 'BECOME A DEALER',
+    disclaimer: 'We work with private owners and fleets. All calculations and effects — only based on your data.',
+    bottomText: 'Values confirmed by measurements — for each vehicle individually',
+  },
+
+  benefits: {
+    heading: 'Fuel savings',
+    subtitle1: 'Benefits of the',
+    subtitle2: 'system',
+    items: [
+      { title: 'Fuel savings 20–40%', description: 'Results are confirmed by measurements on your equipment. Payback — from 12 to 35 days', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
+      { title: 'Engine runs smoother and longer', description: 'Less load, reduced wear, temperature stabilization from the first trips', image: 'https://static3.tildacdn.com/tild3534-3066-4264-b464-303232656238/2_2.png' },
+      { title: 'No risks for warranty and engine', description: 'Installation according to official regulations, without complex modifications', image: 'https://static3.tildacdn.com/tild3061-6362-4164-b166-393539666330/2_3.png' },
+      { title: 'Transparent, measurable results', description: 'Every step is confirmed by before/after measurement under engineer supervision', image: 'https://static3.tildacdn.com/tild6463-3835-4734-b966-306132666339/2_4.png' },
+    ],
+  },
+
+  howItWorks: {
+    badge: '// HOW_IT_WORKS',
+    title1: 'H2 ELEMENT',
+    title2: 'Generator',
+    description: 'The H2 ELEMENT hydrogen generator converts water into a hydrogen-oxygen mixture and feeds it into the engine intake along with air. The mixture activates the combustion process — fuel is used more efficiently.',
+    engineLabel: 'ENGINE',
+    engineDesc: 'Works parallel to standard components',
+    mixLabel: 'H2+O2 MIX',
+    mixDesc: 'Does not require calibration',
+    viewProducts: 'VIEW PRODUCTS',
+    steps: [
+      { title: 'Splits water into H2 and O2', desc: 'Works parallel to standard components' },
+      { title: 'Mixes with air at intake', desc: 'Does not require calibration' },
+      { title: 'Enriched mixture burns in cylinders', desc: 'Does not interfere with vehicle electronics' },
+      { title: 'Better combustion efficiency', desc: 'Fuel is used more effectively' },
+    ],
+  },
+
+  catalog: {
+    badge: '// PRODUCT_CATALOG',
+    title1: 'Product',
+    title2: 'Catalog',
+    subtitle: 'All solutions with official warranty and installation according to H2 ELEMENT standards',
+    orderBtn: 'ORDER INSTALLATION',
+    installmentBtn: 'BUY IN INSTALLMENTS',
+    modalOrder: 'ORDER INSTALLATION',
+    modalInstallment: 'BUY IN INSTALLMENTS',
+    namePlaceholder: 'Your name',
+    phonePlaceholder: 'Phone number',
+    emailPlaceholder: 'Email',
+    submitBtn: 'SUBMIT REQUEST',
+    products: [
+      { id: 'h1c', series: 'PRO MAX', model: 'H1', price: '$3499', engineVolume: 'Engine volume up to 6L', dimensions: '230×100×285 mm', warranty: '3 year warranty', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/v6rb3gxt_1device.jpeg', vehicleTypes: ['car'] },
+      { id: 'h2c', series: 'PRO MAX', model: 'H2', price: '$4499', engineVolume: 'Engine volume from 6 to 16L', dimensions: '265×100×285 mm', warranty: '3 year warranty', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/g0ercxb8_double.jpeg', vehicleTypes: ['car', 'truck'] },
+    ],
+  },
+
+  production: {
+    badge: '// MANUFACTURING',
+    title1: 'Own',
+    title2: 'Production',
+    description: 'Our company ensures a full cycle of hydrogen generator production — all key stages are concentrated at our own facility. Started in 2022, since 2025 working on a conveyor system.',
+    facilityTitle: 'Modern Production Facility',
+    facilityDesc: 'Up to 1,500 generators per month',
+    boilerTitle: 'HYDROGEN BOILER',
+    boilerDesc: 'Besides transport systems, our team is preparing to launch a hydrogen boiler for heating',
+    stats: [
+      { icon: 'factory', title: 'Production capacity', description: 'Up to 1,500 H2 ELEMENT generators monthly, strict quality standards and control at every stage' },
+      { icon: 'shield', title: 'Engineering oversight', description: 'Company experts and specialists from industry scientific clusters' },
+      { icon: 'settings', title: 'Advanced equipment', description: 'Modern welding, painting and performance testing lines' },
+      { icon: 'globe', title: 'Delivery geography', description: 'Worldwide exports through an extensive dealer network' },
+      { icon: 'rocket', title: 'Own R&D department', description: 'Ensures updates and expansion of the product lineup' },
+    ],
+  },
+
+  dealerNetwork: {
+    badge: '// GLOBAL_NETWORK',
+    title1: 'Dealer & Service',
+    title2: 'Network',
+    subtitle: 'The H2 ELEMENT authorized dealer and service center network covers multiple countries worldwide.',
+    becomeDealer: 'BECOME A DEALER',
+  },
+
+  cases: {
+    badge: '// CASE_STUDIES',
+    title1: 'Case',
+    title2: 'Studies',
+    getCases: 'GET 50+ CASES',
+    before: 'BEFORE',
+    after: 'AFTER',
+  },
+
+  dealers: {
+    badge: '// DEALER_PROGRAM',
+    title1: 'Become a',
+    title2: 'Dealer',
+    howToTitle1: 'HOW TO',
+    howToTitle2: 'BECOME',
+    howToTitle3: 'A DEALER',
+    requirementsTitle: 'DEALER REQUIREMENTS',
+    requirements: [
+      'Active promotion and brand development in the region',
+      'Compliance with H2 ELEMENT standards and rules',
+      'Responsible approach to communication and application management',
+    ],
+    becomeDealer: 'BECOME A DEALER',
+    benefits: [
+      { title: 'Exclusive', description: 'Your territory is assigned to you, without internal competition' },
+      { title: 'Tools', description: 'Complete set for sales, marketing, analytics and workflow automation' },
+      { title: 'Work Standards', description: 'Regulations for ads, promotions, communication management' },
+      { title: 'Quick Support', description: 'Fast answers to all questions' },
+      { title: 'Clear Terms', description: 'Transparent model, no hidden payments or forced purchases' },
+      { title: 'Training', description: 'Access to H2 ELEMENT Academy — step-by-step onboarding program (60 days), materials, videos, curator support' },
+    ],
+    steps: [
+      { step: '01', title: 'Fill out the application on the website', description: '' },
+      { step: '02', title: 'Get a personal review', description: 'We discuss your region, target audience and marketing opportunities' },
+      { step: '03', title: 'Access to the starter kit', description: 'Training, materials, dedicated manager' },
+      { step: '04', title: 'Start sales and grow', description: 'Work with our system, receive support' },
+    ],
+  },
+
+  dealerPackage: {
+    title1: 'H2 ELEMENT',
+    title2: 'Dealer Package',
+    items: [
+      { icon: 'engine', title: 'Product', description: 'Assortment, use cases, limitations, answers to key questions' },
+      { icon: 'chart', title: 'Goal Decomposition', description: 'Setting financial and operational KPIs, step-by-step growth plan' },
+      { icon: 'headset', title: 'Sales', description: 'Call scripts, lead processing, CRM work, proposal templates' },
+      { icon: 'package', title: 'Packaging', description: 'Profile standards, website design, social media, unified style' },
+      { icon: 'mobile', title: 'Content', description: 'Content plan, instructions for posts, videos, cases and reviews' },
+      { icon: 'people', title: 'Traffic', description: 'Launching ads, working with website and chatbot, lead funnel' },
+      { icon: 'robot', title: 'AI Tools', description: 'Services and templates for quick material generation and lead processing' },
+      { icon: 'settings2', title: 'Automation & Scaling', description: 'CRM implementation, process and metrics control, reporting templates' },
+    ],
+  },
+
+  news: {
+    badge: '// NEWS_FEED',
+    title1: 'News /',
+    title2: 'Events',
+    readMore: 'Read more',
+    items: [
+      { title: 'H2 ELEMENT New Generation Generators', date: '23.12.2025', description: '' },
+      { title: 'H2 ELEMENT Presentation Event', date: '14.12.2025', description: 'Full hall and live interest at the latest presentation event' },
+      { title: 'Major Presentation of New Generation', date: '05.12.2025', description: 'Large-scale presentation of new generation H2 ELEMENT generators' },
+      { title: 'Industry Conference', date: '19.11.2025', description: 'More than 200 attendees gathered' },
+      { title: 'Fleet Managers Conference', date: '11.10.2025', description: 'Entrepreneurs and fleet owners learned about hydrogen technology' },
+      { title: 'H2 Technology Introduction', date: '06.09.2025', description: 'Vehicle, logistics and agricultural equipment owners came to learn about saving fuel up to 65%' },
+    ],
+  },
+
+  certificates: {
+    title: 'Certificates',
+  },
+
+  faq: {
+    badge: '// FREQUENTLY_ASKED',
+    items: [
+      { question: 'Is it safe for the engine?', answer: 'Yes. The generator does not interfere with the engine design and does not replace fuel — it simply improves combustion. Hydrogen breaks down carbon deposits, so there is less soot and abrasive elements in the engine. Hydrogen burns 8-10 times faster at lower temperatures, so the engine runs smoother and overheats less.' },
+      { question: 'Is it legal? Do I need to register it?', answer: 'Absolutely legal. The HHO generator does not require registration because it is not a modification of the vehicle design. It works as an additional system and does not violate vehicle operation rules.' },
+      { question: 'Which vehicles is it compatible with?', answer: 'Suitable for all types of internal combustion engines: gasoline, diesel, gas, methane (including LPG). Our installations are used by everyone — from passenger cars to trucks, tractors and special equipment. We select the model based on engine volume — efficiency is guaranteed.' },
+      { question: 'How does it work?', answer: "After starting the engine, the generator activates the electrolysis process, producing HHO gas (hydrogen-oxygen mixture, also called Brown's gas). This gas is fed into the combustion chamber along with air and fuel. HHO acts as a catalyst, accelerating and improving the combustion process of the fuel mixture." },
+      { question: 'What causes fuel savings?', answer: 'Savings are due to improved combustion characteristics of the fuel-air mixture by adding HHO. HHO has high flammability and low ignition temperature, which initiates more complete and uniform combustion. This leads to increased thermal efficiency, reduced soot formation, lower heat losses, and improved air-fuel ratio.' },
+      { question: 'How difficult is the installation?', answer: 'Installation usually takes 60 to 90 minutes. Any auto electrician or mechanic can handle it — the instructions are step-by-step and simple. If something is unclear — our engineers are always available. We can help find an installer in your region.' },
+      { question: 'Does the generator need maintenance?', answer: 'Maintenance is simple and does not require special knowledge. All you need is to add water and occasionally flush the system. Detailed maintenance and installation instructions are included with every kit.' },
+      { question: 'Is there a warranty?', answer: 'Yes. We manufacture generators ourselves and provide a 3-year warranty. If something breaks down — we will replace it without any issues. Service life — up to 10 years.' },
+      { question: 'How much does it cost?', answer: 'The price depends on the engine volume. Classic series: H1 up to 2L — $750, H2 from 2 to 6.5L — $990, H3 from 6.5 to 12L — $1,650. Smart series: H2 from 2 to 6.5L — $1,320, H3 from 6.5 to 12L — $1,980, H4 from 12 to 20L — $2,640.' },
+    ],
+  },
+
+  contact: {
+    badge: '// CONTACT_US',
+    title: 'CONTACTS',
+    subtitle: 'Fill out the feedback form and we will contact you',
+    phone: 'Phone',
+    email: 'Email',
+    office: 'Head Office',
+    namePlaceholder: 'Your name',
+    phonePlaceholder: 'Phone number',
+    emailPlaceholder: 'Email',
+    messagePlaceholder: 'Your message',
+    consent: 'I consent to the processing of personal data',
+    submitBtn: 'SUBMIT REQUEST',
+    submitted: '// REQUEST_SENT',
+    hours: 'Operating hours: 24/7 support',
+    response: 'Response time: < 2h',
+  },
+
+  footer: {
+    rights: 'ALL_RIGHTS_RESERVED',
+  },
+};

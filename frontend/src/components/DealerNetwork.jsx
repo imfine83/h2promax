@@ -1,8 +1,12 @@
 import React from 'react';
 import { dealerCountries } from '../data/mockData';
 import { MapPin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const DealerNetwork = () => {
+  const { t } = useLanguage();
+  const d = t.dealerNetwork;
+
   return (
     <section className="py-24 bg-[#0a0a0f] relative" id="dealer-map">
       <div className="absolute inset-0 cyber-grid opacity-30" />
@@ -10,13 +14,11 @@ const DealerNetwork = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-[10px] tracking-[0.5em] text-[#ffe600]/50 font-mono-cyber">// GLOBAL_NETWORK</span>
+          <span className="text-[10px] tracking-[0.5em] text-[#ffe600]/50 font-mono-cyber">{d.badge}</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
-            Dealer & Service <span className="text-[#39ff14]" style={{ textShadow: '0 0 20px rgba(57,255,20,0.3)' }}>Network</span>
+            {d.title1} <span className="text-[#39ff14]" style={{ textShadow: '0 0 20px rgba(57,255,20,0.3)' }}>{d.title2}</span>
           </h2>
-          <p className="mt-4 text-white/25 max-w-3xl mx-auto text-sm">
-            The H2 ELEMENT authorized dealer and service center network covers multiple countries worldwide.
-          </p>
+          <p className="mt-4 text-white/25 max-w-3xl mx-auto text-sm">{d.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-12">
@@ -41,7 +43,7 @@ const DealerNetwork = () => {
           <button onClick={() => { const el = document.getElementById('dealers'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
             className="px-8 py-4 bg-[#39ff14] text-[#0a0a0f] font-bold text-xs tracking-[0.15em] cyber-clip-sm transition-all"
             style={{ fontFamily: 'Orbitron', boxShadow: '0 0 20px rgba(57,255,20,0.2)' }}>
-            BECOME A DEALER
+            {d.becomeDealer}
           </button>
         </div>
       </div>

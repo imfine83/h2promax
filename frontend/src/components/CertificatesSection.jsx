@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const certificates = [
   'https://static3.tildacdn.com/tild6435-6230-4135-a238-343935353235/___.png',
@@ -11,6 +12,8 @@ const certificates = [
 ];
 
 const CertificatesSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-[#0d0d1a] relative" id="certificates">
       <div className="absolute inset-0 cyber-stripes" />
@@ -22,7 +25,7 @@ const CertificatesSection = () => {
             <Award size={12} /> VERIFIED_CERTIFICATES
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'Orbitron' }}>
-            Certificates
+            {t.certificates.title}
           </h2>
         </div>
 

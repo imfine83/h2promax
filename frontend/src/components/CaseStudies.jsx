@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { caseStudies } from '../data/mockData';
 import { ChevronLeft, ChevronRight, TrendingDown, FileText } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CaseStudies = () => {
+  const { t } = useLanguage();
+  const c = t.cases;
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -24,10 +27,7 @@ const CaseStudies = () => {
     }
   };
 
-  const calcSavings = (before, after) => {
-    return ((parseFloat(before) - parseFloat(after)) / parseFloat(before) * 100).toFixed(0);
-  };
-
+  const calcSavings = (before, after) => ((parseFloat(before) - parseFloat(after)) / parseFloat(before) * 100).toFixed(0);
   const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff', '#39ff14', '#00f0ff', '#ff2d95'];
 
   return (
@@ -38,16 +38,16 @@ const CaseStudies = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
           <div>
-            <span className="text-[10px] tracking-[0.5em] text-[#ff2d95]/50 font-mono-cyber">// CASE_STUDIES</span>
+            <span className="text-[10px] tracking-[0.5em] text-[#ff2d95]/50 font-mono-cyber">{c.badge}</span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
-              Case <span className="text-[#ff2d95]" style={{ textShadow: '0 0 20px rgba(255,45,149,0.3)' }}>Studies</span>
+              {c.title1} <span className="text-[#ff2d95]" style={{ textShadow: '0 0 20px rgba(255,45,149,0.3)' }}>{c.title2}</span>
             </h2>
           </div>
           <div className="flex items-center gap-4 mt-6 md:mt-0">
             <button onClick={() => { const el = document.getElementById('contacts'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
               className="flex items-center gap-2 px-5 py-2.5 bg-[#ff2d95] text-white font-bold text-xs tracking-wider cyber-clip-sm"
               style={{ fontFamily: 'Orbitron', fontSize: '10px', boxShadow: '0 0 15px rgba(255,45,149,0.2)' }}>
-              <FileText size={14} /> GET 50+ CASES
+              <FileText size={14} /> {c.getCases}
             </button>
             <div className="flex gap-2">
               <button onClick={() => scroll('left')} disabled={!canScrollLeft}
@@ -77,11 +77,11 @@ const CaseStudies = () => {
                 <h4 className="font-bold text-white/80 text-sm mb-4" style={{ fontFamily: 'Orbitron', fontSize: '11px' }}>{cs.car}</h4>
                 <div className="space-y-2 font-mono-cyber">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-white/20">BEFORE</span>
+                    <span className="text-[10px] text-white/20">{c.before}</span>
                     <span className="text-sm font-bold text-white/30">{cs.before} L/100km</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px]" style={{ color }}>AFTER</span>
+                    <span className="text-[10px]" style={{ color }}>{c.after}</span>
                     <span className="text-sm font-bold" style={{ color }}>{cs.after} L/100km</span>
                   </div>
                 </div>

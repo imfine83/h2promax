@@ -1,0 +1,201 @@
+export const es = {
+  nav: ['INICIO', 'CATÁLOGO', 'PRODUCCIÓN', 'DISTRIBUIDORES', 'CASOS', 'NOTICIAS', 'CERTIFICADOS', 'PREGUNTAS', 'CONTACTOS'],
+
+  hero: {
+    title1: 'AHORRO DE',
+    title2: 'COMBUSTIBLE',
+    subtitle: 'Sistemas de hidrógeno para transporte y flotas',
+    feature1: 'Ahorro de combustible y recursos',
+    feature2: 'Instalación sin afectar la garantía',
+    feature3: 'Para todos los motores de combustión: transporte comercial y de pasajeros',
+    cta1: 'CALCULAR AHORROS',
+    cta2: 'SER DISTRIBUIDOR',
+    disclaimer: 'Trabajamos con propietarios privados y flotas. Todos los cálculos y efectos — solo basados en sus datos.',
+    bottomText: 'Valores confirmados por mediciones — para cada vehículo individualmente',
+  },
+
+  benefits: {
+    heading: 'Ahorro de combustible',
+    subtitle1: 'Beneficios del sistema',
+    subtitle2: '',
+    items: [
+      { title: 'Ahorro de combustible 20–40%', description: 'Los resultados son confirmados por mediciones en su equipo. Retorno de inversión — de 12 a 35 días', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
+      { title: 'El motor funciona más suave y por más tiempo', description: 'Menos carga, menor desgaste, estabilización de temperatura desde los primeros viajes', image: 'https://static3.tildacdn.com/tild3534-3066-4264-b464-303232656238/2_2.png' },
+      { title: 'Sin riesgos para la garantía y el motor', description: 'Instalación según normativas oficiales, sin modificaciones complejas', image: 'https://static3.tildacdn.com/tild3061-6362-4164-b166-393539666330/2_3.png' },
+      { title: 'Resultados transparentes y medibles', description: 'Cada paso es confirmado por medición antes/después bajo supervisión de ingenieros', image: 'https://static3.tildacdn.com/tild6463-3835-4734-b966-306132666339/2_4.png' },
+    ],
+  },
+
+  howItWorks: {
+    badge: '// CÓMO_FUNCIONA',
+    title1: 'H2 ELEMENT',
+    title2: 'Generador',
+    description: 'El generador de hidrógeno H2 ELEMENT convierte el agua en una mezcla de hidrógeno y oxígeno y la alimenta en la admisión del motor junto con el aire. La mezcla activa el proceso de combustión — el combustible se usa más eficientemente.',
+    engineLabel: 'MOTOR',
+    engineDesc: 'Funciona en paralelo con los componentes estándar',
+    mixLabel: 'MEZCLA H2+O2',
+    mixDesc: 'No requiere calibración',
+    viewProducts: 'VER PRODUCTOS',
+    steps: [
+      { title: 'Divide el agua en H2 y O2', desc: 'Funciona en paralelo con los componentes estándar' },
+      { title: 'Se mezcla con el aire en la admisión', desc: 'No requiere calibración' },
+      { title: 'La mezcla enriquecida se quema en los cilindros', desc: 'No interfiere con la electrónica del vehículo' },
+      { title: 'Mayor eficiencia de combustión', desc: 'El combustible se usa más eficientemente' },
+    ],
+  },
+
+  catalog: {
+    badge: '// CATÁLOGO_PRODUCTOS',
+    title1: 'Catálogo de',
+    title2: 'Productos',
+    subtitle: 'Todas las soluciones con garantía oficial e instalación según los estándares H2 ELEMENT',
+    orderBtn: 'SOLICITAR INSTALACIÓN',
+    installmentBtn: 'COMPRAR A PLAZOS',
+    modalOrder: 'SOLICITAR INSTALACIÓN',
+    modalInstallment: 'COMPRAR A PLAZOS',
+    namePlaceholder: 'Tu nombre',
+    phonePlaceholder: 'Número de teléfono',
+    emailPlaceholder: 'Correo electrónico',
+    submitBtn: 'ENVIAR SOLICITUD',
+    products: [
+      { id: 'h1c', series: 'PRO MAX', model: 'H1', price: '$3499', engineVolume: 'Volumen del motor hasta 6L', dimensions: '230×100×285 mm', warranty: 'Garantía de 3 años', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/v6rb3gxt_1device.jpeg', vehicleTypes: ['car'] },
+      { id: 'h2c', series: 'PRO MAX', model: 'H2', price: '$4499', engineVolume: 'Volumen del motor de 6 a 16L', dimensions: '265×100×285 mm', warranty: 'Garantía de 3 años', image: 'https://customer-assets.emergentagent.com/job_h2-green-rebrand/artifacts/g0ercxb8_double.jpeg', vehicleTypes: ['car', 'truck'] },
+    ],
+  },
+
+  production: {
+    badge: '// FABRICACIÓN',
+    title1: 'Producción',
+    title2: 'Propia',
+    description: 'Nuestra empresa garantiza un ciclo completo de producción de generadores de hidrógeno — todas las etapas clave están concentradas en nuestra propia instalación. Inicio en 2022, desde 2025 trabajando en sistema de línea de montaje.',
+    facilityTitle: 'Instalación de Producción Moderna',
+    facilityDesc: 'Hasta 1.500 generadores por mes',
+    boilerTitle: 'CALDERA DE HIDRÓGENO',
+    boilerDesc: 'Además de los sistemas de transporte, nuestro equipo está preparando el lanzamiento de una caldera de hidrógeno para calefacción',
+    stats: [
+      { icon: 'factory', title: 'Capacidad de producción', description: 'Hasta 1.500 generadores H2 ELEMENT mensuales, estrictos estándares de calidad y control en cada etapa' },
+      { icon: 'shield', title: 'Supervisión de ingeniería', description: 'Expertos de la empresa y especialistas de clusters científicos de la industria' },
+      { icon: 'settings', title: 'Equipamiento avanzado', description: 'Líneas modernas de soldadura, pintura y pruebas de rendimiento' },
+      { icon: 'globe', title: 'Geografía de entrega', description: 'Exportaciones mundiales a través de una extensa red de distribuidores' },
+      { icon: 'rocket', title: 'Departamento propio de I+D', description: 'Garantiza actualizaciones y expansión de la línea de productos' },
+    ],
+  },
+
+  dealerNetwork: {
+    badge: '// RED_GLOBAL',
+    title1: 'Red de Distribuidores',
+    title2: 'y Servicio',
+    subtitle: 'La red de distribuidores autorizados y centros de servicio H2 ELEMENT cubre múltiples países en todo el mundo.',
+    becomeDealer: 'SER DISTRIBUIDOR',
+  },
+
+  cases: {
+    badge: '// CASOS_DE_ESTUDIO',
+    title1: 'Casos de',
+    title2: 'Estudio',
+    getCases: 'OBTENER 50+ CASOS',
+    before: 'ANTES',
+    after: 'DESPUÉS',
+  },
+
+  dealers: {
+    badge: '// PROGRAMA_DISTRIBUIDORES',
+    title1: 'Conviértete en',
+    title2: 'Distribuidor',
+    howToTitle1: 'CÓMO',
+    howToTitle2: 'CONVERTIRSE EN',
+    howToTitle3: 'DISTRIBUIDOR',
+    requirementsTitle: 'REQUISITOS DEL DISTRIBUIDOR',
+    requirements: [
+      'Promoción activa y desarrollo de marca en la región',
+      'Cumplimiento de los estándares y normas de H2 ELEMENT',
+      'Enfoque responsable en la comunicación y gestión de solicitudes',
+    ],
+    becomeDealer: 'SER DISTRIBUIDOR',
+    benefits: [
+      { title: 'Exclusividad', description: 'Tu territorio está asignado a ti, sin competencia interna' },
+      { title: 'Herramientas', description: 'Conjunto completo para ventas, marketing, análisis y automatización de flujos de trabajo' },
+      { title: 'Estándares de trabajo', description: 'Normativas para anuncios, promociones, gestión de comunicación' },
+      { title: 'Soporte rápido', description: 'Respuestas rápidas a todas las preguntas' },
+      { title: 'Términos claros', description: 'Modelo transparente, sin pagos ocultos ni compras forzadas' },
+      { title: 'Capacitación', description: 'Acceso a la Academia H2 ELEMENT — programa de incorporación paso a paso (60 días), materiales, videos, apoyo de curador' },
+    ],
+    steps: [
+      { step: '01', title: 'Completa la solicitud en el sitio web', description: '' },
+      { step: '02', title: 'Obtén una revisión personal', description: 'Discutimos tu región, público objetivo y oportunidades de marketing' },
+      { step: '03', title: 'Acceso al kit de inicio', description: 'Capacitación, materiales, gerente dedicado' },
+      { step: '04', title: 'Comienza a vender y crecer', description: 'Trabaja con nuestro sistema, recibe soporte' },
+    ],
+  },
+
+  dealerPackage: {
+    title1: 'H2 ELEMENT',
+    title2: 'Paquete de Distribuidor',
+    items: [
+      { icon: 'engine', title: 'Producto', description: 'Surtido, casos de uso, limitaciones, respuestas a preguntas clave' },
+      { icon: 'chart', title: 'Descomposición de Objetivos', description: 'Establecimiento de KPIs financieros y operativos, plan de crecimiento paso a paso' },
+      { icon: 'headset', title: 'Ventas', description: 'Scripts de llamadas, procesamiento de leads, trabajo con CRM, plantillas de propuestas' },
+      { icon: 'package', title: 'Empaquetado', description: 'Estándares de perfil, diseño web, redes sociales, estilo unificado' },
+      { icon: 'mobile', title: 'Contenido', description: 'Plan de contenido, instrucciones para publicaciones, videos, casos y reseñas' },
+      { icon: 'people', title: 'Tráfico', description: 'Lanzamiento de anuncios, trabajo con sitio web y chatbot, embudo de leads' },
+      { icon: 'robot', title: 'Herramientas de IA', description: 'Servicios y plantillas para generación rápida de materiales y procesamiento de leads' },
+      { icon: 'settings2', title: 'Automatización y Escalado', description: 'Implementación de CRM, control de procesos y métricas, plantillas de informes' },
+    ],
+  },
+
+  news: {
+    badge: '// NOTICIAS',
+    title1: 'Noticias /',
+    title2: 'Eventos',
+    readMore: 'Leer más',
+    items: [
+      { title: 'Generadores de Nueva Generación H2 ELEMENT', date: '23.12.2025', description: '' },
+      { title: 'Evento de Presentación H2 ELEMENT', date: '14.12.2025', description: 'Sala llena e interés en vivo en el último evento de presentación' },
+      { title: 'Gran Presentación de Nueva Generación', date: '05.12.2025', description: 'Presentación a gran escala de generadores H2 ELEMENT de nueva generación' },
+      { title: 'Conferencia de la Industria', date: '19.11.2025', description: 'Se reunieron más de 200 asistentes' },
+      { title: 'Conferencia de Gerentes de Flotas', date: '11.10.2025', description: 'Empresarios y propietarios de flotas conocieron la tecnología de hidrógeno' },
+      { title: 'Introducción a la Tecnología H2', date: '06.09.2025', description: 'Propietarios de vehículos, logística y equipos agrícolas vinieron a conocer el ahorro de combustible de hasta el 65%' },
+    ],
+  },
+
+  certificates: {
+    title: 'Certificados',
+  },
+
+  faq: {
+    badge: '// PREGUNTAS_FRECUENTES',
+    items: [
+      { question: '¿Es seguro para el motor?', answer: 'Sí. El generador no interfiere con el diseño del motor y no reemplaza el combustible — simplemente mejora la combustión. El hidrógeno descompone los depósitos de carbono, por lo que hay menos hollín y elementos abrasivos en el motor. El hidrógeno se quema 8-10 veces más rápido a temperaturas más bajas, por lo que el motor funciona más suavemente y se sobrecalienta menos.' },
+      { question: '¿Es legal? ¿Necesito registrarlo?', answer: 'Completamente legal. El generador HHO no requiere registro porque no es una modificación del diseño del vehículo. Funciona como un sistema adicional y no viola las reglas de operación del vehículo.' },
+      { question: '¿Con qué vehículos es compatible?', answer: 'Apto para todos los tipos de motores de combustión interna: gasolina, diésel, gas, metano (incluyendo GLP). Nuestras instalaciones son utilizadas por todos — desde automóviles de pasajeros hasta camiones, tractores y equipos especiales. Seleccionamos el modelo según el volumen del motor — la eficiencia está garantizada.' },
+      { question: '¿Cómo funciona?', answer: 'Después de arrancar el motor, el generador activa el proceso de electrólisis, produciendo gas HHO (mezcla de hidrógeno y oxígeno, también llamado gas de Brown). Este gas se introduce en la cámara de combustión junto con el aire y el combustible. El HHO actúa como catalizador, acelerando y mejorando el proceso de combustión de la mezcla de combustible.' },
+      { question: '¿Qué produce el ahorro de combustible?', answer: 'El ahorro se debe a la mejora de las características de combustión de la mezcla aire-combustible al agregar HHO. El HHO tiene alta inflamabilidad y baja temperatura de ignición, lo que inicia una combustión más completa y uniforme. Esto lleva a mayor eficiencia térmica, menor formación de hollín, menores pérdidas de calor y mejor relación aire-combustible.' },
+      { question: '¿Qué tan difícil es la instalación?', answer: 'La instalación normalmente toma de 60 a 90 minutos. Cualquier electricista de automóviles o mecánico puede realizarla — las instrucciones son paso a paso y simples. Si algo no está claro — nuestros ingenieros siempre están disponibles. Podemos ayudar a encontrar un instalador en su región.' },
+      { question: '¿El generador necesita mantenimiento?', answer: 'El mantenimiento es simple y no requiere conocimientos especiales. Todo lo que necesitas es agregar agua y ocasionalmente limpiar el sistema. Las instrucciones detalladas de mantenimiento e instalación se incluyen con cada kit.' },
+      { question: '¿Hay garantía?', answer: 'Sí. Fabricamos los generadores nosotros mismos y ofrecemos una garantía de 3 años. Si algo se daña — lo reemplazaremos sin ningún problema. Vida útil — hasta 10 años.' },
+      { question: '¿Cuánto cuesta?', answer: 'El precio depende del volumen del motor. Serie Classic: H1 hasta 2L — $750, H2 de 2 a 6.5L — $990, H3 de 6.5 a 12L — $1,650. Serie Smart: H2 de 2 a 6.5L — $1,320, H3 de 6.5 a 12L — $1,980, H4 de 12 a 20L — $2,640.' },
+    ],
+  },
+
+  contact: {
+    badge: '// CONTÁCTENOS',
+    title: 'CONTACTOS',
+    subtitle: 'Complete el formulario de contacto y nos pondremos en contacto con usted',
+    phone: 'Teléfono',
+    email: 'Correo electrónico',
+    office: 'Oficina Central',
+    namePlaceholder: 'Tu nombre',
+    phonePlaceholder: 'Número de teléfono',
+    emailPlaceholder: 'Correo electrónico',
+    messagePlaceholder: 'Tu mensaje',
+    consent: 'Consiento el procesamiento de datos personales',
+    submitBtn: 'ENVIAR SOLICITUD',
+    submitted: '// SOLICITUD_ENVIADA',
+    hours: 'Horario de atención: soporte 24/7',
+    response: 'Tiempo de respuesta: < 2h',
+  },
+
+  footer: {
+    rights: 'TODOS_LOS_DERECHOS_RESERVADOS',
+  },
+};

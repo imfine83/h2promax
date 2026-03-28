@@ -1,11 +1,14 @@
 import React from 'react';
-import { productionStats } from '../data/mockData';
 import { Factory, ShieldCheck, Settings, Globe, Rocket } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const iconMap = { factory: Factory, shield: ShieldCheck, settings: Settings, globe: Globe, rocket: Rocket };
 const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff'];
 
 const ProductionSection = () => {
+  const { t } = useLanguage();
+  const p = t.production;
+
   return (
     <section className="py-24 bg-[#0a0a0f] relative" id="production">
       <div className="absolute inset-0 cyber-grid opacity-30" />
@@ -14,28 +17,24 @@ const ProductionSection = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <span className="text-[10px] tracking-[0.5em] text-[#00f0ff]/50 font-mono-cyber">// MANUFACTURING</span>
+            <span className="text-[10px] tracking-[0.5em] text-[#00f0ff]/50 font-mono-cyber">{p.badge}</span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-4 mb-4" style={{ fontFamily: 'Orbitron' }}>
-              Own <span className="text-[#00f0ff]" style={{ textShadow: '0 0 20px rgba(0,240,255,0.3)' }}>Production</span>
+              {p.title1} <span className="text-[#00f0ff]" style={{ textShadow: '0 0 20px rgba(0,240,255,0.3)' }}>{p.title2}</span>
             </h2>
-            <p className="text-white/30 leading-relaxed mb-8 text-sm">
-              Our company ensures a full cycle of hydrogen generator production —
-              all key stages are concentrated at our own facility. Started in 2022,
-              since 2025 working on a conveyor system.
-            </p>
+            <p className="text-white/30 leading-relaxed mb-8 text-sm">{p.description}</p>
 
             <div className="relative border border-[#39ff14]/15 p-8 bg-[#39ff14]/[0.03] overflow-hidden">
               <div className="absolute top-0 left-0 w-8 h-[1px] bg-[#39ff14]" />
               <div className="absolute top-0 left-0 w-[1px] h-8 bg-[#39ff14]" />
               <Factory size={48} className="text-[#39ff14]/40 mb-4" />
-              <p className="text-[#39ff14] font-bold text-lg" style={{ fontFamily: 'Orbitron', fontSize: '14px' }}>Modern Production Facility</p>
-              <p className="text-white/30 text-sm mt-1 font-mono-cyber">Up to 1,500 generators per month</p>
+              <p className="text-[#39ff14] font-bold text-lg" style={{ fontFamily: 'Orbitron', fontSize: '14px' }}>{p.facilityTitle}</p>
+              <p className="text-white/30 text-sm mt-1 font-mono-cyber">{p.facilityDesc}</p>
               <div className="absolute bottom-0 right-0 w-20 h-20 border-b border-r border-[#39ff14]/10" />
             </div>
           </div>
 
           <div className="space-y-3">
-            {productionStats.map((stat, index) => {
+            {p.stats.map((stat, index) => {
               const Icon = iconMap[stat.icon] || Factory;
               const color = colors[index % colors.length];
               return (
@@ -55,8 +54,8 @@ const ProductionSection = () => {
 
             <div className="p-5 bg-[#39ff14]/[0.08] border border-[#39ff14]/20"
                  style={{ boxShadow: '0 0 20px rgba(57,255,20,0.05)' }}>
-              <h3 className="font-bold text-[#39ff14] text-sm" style={{ fontFamily: 'Orbitron', fontSize: '11px' }}>HYDROGEN BOILER</h3>
-              <p className="text-xs text-white/30 mt-1">Besides transport systems, our team is preparing to launch a hydrogen boiler for heating</p>
+              <h3 className="font-bold text-[#39ff14] text-sm" style={{ fontFamily: 'Orbitron', fontSize: '11px' }}>{p.boilerTitle}</h3>
+              <p className="text-xs text-white/30 mt-1">{p.boilerDesc}</p>
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import React from 'react';
-import { navItems } from '../data/mockData';
 import { ArrowUp } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const navHrefs = ['#top', '#catalog', '#production', '#dealers', '#cases'];
 
 const Footer = () => {
+  const { t } = useLanguage();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const scrollToSection = (href) => {
     const el = document.getElementById(href.replace('#', ''));
@@ -12,7 +15,6 @@ const Footer = () => {
   return (
     <footer className="bg-[#050508] py-12 relative">
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#39ff14]/10 to-transparent" />
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-2">
@@ -23,10 +25,10 @@ const Footer = () => {
           </div>
 
           <nav className="flex flex-wrap items-center justify-center gap-4">
-            {navItems.slice(0, 5).map((item) => (
-              <button key={item.label} onClick={() => scrollToSection(item.href)}
+            {t.nav.slice(0, 5).map((label, i) => (
+              <button key={label} onClick={() => scrollToSection(navHrefs[i])}
                 className="text-[10px] font-semibold tracking-[0.2em] text-white/20 hover:text-[#39ff14] transition-colors">
-                {item.label}
+                {label}
               </button>
             ))}
           </nav>
@@ -39,7 +41,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between">
-          <p className="text-[10px] text-white/10 font-mono-cyber">&copy; {new Date().getFullYear()} H2 ELEMENT // ALL_RIGHTS_RESERVED</p>
+          <p className="text-[10px] text-white/10 font-mono-cyber">&copy; {new Date().getFullYear()} H2 ELEMENT // {t.footer.rights}</p>
           <div className="flex items-center gap-3">
             <a href="https://www.instagram.com/d.tolstoi_llc/" target="_blank" rel="noopener noreferrer" className="text-white/10 hover:text-[#ff2d95] transition-colors">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>

@@ -1,10 +1,13 @@
 import React from 'react';
-import { newsItems } from '../data/mockData';
 import { Calendar, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff', '#39ff14'];
 
 const NewsSection = () => {
+  const { t } = useLanguage();
+  const n = t.news;
+
   return (
     <section className="py-24 bg-[#0a0a0f] relative" id="news">
       <div className="absolute inset-0 circuit-pattern" />
@@ -12,14 +15,14 @@ const NewsSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-[10px] tracking-[0.5em] text-[#b026ff]/50 font-mono-cyber">// NEWS_FEED</span>
+          <span className="text-[10px] tracking-[0.5em] text-[#b026ff]/50 font-mono-cyber">{n.badge}</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
-            News / <span className="text-[#b026ff]" style={{ textShadow: '0 0 20px rgba(176,38,255,0.3)' }}>Events</span>
+            {n.title1} <span className="text-[#b026ff]" style={{ textShadow: '0 0 20px rgba(176,38,255,0.3)' }}>{n.title2}</span>
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {newsItems.map((news, index) => {
+          {n.items.map((news, index) => {
             const color = colors[index];
             return (
               <div key={index} className="group p-5 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.02] cursor-pointer"
@@ -35,7 +38,7 @@ const NewsSection = () => {
                 {news.description && <p className="text-xs text-white/20 leading-relaxed">{news.description}</p>}
                 <div className="mt-3 flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
                      style={{ color }}>
-                  Read more <ArrowUpRight size={10} />
+                  {n.readMore} <ArrowUpRight size={10} />
                 </div>
               </div>
             );

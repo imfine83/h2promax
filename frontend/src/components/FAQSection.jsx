@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { faqItems } from '../data/mockData';
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const FAQSection = () => {
+  const { t } = useLanguage();
+  const f = t.faq;
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
@@ -12,14 +14,14 @@ const FAQSection = () => {
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-[10px] tracking-[0.5em] text-[#00f0ff]/50 font-mono-cyber">// FREQUENTLY_ASKED</span>
+          <span className="text-[10px] tracking-[0.5em] text-[#00f0ff]/50 font-mono-cyber">{f.badge}</span>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
             F<span className="text-[#39ff14]">.</span>A<span className="text-[#00f0ff]">.</span>Q
           </h2>
         </div>
 
         <div className="space-y-2">
-          {faqItems.map((item, index) => {
+          {f.items.map((item, index) => {
             const isOpen = openIndex === index;
             const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff'];
             const color = colors[index % colors.length];
