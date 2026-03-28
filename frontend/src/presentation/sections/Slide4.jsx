@@ -1,73 +1,58 @@
 import { useLanguage } from '../../contexts/LanguageContext'
 
 const BG = '#EBEBE7'
+const NAVY = '#1B2A6B'
+const BODY = 'rgba(55,65,110,0.68)'
+
+const t0 = { fontFamily: 'Inter,sans-serif', fontWeight: 900, color: NAVY, lineHeight: 1.2 }
+const t1 = { fontFamily: 'Inter,sans-serif', fontWeight: 400, color: BODY,  lineHeight: 1.45 }
 
 export default function Slide4() {
   const { t } = useLanguage()
   const s = t.slides.slide4
 
-  const patch = {
+  const p = (extra) => ({
     position: 'absolute',
     background: BG,
-    borderRadius: 4,
-  }
-
-  const label = {
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 900,
-    color: '#1B2A6B',
-    fontSize: 'clamp(0.65rem, 1.15vw, 0.92rem)',
-    marginBottom: 3,
-  }
-
-  const body = {
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 400,
-    color: 'rgba(27,42,107,0.65)',
-    fontSize: 'clamp(0.55rem, 0.85vw, 0.72rem)',
-    lineHeight: 1.45,
-  }
+    ...extra,
+  })
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative', background: BG }}>
+    <div style={{ width: '100%', height: '100%', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: 'calc(100vh * 16 / 9)', maxHeight: '100%', aspectRatio: '16/9' }}>
 
-      {/* Original image — full opacity, no changes */}
-      <img
-        src="/slides/slide_04.png"
-        alt=""
-        draggable={false}
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', userSelect: 'none' }}
-      />
+        {/* Original image — unchanged */}
+        <img src="/slides/slide_04.png" alt="" draggable={false}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', pointerEvents: 'none', userSelect: 'none' }} />
 
-      {/* ── Title patch ── */}
-      <div style={{ ...patch, top: '2%', left: '7%', right: '7%', padding: '6px 12px', textAlign: 'center' }}>
-        <p style={{ ...label, fontSize: 'clamp(0.9rem, 2.2vw, 1.8rem)', textAlign: 'center', marginBottom: 0 }}>
-          {s.title}
-        </p>
-      </div>
+        {/* ─── Title ─── */}
+        <div style={p({ top: '1.5%', left: '6%', right: '6%', padding: '4px 10px', textAlign: 'center' })}>
+          <span style={{ ...t0, fontSize: 'clamp(0.85rem, 2vw, 1.7rem)' }}>{s.title}</span>
+        </div>
 
-      {/* ── Step 1: Electrolysis — bottom left ── */}
-      <div style={{ ...patch, top: '57%', left: '1%', width: '29%', padding: '6px 8px' }}>
-        <p style={label}>1. {s.steps[0].title}</p>
-        <p style={body}>{s.steps[0].body}</p>
-      </div>
+        {/* ─── Step 1: Electrolysis — bottom left ─── */}
+        <div style={p({ top: '55%', left: '1%', width: '28%', padding: '4px 7px' })}>
+          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>1. {s.steps[0].title}</div>
+          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[0].body}</div>
+        </div>
 
-      {/* ── Step 2: Injection — top right ── */}
-      <div style={{ ...patch, top: '13%', left: '52%', width: '29%', padding: '6px 8px' }}>
-        <p style={label}>2. {s.steps[1].title}</p>
-        <p style={body}>{s.steps[1].body}</p>
-      </div>
+        {/* ─── Step 2: Injection — top right ─── */}
+        <div style={p({ top: '13%', left: '52%', width: '28%', padding: '4px 7px' })}>
+          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>2. {s.steps[1].title}</div>
+          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[1].body}</div>
+        </div>
 
-      {/* ── Step 3: Catalysis — bottom center-right ── */}
-      <div style={{ ...patch, top: '57%', left: '52%', width: '29%', padding: '6px 8px' }}>
-        <p style={label}>3. {s.steps[2].title}</p>
-        <p style={body}>{s.steps[2].body}</p>
-      </div>
+        {/* ─── Step 3: Catalysis — center right ─── */}
+        <div style={p({ top: '57%', left: '52%', width: '28%', padding: '4px 7px' })}>
+          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>3. {s.steps[2].title}</div>
+          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[2].body}</div>
+        </div>
 
-      {/* ── Step 4: Result — far right ── */}
-      <div style={{ ...patch, top: '43%', left: '81%', right: '1%', padding: '6px 8px' }}>
-        <p style={label}>4. {s.steps[3].title}</p>
-        <p style={body}>{s.steps[3].body}</p>
+        {/* ─── Step 4: Result — far right ─── */}
+        <div style={p({ top: '42%', left: '81%', right: '0.5%', padding: '4px 7px' })}>
+          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>4. {s.steps[3].title}</div>
+          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[3].body}</div>
+        </div>
       </div>
     </div>
   )

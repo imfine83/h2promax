@@ -1,92 +1,72 @@
 import { useLanguage } from '../../contexts/LanguageContext'
 
 const BG = '#EAEAE6'
+const NAVY = '#1B2A6B'
+const GREEN = '#22A756'
+const BODY = 'rgba(40,50,100,0.68)'
 
 export default function Slide11() {
   const { t } = useLanguage()
   const s = t.slides.slide11
 
-  const patch = {
+  const p = (extra) => ({
     position: 'absolute',
     background: BG,
-    borderRadius: 4,
-  }
+    ...extra,
+  })
 
-  const titleStyle = {
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 900,
-    color: '#1B2A6B',
-    fontSize: 'clamp(1rem, 2.4vw, 1.9rem)',
-    lineHeight: 1.15,
-  }
-
-  const bodyStyle = {
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 400,
-    color: 'rgba(27,42,107,0.65)',
-    fontSize: 'clamp(0.55rem, 0.85vw, 0.75rem)',
-    lineHeight: 1.5,
-  }
-
-  const chartLabelStyle = {
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 700,
-    fontSize: 'clamp(0.5rem, 0.75vw, 0.65rem)',
-  }
+  const title  = { fontFamily: 'Inter,sans-serif', fontWeight: 900, color: NAVY, lineHeight: 1.15 }
+  const body   = { fontFamily: 'Inter,sans-serif', fontWeight: 400, color: BODY, lineHeight: 1.5 }
+  const chartG = { fontFamily: 'Inter,sans-serif', fontWeight: 700, color: GREEN, lineHeight: 1.2 }
+  const chartN = { fontFamily: 'Inter,sans-serif', fontWeight: 700, color: NAVY, lineHeight: 1.2 }
+  const axis   = { fontFamily: 'Inter,sans-serif', fontWeight: 400, color: BODY, lineHeight: 1.2 }
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative', background: BG }}>
+    <div style={{ width: '100%', height: '100%', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: 'calc(100vh * 16 / 9)', maxHeight: '100%', aspectRatio: '16/9' }}>
 
-      {/* Original image — full opacity */}
-      <img
-        src="/slides/slide_11.png"
-        alt=""
-        draggable={false}
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', userSelect: 'none' }}
-      />
+        {/* Original image — unchanged */}
+        <img src="/slides/slide_11.png" alt="" draggable={false}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', pointerEvents: 'none', userSelect: 'none' }} />
 
-      {/* ── Title patch (top-left) ── */}
-      <div style={{ ...patch, top: '4%', left: '5%', width: '47%', padding: '8px 10px' }}>
-        <p style={titleStyle}>{s.title}</p>
-      </div>
+        {/* ─── Title (top-left) ─── */}
+        <div style={p({ top: '4%', left: '5%', width: '47%', padding: '5px 8px' })}>
+          <span style={{ ...title, fontSize: 'clamp(0.75rem, 1.9vw, 1.6rem)' }}>{s.title}</span>
+        </div>
 
-      {/* ── "Cumulative Savings" label (top-right of chart) ── */}
-      <div style={{ ...patch, top: '3%', left: '71%', width: '24%', padding: '2px 5px' }}>
-        <p style={{ ...chartLabelStyle, color: '#22A756' }}>{s.savings}</p>
-      </div>
+        {/* ─── Chart label: Cumulative Savings (top-right) ─── */}
+        <div style={p({ top: '4%', left: '73%', width: '23%', padding: '2px 5px' })}>
+          <span style={{ ...chartG, fontSize: 'clamp(0.45rem, 0.75vw, 0.62rem)' }}>{s.savings}</span>
+        </div>
 
-      {/* ── "Growing ROI" label (middle of chart) ── */}
-      <div style={{ ...patch, top: '43%', left: '60%', width: '18%', padding: '2px 4px' }}>
-        <p style={{ ...chartLabelStyle, color: '#22A756' }}>{s.roi}</p>
-      </div>
+        {/* ─── Chart label: Growing ROI (middle) ─── */}
+        <div style={p({ top: '43%', left: '60%', width: '18%', padding: '2px 4px' })}>
+          <span style={{ ...chartG, fontSize: 'clamp(0.45rem, 0.75vw, 0.62rem)' }}>{s.roi}</span>
+        </div>
 
-      {/* ── "Fleet Fuel Costs" label (bottom-right of chart) ── */}
-      <div style={{ ...patch, top: '69%', left: '71%', width: '22%', padding: '2px 4px' }}>
-        <p style={{ ...chartLabelStyle, color: '#1B2A6B' }}>{s.costs}</p>
-      </div>
+        {/* ─── Chart label: Fleet Fuel Costs (lower-right) ─── */}
+        <div style={p({ top: '68%', left: '74%', width: '21%', padding: '2px 4px' })}>
+          <span style={{ ...chartN, fontSize: 'clamp(0.45rem, 0.75vw, 0.62rem)' }}>{s.costs}</span>
+        </div>
 
-      {/* ── X-axis "Time" labels ── */}
-      <div style={{ ...patch, top: '87%', left: '30%', width: '10%', padding: '1px 4px', textAlign: 'center' }}>
-        <p style={{ ...chartLabelStyle, color: 'rgba(27,42,107,0.5)' }}>{s.time}</p>
-      </div>
-      <div style={{ ...patch, top: '87%', left: '63%', width: '10%', padding: '1px 4px', textAlign: 'center' }}>
-        <p style={{ ...chartLabelStyle, color: 'rgba(27,42,107,0.5)' }}>{s.time}</p>
-      </div>
+        {/* ─── X-axis "Time" labels ─── */}
+        <div style={p({ top: '87%', left: '27%', width: '12%', padding: '1px 4px', textAlign: 'center' })}>
+          <span style={{ ...axis, fontSize: 'clamp(0.4rem, 0.68vw, 0.58rem)' }}>{s.time}</span>
+        </div>
+        <div style={p({ top: '87%', left: '63%', width: '12%', padding: '1px 4px', textAlign: 'center' })}>
+          <span style={{ ...axis, fontSize: 'clamp(0.4rem, 0.68vw, 0.58rem)' }}>{s.time}</span>
+        </div>
 
-      {/* ── Body text patch (bottom-left) ── */}
-      <div style={{ ...patch, top: '66%', left: '3%', width: '47%', padding: '7px 9px' }}>
-        <p style={bodyStyle}>{s.body}</p>
-      </div>
+        {/* ─── Body text (bottom-left) ─── */}
+        <div style={p({ top: '66%', left: '3%', width: '47%', padding: '5px 8px' })}>
+          <span style={{ ...body, fontSize: 'clamp(0.48rem, 0.78vw, 0.66rem)' }}>{s.body}</span>
+        </div>
 
-      {/* ── Info box patch (bottom-right) ── */}
-      <div style={{
-        ...patch,
-        top: '63%', left: '52%', width: '44%',
-        padding: '8px 10px',
-        border: '1px solid rgba(27,42,107,0.15)',
-        borderRadius: 6,
-      }}>
-        <p style={bodyStyle}>{s.box}</p>
+        {/* ─── Info box (bottom-right) — with border matching original ─── */}
+        <div style={p({ top: '62%', left: '52%', width: '44%', padding: '6px 10px', border: '1px solid rgba(27,42,107,0.2)', borderRadius: 6 })}>
+          <span style={{ ...body, fontSize: 'clamp(0.48rem, 0.78vw, 0.66rem)' }}>{s.box}</span>
+        </div>
+
       </div>
     </div>
   )
