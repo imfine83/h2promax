@@ -74,32 +74,30 @@ function StatCard({ stat, delay }) {
   const num = useCounter(stat.value, delay * 1000 + 350, 1800)
   return (
     <motion.div
-      initial={{ opacity: 0, y: 48, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 48 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col items-center text-center"
-      style={{ flex: '1 1 0' }}
+      style={{ flex: '1 1 0', minWidth: 0 }}
     >
       {/* Icon */}
-      <div className="mb-6">{stat.icon}</div>
+      <div className="mb-4 md:mb-6">{stat.icon}</div>
 
       {/* Separator */}
-      <div className="w-full h-px mb-6" style={{ background: 'rgba(27,42,107,0.12)' }}/>
+      <div className="w-full h-px mb-4 md:mb-6" style={{ background: 'rgba(27,42,107,0.12)' }}/>
 
       {/* Prefix */}
-      <p className="text-[#1B2A6B]/45 font-semibold uppercase tracking-widest mb-1"
-        style={{ fontSize: 'clamp(0.6rem, 0.75vw, 0.7rem)' }}>
+      <p className="text-[#1B2A6B]/45 font-semibold uppercase tracking-widest mb-1 text-[9px] md:text-[11px]">
         {stat.prefix}
       </p>
 
       {/* Animated number */}
-      <p className="font-black leading-none mb-4" style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', color: stat.color }}>
+      <p className="font-black leading-none mb-2 md:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 5.5rem)', color: stat.color }}>
         {num}<span style={{ fontSize: '65%' }}>%</span>
       </p>
 
       {/* Label */}
-      <p className="text-[#1B2A6B]/60 font-medium leading-snug whitespace-pre-line"
-        style={{ fontSize: 'clamp(0.85rem, 1.1vw, 1rem)' }}>
+      <p className="text-[#1B2A6B]/60 font-medium leading-snug whitespace-pre-line text-xs md:text-sm">
         {stat.label}
       </p>
     </motion.div>
@@ -109,20 +107,20 @@ function StatCard({ stat, delay }) {
 export default function Slide5() {
   return (
     <SlideWrapper>
-      <div className="w-full h-full flex flex-col items-center justify-center relative z-10"
-        style={{ padding: 'clamp(2rem, 5%, 4rem) clamp(3rem, 8%, 8rem)' }}>
+      <div className="w-full h-full flex flex-col items-center justify-center relative z-10 px-4 md:px-8"
+        style={{ paddingTop: 'clamp(1.5rem, 5%, 4rem)', paddingBottom: 'clamp(2.5rem, 6%, 4rem)' }}>
 
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.0, ease: [0.16, 1, 0.3, 1] }}
-          className="font-black text-[#1B2A6B] text-center leading-tight mb-16"
-          style={{ fontSize: 'clamp(1.9rem, 3.2vw, 3rem)' }}
+          className="font-black text-[#1B2A6B] text-center leading-tight mb-8 md:mb-14"
+          style={{ fontSize: 'clamp(1.3rem, 3.2vw, 3rem)' }}
         >
-          The Results: More Savings, More Power,<br />A Healthier Engine.
+          The Results: More Savings,<br />More Power, A Healthier Engine.
         </motion.h2>
 
-        <div className="flex gap-8 w-full" style={{ maxWidth: 960 }}>
+        <div className="flex flex-row md:flex-row gap-4 md:gap-8 w-full" style={{ maxWidth: 960 }}>
           {stats.map((stat, i) => (
             <StatCard key={i} stat={stat} delay={0.14 + i * 0.14} />
           ))}

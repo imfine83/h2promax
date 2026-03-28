@@ -25,29 +25,21 @@ const DEBOUNCE_MS = 950;
 
 const pageVariants = {
   enter: (dir) => ({
-    y: dir > 0 ? '7%' : '-7%',
+    y: dir > 0 ? 40 : -40,
     opacity: 0,
-    scale: 1.04,
-    filter: 'blur(16px)',
   }),
   center: {
     y: 0,
     opacity: 1,
-    scale: 1,
-    filter: 'blur(0px)',
     transition: {
-      y:      { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
-      opacity:{ duration: 0.55, ease: 'easeOut' },
-      scale:  { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
-      filter: { duration: 0.65, ease: 'easeOut' },
+      y:       { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+      opacity: { duration: 0.4,  ease: 'easeOut' },
     },
   },
   exit: (dir) => ({
-    y: dir > 0 ? '-4%' : '4%',
+    y: dir > 0 ? -24 : 24,
     opacity: 0,
-    scale: 0.96,
-    filter: 'blur(10px)',
-    transition: { duration: 0.55, ease: [0.7, 0, 0.84, 0] },
+    transition: { duration: 0.35, ease: [0.7, 0, 0.84, 0] },
   }),
 };
 
@@ -124,12 +116,12 @@ export default function PresentationApp({ onClose }) {
   const SlideComponent = SLIDES[current];
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative bg-[#EAEAE5]">
+    <div className="w-screen h-screen overflow-hidden relative bg-[#EAEAE5]" style={{ touchAction: 'none' }}>
       {/* Close button */}
       {onClose && (
         <button
           onClick={onClose}
-          className="absolute top-5 left-5 z-50 flex items-center gap-2 px-4 py-2 bg-[#1B2A6B]/10 hover:bg-[#1B2A6B]/20 text-[#1B2A6B] text-xs font-bold tracking-widest transition-all rounded-sm"
+          className="absolute top-4 left-4 z-50 flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2A6B]/10 hover:bg-[#1B2A6B]/20 active:bg-[#1B2A6B]/30 text-[#1B2A6B] text-[10px] font-bold tracking-widest transition-all rounded-sm"
           style={{ fontFamily: 'Orbitron, sans-serif' }}
         >
           ← BACK
@@ -149,6 +141,34 @@ export default function PresentationApp({ onClose }) {
           <SlideComponent onNavigate={navigate} currentIndex={current} />
         </motion.div>
       </AnimatePresence>
+
+      {/* Mobile prev/next arrows — only visible on small screens */}
+      <div className="md:hidden absolute inset-y-0 left-0 w-12 flex items-center justify-start pl-1 z-40 pointer-events-none">
+        {current > 0 && (
+          <button
+            onClick={() => navigate(current - 1)}
+            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-[#1B2A6B]/10 active:bg-[#1B2A6B]/25"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <polyline points="10,3 5,8 10,13" stroke="#1B2A6B" strokeWidth="2.2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
+      </div>
+      <div className="md:hidden absolute inset-y-0 right-0 w-12 flex items-center justify-end pr-1 z-40 pointer-events-none">
+        {current < TOTAL - 1 && (
+          <button
+            onClick={() => navigate(current + 1)}
+            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-[#1B2A6B]/10 active:bg-[#1B2A6B]/25"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <polyline points="6,3 11,8 6,13" stroke="#1B2A6B" strokeWidth="2.2"
+                strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        )}
+      </div>
 
       {isPresentation && (
         <SlideProgress

@@ -18,25 +18,25 @@ export default function Slide1() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="absolute top-8 right-10 flex items-baseline select-none z-20"
+        className="absolute top-6 right-6 md:top-8 md:right-10 flex items-baseline select-none z-20"
       >
-        <span className="font-black text-[#1B2A6B] text-[22px] leading-none tracking-tight">H</span>
-        <sub className="font-bold text-[#1B2A6B] text-[13px] -ml-px leading-none">2</sub>
-        <span className="font-bold text-[#1B2A6B] text-[19px] tracking-[0.22em] ml-1.5">ELEMENT</span>
+        <span className="font-black text-[#1B2A6B] text-[18px] md:text-[22px] leading-none tracking-tight">H</span>
+        <sub className="font-bold text-[#1B2A6B] text-[11px] md:text-[13px] -ml-px leading-none">2</sub>
+        <span className="font-bold text-[#1B2A6B] text-[15px] md:text-[19px] tracking-[0.22em] ml-1.5">ELEMENT</span>
       </motion.div>
 
       {/* Ghost "65%" — huge background watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
         <span
           className="font-black text-[#1B2A6B]"
-          style={{ fontSize: 'clamp(14rem, 32vw, 30rem)', opacity: 0.042, lineHeight: 1 }}
+          style={{ fontSize: 'clamp(8rem, 32vw, 30rem)', opacity: 0.042, lineHeight: 1 }}
         >
           65%
         </span>
       </div>
 
       {/* Center content */}
-      <div className="w-full h-full flex flex-col items-center justify-center px-8 text-center relative z-10">
+      <div className="w-full h-full flex flex-col items-center justify-center px-6 md:px-8 text-center relative z-10">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -46,8 +46,7 @@ export default function Slide1() {
           {/* Eyebrow */}
           <motion.p
             variants={line}
-            className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.28em] mb-8"
-            style={{ fontSize: 'clamp(0.65rem, 0.85vw, 0.78rem)' }}
+            className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.2em] mb-5 md:mb-8 text-[10px] md:text-[11px]"
           >
             Hydrogen Fuel Savings System
           </motion.p>
@@ -56,7 +55,7 @@ export default function Slide1() {
           <motion.h1
             variants={line}
             className="font-black text-[#1B2A6B] leading-[1.05] mb-0"
-            style={{ fontSize: 'clamp(3.2rem, 7vw, 7rem)' }}
+            style={{ fontSize: 'clamp(2rem, 7vw, 7rem)' }}
           >
             Save up to{' '}
             <span className="text-[#22A756]">65%</span>
@@ -64,27 +63,27 @@ export default function Slide1() {
           </motion.h1>
           <motion.h1
             variants={line}
-            className="font-black text-[#1B2A6B] leading-[1.05] mb-10"
-            style={{ fontSize: 'clamp(3.2rem, 7vw, 7rem)' }}
+            className="font-black text-[#1B2A6B] leading-[1.05] mb-6 md:mb-10"
+            style={{ fontSize: 'clamp(2rem, 7vw, 7rem)' }}
           >
             fuel costs.
           </motion.h1>
 
           {/* Divider */}
-          <motion.div variants={line} className="flex items-center gap-3 mb-10">
-            <div className="h-[3px] rounded-full bg-[#22A756]" style={{ width: 'clamp(3rem, 5vw, 5rem)' }} />
+          <motion.div variants={line} className="flex items-center gap-3 mb-6 md:mb-10">
+            <div className="h-[3px] rounded-full bg-[#22A756] w-10 md:w-20" />
             <div className="w-2.5 h-2.5 rounded-full border-2 border-[#22A756]" />
-            <div className="h-[3px] rounded-full bg-[#22A756]" style={{ width: 'clamp(3rem, 5vw, 5rem)' }} />
+            <div className="h-[3px] rounded-full bg-[#22A756] w-10 md:w-20" />
           </motion.div>
 
           {/* Subtitle */}
           <motion.p
             variants={line}
-            className="text-[#1B2A6B]/55 leading-relaxed"
-            style={{ fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', maxWidth: '580px' }}
+            className="text-[#1B2A6B]/55 leading-relaxed text-sm md:text-base"
+            style={{ maxWidth: '520px' }}
           >
-            How to unlock hidden power and efficiency in your engine<br />
-            with an H2 ELEMENT hydrogen generator.
+            How to unlock hidden power and efficiency in your engine
+            {' '}with an H2 ELEMENT hydrogen generator.
           </motion.p>
         </motion.div>
       </div>

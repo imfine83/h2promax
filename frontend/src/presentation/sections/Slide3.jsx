@@ -13,7 +13,7 @@ const up = {
 export default function Slide3() {
   return (
     <SlideWrapper>
-      <div className="w-full h-full flex flex-col items-center justify-center px-8 text-center relative z-10">
+      <div className="w-full h-full flex flex-col items-center justify-center px-5 md:px-8 text-center relative z-10">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -23,8 +23,7 @@ export default function Slide3() {
           {/* Eyebrow */}
           <motion.p
             variants={up}
-            className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.26em] mb-7"
-            style={{ fontSize: 'clamp(0.62rem, 0.82vw, 0.74rem)' }}
+            className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.22em] mb-4 md:mb-7 text-[10px] md:text-[11px]"
           >
             The Solution
           </motion.p>
@@ -32,16 +31,16 @@ export default function Slide3() {
           {/* Heading */}
           <motion.h2
             variants={up}
-            className="font-black text-[#1B2A6B] leading-[1.1] mb-12"
-            style={{ fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)', maxWidth: '800px' }}
+            className="font-black text-[#1B2A6B] leading-[1.1] mb-6 md:mb-12"
+            style={{ fontSize: 'clamp(1.5rem, 4.5vw, 4.2rem)', maxWidth: '800px' }}
           >
-            The solution is unlocking the power<br />of complete combustion.
+            The solution is unlocking the power of complete combustion.
           </motion.h2>
 
           {/* Visual — catalysis concept */}
           <motion.div
             variants={up}
-            className="flex items-center justify-center gap-8 mb-12"
+            className="flex items-center justify-center gap-4 md:gap-8 mb-6 md:mb-12 scale-75 md:scale-100 origin-center"
           >
             {/* Fuel molecule — incomplete */}
             <div className="flex flex-col items-center gap-3">
@@ -101,8 +100,8 @@ export default function Slide3() {
           {/* Body text */}
           <motion.p
             variants={up}
-            className="text-[#1B2A6B]/55 leading-relaxed"
-            style={{ fontSize: 'clamp(1rem, 1.35vw, 1.2rem)', maxWidth: '680px' }}
+            className="text-[#1B2A6B]/55 leading-relaxed text-sm md:text-base"
+            style={{ maxWidth: '640px' }}
           >
             Hydrogen is one of the most rapidly flammable gases. It ignites instantly
             and burns <strong className="text-[#1B2A6B]/80 font-semibold">8–10× faster</strong> than conventional fuel,

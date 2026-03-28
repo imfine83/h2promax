@@ -63,17 +63,17 @@ function Column({ title, icon, items, startDelay, accent = false }) {
 export default function Slide10() {
   return (
     <SlideWrapper>
-      <div className="w-full h-full flex flex-col relative z-10"
-        style={{ padding: 'clamp(2.5rem, 6%, 5rem) clamp(3rem, 7%, 7rem)' }}>
+      <div className="w-full h-full flex flex-col relative z-10 overflow-y-auto"
+        style={{ padding: 'clamp(1.5rem, 5%, 4rem) clamp(1.5rem, 6%, 6rem)' }}>
 
         <motion.h2 {...up(0.0)}
-          className="font-black text-[#1B2A6B] text-center mb-12"
-          style={{ fontSize: 'clamp(2rem, 3.4vw, 3.2rem)' }}
+          className="font-black text-[#1B2A6B] text-center mb-6 md:mb-12"
+          style={{ fontSize: 'clamp(1.3rem, 3.4vw, 3.2rem)' }}
         >
           Simple to Install, Even Easier to Maintain.
         </motion.h2>
 
-        <div className="flex gap-10 flex-1 items-start">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-10 flex-1 items-start">
           <Column
             title="Installation"
             accent={true}
@@ -89,7 +89,7 @@ export default function Slide10() {
           />
 
           {/* Divider */}
-          <div className="w-px self-stretch" style={{ background: 'rgba(27,42,107,0.1)' }}/>
+          <div className="hidden md:block w-px self-stretch" style={{ background: 'rgba(27,42,107,0.1)' }}/>
 
           <Column
             title="Maintenance"
