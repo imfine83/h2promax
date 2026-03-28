@@ -5,7 +5,7 @@ import { useLanguage } from "./contexts/LanguageContext";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import BenefitsSection from "./components/BenefitsSection";
-import HowItWorks from "./components/HowItWorks";
+import PresentationSection from "./components/PresentationSection";
 import ProductCatalog from "./components/ProductCatalog";
 import ProductionSection from "./components/ProductionSection";
 import DealerNetwork from "./components/DealerNetwork";
@@ -26,7 +26,7 @@ function AppInner() {
       <Header />
       <HeroSection />
       <BenefitsSection />
-      <HowItWorks />
+      <PresentationSection />
       <ProductCatalog />
       <ProductionSection />
       <TeamSection />

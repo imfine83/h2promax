@@ -1,0 +1,53 @@
+import { motion } from 'framer-motion'
+import { SplitImageSlide } from './ImageSlide'
+
+const up = (d = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.78, delay: d, ease: [0.16, 1, 0.3, 1] },
+})
+
+export default function Slide9() {
+  return (
+    <SplitImageSlide src="/slides/slide_09.png" imageSide="right" bg="#EAEAE4">
+      <motion.p {...up(0.0)}
+        className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
+        style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
+      >
+        Legality
+      </motion.p>
+
+      <motion.h2 {...up(0.08)}
+        className="font-black text-[#1B2A6B] leading-[1.1] mb-7"
+        style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
+      >
+        Is it legal? Yes.<br />No vehicle modification<br />registration is required.
+      </motion.h2>
+
+      <motion.p {...up(0.26)}
+        className="text-[#1B2A6B]/55 leading-relaxed mb-8"
+        style={{ fontSize: 'clamp(0.92rem, 1.2vw, 1.1rem)', maxWidth: '420px' }}
+      >
+        The H2 ELEMENT generator does not interfere with the factory design of
+        the engine or vehicle. It functions as an additional, external system
+        and does not violate vehicle operating rules or regulations.
+      </motion.p>
+
+      {/* Highlight badge */}
+      <motion.div {...up(0.44)}
+        className="inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+        style={{ background: 'rgba(34,167,86,0.10)', border: '1px solid rgba(34,167,86,0.25)' }}
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8" stroke="#22A756" strokeWidth="1.8"/>
+          <polyline points="5,9 8,12 13,5.5" stroke="#22A756" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span className="text-[#22A756] font-semibold"
+          style={{ fontSize: 'clamp(0.82rem, 1vw, 0.9rem)' }}>
+          External system — no registration needed
+        </span>
+      </motion.div>
+    </SplitImageSlide>
+  )
+}
