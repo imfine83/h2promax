@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import { LanguageProvider } from "./contexts/LanguageContext";
+import { LanguageProvider, rtlLangs } from "./contexts/LanguageContext";
+import { useLanguage } from "./contexts/LanguageContext";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import BenefitsSection from "./components/BenefitsSection";
@@ -18,10 +19,10 @@ import Footer from "./components/Footer";
 import TeamSection from "./components/TeamSection";
 import DealerPackageSection from "./components/DealerPackageSection";
 
-function App() {
+function AppInner() {
+  const { isRtl } = useLanguage();
   return (
-    <LanguageProvider>
-    <div className="App">
+    <div className="App" dir={isRtl ? 'rtl' : 'ltr'}>
       <Header />
       <HeroSection />
       <BenefitsSection />
@@ -39,6 +40,13 @@ function App() {
       <ContactSection />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
     </LanguageProvider>
   );
 }

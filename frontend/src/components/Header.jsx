@@ -90,7 +90,7 @@ const Header = () => {
               {langMenuOpen && (
                 <div className="absolute right-0 top-full mt-1 bg-[#0a0a0f] border border-[#00f0ff]/20 min-w-[80px] z-50"
                      style={{ boxShadow: '0 0 15px rgba(0,240,255,0.1)' }}>
-                  {['en', 'es'].map((code) => (
+                  {['en', 'es', 'he'].map((code) => (
                     <button
                       key={code}
                       onClick={() => switchLang(code)}
