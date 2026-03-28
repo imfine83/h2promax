@@ -285,6 +285,7 @@ export const he = {
       roi: 'ROI גדל',
       costs: 'עלויות דלק',
       time: 'זמן',
+      axisY: 'עלות / חיסכון',
     },
     slide10: {
       headline: 'פשוט להתקנה, קל עוד יותר לתחזוקה.',

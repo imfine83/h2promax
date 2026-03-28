@@ -285,6 +285,7 @@ export const en = {
       roi: 'Growing ROI',
       costs: 'Fleet Fuel Costs',
       time: 'Time',
+      axisY: 'Cost / Savings',
     },
     slide10: {
       headline: 'Simple to Install, Even Easier to Maintain.',

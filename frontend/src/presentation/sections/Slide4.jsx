@@ -1,59 +1,90 @@
+import { motion } from 'framer-motion'
+import SlideWrapper from './SlideWrapper'
 import { useLanguage } from '../../contexts/LanguageContext'
+import { NAVY, GREEN, slideSurfaceStyle, cardPaper } from '../slideVisual'
 
-const BG = '#EBEBE7'
-const NAVY = '#1B2A6B'
-const BODY = 'rgba(55,65,110,0.68)'
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } },
+}
+const item = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+}
 
-const t0 = { fontFamily: 'Inter,sans-serif', fontWeight: 900, color: NAVY, lineHeight: 1.2 }
-const t1 = { fontFamily: 'Inter,sans-serif', fontWeight: 400, color: BODY,  lineHeight: 1.45 }
+const accent = [NAVY, GREEN, NAVY, GREEN]
 
 export default function Slide4() {
   const { t } = useLanguage()
   const s = t.slides.slide4
 
-  const p = (extra) => ({
-    position: 'absolute',
-    background: BG,
-    ...extra,
-  })
-
   return (
-    <div style={{ width: '100%', height: '100%', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: 'calc(100vh * 16 / 9)', maxHeight: '100%', aspectRatio: '16/9' }}>
+    <SlideWrapper bg="#E8E8E2">
+      <div className="absolute inset-0" style={slideSurfaceStyle} />
 
-        {/* Original image — unchanged */}
-        <img src="/slides/slide_04.png" alt="" draggable={false}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', pointerEvents: 'none', userSelect: 'none' }} />
+      {/* Ghost engine from original artwork — только атмосфера, без текста */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/slides/slide_04.png)',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center 58%',
+          opacity: 0.07,
+        }}
+      />
 
-        {/* ─── Title ─── */}
-        <div style={p({ top: '1.5%', left: '6%', right: '6%', padding: '4px 10px', textAlign: 'center' })}>
-          <span style={{ ...t0, fontSize: 'clamp(0.85rem, 2vw, 1.7rem)' }}>{s.title}</span>
-        </div>
+      <div
+        className="relative z-10 w-full h-full flex flex-col overflow-y-auto"
+        style={{ padding: 'clamp(1.5rem, 4%, 3rem) clamp(1.5rem, 5%, 4rem)' }}
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          className="font-black text-center leading-tight mb-6 md:mb-10"
+          style={{ color: NAVY, fontSize: 'clamp(1.15rem, 2.6vw, 2.35rem)' }}
+        >
+          {s.title}
+        </motion.h2>
 
-        {/* ─── Step 1: Electrolysis — bottom left ─── */}
-        <div style={p({ top: '55%', left: '1%', width: '28%', padding: '4px 7px' })}>
-          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>1. {s.steps[0].title}</div>
-          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[0].body}</div>
-        </div>
-
-        {/* ─── Step 2: Injection — top right ─── */}
-        <div style={p({ top: '13%', left: '52%', width: '28%', padding: '4px 7px' })}>
-          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>2. {s.steps[1].title}</div>
-          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[1].body}</div>
-        </div>
-
-        {/* ─── Step 3: Catalysis — center right ─── */}
-        <div style={p({ top: '57%', left: '52%', width: '28%', padding: '4px 7px' })}>
-          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>3. {s.steps[2].title}</div>
-          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[2].body}</div>
-        </div>
-
-        {/* ─── Step 4: Result — far right ─── */}
-        <div style={p({ top: '42%', left: '81%', right: '0.5%', padding: '4px 7px' })}>
-          <div style={{ ...t0, fontSize: 'clamp(0.6rem, 1vw, 0.88rem)', marginBottom: 3 }}>4. {s.steps[3].title}</div>
-          <div style={{ ...t1, fontSize: 'clamp(0.5rem, 0.78vw, 0.68rem)' }}>{s.steps[3].body}</div>
-        </div>
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1 content-start"
+        >
+          {s.steps.map((step, i) => (
+            <motion.div
+              key={step.num}
+              variants={item}
+              className="flex flex-col p-5 md:p-6"
+              style={cardPaper}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-white font-black text-sm shrink-0"
+                  style={{ background: accent[i] }}
+                >
+                  {step.num}
+                </span>
+                <div style={{ width: 28, height: 2, borderRadius: 1, background: `${accent[i]}44` }} />
+              </div>
+              <h3
+                className="font-black leading-tight mb-2"
+                style={{ color: NAVY, fontSize: 'clamp(0.85rem, 1.15vw, 1.05rem)' }}
+              >
+                {step.title}
+              </h3>
+              <p
+                className="leading-relaxed flex-1"
+                style={{ color: 'rgba(27,42,107,0.62)', fontSize: 'clamp(0.72rem, 0.95vw, 0.88rem)' }}
+              >
+                {step.body}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </SlideWrapper>
   )
 }

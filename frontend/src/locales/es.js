@@ -285,6 +285,7 @@ export const es = {
       roi: 'ROI Creciente',
       costs: 'Costos de Combustible',
       time: 'Tiempo',
+      axisY: 'Costo / Ahorro',
     },
     slide10: {
       headline: 'Simple de Instalar, Aún Más Fácil de Mantener.',
