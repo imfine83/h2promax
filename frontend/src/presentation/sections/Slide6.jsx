@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { SLIDE_BG } from './SlideWrapper'
 
 const bg = '#EAE9E3'
 
