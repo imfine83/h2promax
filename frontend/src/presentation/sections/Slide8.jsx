@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SplitImageSlide } from './ImageSlide'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -7,17 +8,15 @@ const up = (d = 0) => ({
   transition: { duration: 0.78, delay: d, ease: [0.16, 1, 0.3, 1] },
 })
 
-function StatusRow({ active }) {
+function StatusRow({ active, engineOn, engineOff, activeLabel, idleLabel }) {
   return (
     <div className="flex items-center gap-4 py-3 px-4 rounded-xl"
       style={{ background: active ? 'rgba(34,167,86,0.08)' : 'rgba(27,42,107,0.04)' }}>
       {/* ON/OFF pill */}
-      <div className={`px-3 py-1 rounded-lg text-xs font-bold shrink-0 ${
-        active
-          ? 'bg-[#22A756]/20 text-[#22A756]'
-          : 'bg-[#1B2A6B]/8 text-[#1B2A6B]/30'
-      }`} style={{ background: active ? 'rgba(34,167,86,0.18)' : 'rgba(27,42,107,0.07)' }}>
-        {active ? 'ENGINE ON' : 'ENGINE OFF'}
+      <div className={`px-3 py-1 rounded-lg text-xs font-bold shrink-0`}
+        style={{ background: active ? 'rgba(34,167,86,0.18)' : 'rgba(27,42,107,0.07)',
+          color: active ? '#22A756' : 'rgba(27,42,107,0.3)' }}>
+        {active ? engineOn : engineOff}
       </div>
 
       {/* Connecting dots */}
@@ -29,18 +28,19 @@ function StatusRow({ active }) {
       </div>
 
       {/* H₂ indicator */}
-      <div className={`shrink-0 px-3 py-1.5 rounded-lg border-2 text-center ${
-        active ? 'border-[#1B2A6B]' : 'border-[#1B2A6B]/15'
-      }`}>
-        <div className={`font-black text-sm leading-none ${active ? 'text-[#1B2A6B]' : 'text-[#1B2A6B]/20'}`}>
+      <div className={`shrink-0 px-3 py-1.5 rounded-lg border-2 text-center`}
+        style={{ borderColor: active ? '#1B2A6B' : 'rgba(27,42,107,0.15)' }}>
+        <div className="font-black text-sm leading-none"
+          style={{ color: active ? '#1B2A6B' : 'rgba(27,42,107,0.2)' }}>
           H<sub className="text-[10px]">₂</sub>
         </div>
-        <div className={`font-bold text-[9px] mt-0.5 ${active ? 'text-[#22A756]' : 'text-[#1B2A6B]/20'}`}>
-          {active ? 'ACTIVE' : 'IDLE'}
+        <div className="font-bold text-[9px] mt-0.5"
+          style={{ color: active ? '#22A756' : 'rgba(27,42,107,0.2)' }}>
+          {active ? activeLabel : idleLabel}
         </div>
       </div>
 
-      {/* No tank icon — only on active row */}
+      {/* No tank icon */}
       {active ? (
         <div className="shrink-0 relative" style={{ width: 28, height: 34 }}>
           <svg viewBox="0 0 28 34" fill="none" style={{ width: 28, height: 34 }}>
@@ -58,35 +58,49 @@ function StatusRow({ active }) {
 }
 
 export default function Slide8() {
+  const { t } = useLanguage()
+  const s = t.slides.slide8
+
   return (
     <SplitImageSlide src="/slides/slide_08.png" imageSide="left" bg="#E8E8E2">
       <motion.p {...up(0.05)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
       >
-        Safety
+        {s.eyebrow}
       </motion.p>
 
       <motion.h2 {...up(0.12)}
         className="font-black text-[#1B2A6B] leading-[1.1] mb-7"
         style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
       >
-        Is it safe? Absolutely.<br />Safety is confirmed and<br />engineered into the design.
+        {s.headline}
       </motion.h2>
 
       <motion.p {...up(0.28)}
         className="text-[#1B2A6B]/55 leading-relaxed mb-8"
         style={{ fontSize: 'clamp(0.9rem, 1.15vw, 1.05rem)', maxWidth: '420px' }}
       >
-        The HNO gas is generated on-demand only when the engine is running.
-        It is immediately consumed and is{' '}
-        <strong className="text-[#1B2A6B]/80 font-semibold">never stored</strong> in the system.
-        There is no pressurized tank.
+        {s.body}{' '}
+        <strong className="text-[#1B2A6B]/80 font-semibold">{s.bodyBold}</strong>{' '}
+        {s.body2}
       </motion.p>
 
       <motion.div {...up(0.42)} className="flex flex-col gap-3">
-        <StatusRow active={true} />
-        <StatusRow active={false} />
+        <StatusRow
+          active={true}
+          engineOn={s.engineOn}
+          engineOff={s.engineOff}
+          activeLabel={s.active}
+          idleLabel={s.idle}
+        />
+        <StatusRow
+          active={false}
+          engineOn={s.engineOn}
+          engineOff={s.engineOff}
+          activeLabel={s.active}
+          idleLabel={s.idle}
+        />
       </motion.div>
     </SplitImageSlide>
   )

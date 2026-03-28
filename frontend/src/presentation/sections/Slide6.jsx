@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SplitImageSlide } from './ImageSlide'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -7,40 +8,28 @@ const up = (d = 0) => ({
   transition: { duration: 0.78, delay: d, ease: [0.16, 1, 0.3, 1] },
 })
 
-const bullets = [
-  {
-    title: 'Increased Power',
-    body: "Power increases by up to 30%, especially noticeable at low revs. The 'pick-up' is improved as the torque shelf shifts to lower engine speeds.",
-  },
-  {
-    title: 'Cleaner Engine',
-    body: 'Hydrogen actively breaks down and cleans out existing carbon deposits, reducing abrasive elements inside the engine.',
-  },
-  {
-    title: 'Smoother & Cooler Operation',
-    body: 'The engine runs softer and quieter. Because hydrogen burns faster at lower temperatures, the engine overheats less, extending its service life.',
-  },
-]
-
 export default function Slide6() {
+  const { t } = useLanguage()
+  const s = t.slides.slide6
+
   return (
     <SplitImageSlide src="/slides/slide_06.png" imageSide="right" bg="#EAE9E3">
       <motion.p {...up(0.0)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
       >
-        Benefits
+        {s.eyebrow}
       </motion.p>
 
       <motion.h2 {...up(0.08)}
         className="font-black text-[#1B2A6B] leading-[1.1] mb-9"
         style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
       >
-        Your engine will run quieter,<br />cleaner, and with more torque.
+        {s.headline}
       </motion.h2>
 
       <div className="space-y-6">
-        {bullets.map((b, i) => (
+        {s.bullets.map((b, i) => (
           <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-4">
             <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center"
               style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}>

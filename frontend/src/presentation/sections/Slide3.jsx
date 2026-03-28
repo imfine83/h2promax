@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import SlideWrapper from './SlideWrapper'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const stagger = {
   hidden: {},
@@ -11,6 +12,9 @@ const up = {
 }
 
 export default function Slide3() {
+  const { t } = useLanguage()
+  const s = t.slides.slide3
+
   return (
     <SlideWrapper>
       <div className="w-full h-full flex flex-col items-center justify-center px-5 md:px-8 text-center relative z-10">
@@ -25,7 +29,7 @@ export default function Slide3() {
             variants={up}
             className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.22em] mb-4 md:mb-7 text-[10px] md:text-[11px]"
           >
-            The Solution
+            {s.eyebrow}
           </motion.p>
 
           {/* Heading */}
@@ -34,7 +38,7 @@ export default function Slide3() {
             className="font-black text-[#1B2A6B] leading-[1.1] mb-6 md:mb-12"
             style={{ fontSize: 'clamp(1.5rem, 4.5vw, 4.2rem)', maxWidth: '800px' }}
           >
-            The solution is unlocking the power of complete combustion.
+            {s.headline}
           </motion.h2>
 
           {/* Visual — catalysis concept */}
@@ -54,7 +58,7 @@ export default function Slide3() {
                 <text x="44" y="48" fontSize="9" fontWeight="700" fill="rgba(27,42,107,0.5)"
                   textAnchor="middle" fontFamily="Inter, sans-serif">C₈H₁₈</text>
               </svg>
-              <span className="text-[#1B2A6B]/35 text-xs font-semibold uppercase tracking-wider">Fuel</span>
+              <span className="text-[#1B2A6B]/35 text-xs font-semibold uppercase tracking-wider">{s.fuelLabel}</span>
             </div>
 
             {/* Arrow with H₂ */}
@@ -71,7 +75,7 @@ export default function Slide3() {
                 <polyline points="50,3 62,9 50,15" fill="none" stroke="#22A756" strokeWidth="2.5"
                   strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="text-[#22A756]/55 text-xs font-medium">catalyst</span>
+              <span className="text-[#22A756]/55 text-xs font-medium">{s.catalystLabel}</span>
             </div>
 
             {/* Complete combustion — burst */}
@@ -80,7 +84,6 @@ export default function Slide3() {
                 <circle cx="44" cy="44" r="34" fill="rgba(34,167,86,0.08)"/>
                 <circle cx="44" cy="44" r="22" fill="rgba(34,167,86,0.15)"/>
                 <circle cx="44" cy="44" r="13" fill="rgba(34,167,86,0.28)"/>
-                {/* Rays */}
                 {[0,45,90,135,180,225,270,315].map(a => {
                   const rad = a * Math.PI / 180
                   return (
@@ -93,7 +96,7 @@ export default function Slide3() {
                 <text x="44" y="48" fontSize="9" fontWeight="800" fill="#22A756"
                   textAnchor="middle" fontFamily="Inter, sans-serif">H₂O</text>
               </svg>
-              <span className="text-[#22A756]/60 text-xs font-semibold uppercase tracking-wider">Clean</span>
+              <span className="text-[#22A756]/60 text-xs font-semibold uppercase tracking-wider">{s.cleanLabel}</span>
             </div>
           </motion.div>
 
@@ -103,9 +106,9 @@ export default function Slide3() {
             className="text-[#1B2A6B]/55 leading-relaxed text-sm md:text-base"
             style={{ maxWidth: '640px' }}
           >
-            Hydrogen is one of the most rapidly flammable gases. It ignites instantly
-            and burns <strong className="text-[#1B2A6B]/80 font-semibold">8–10× faster</strong> than conventional fuel,
-            acting as a catalyst to ensure the entire fuel-air mixture combusts fully and efficiently.
+            {s.body}{' '}
+            <strong className="text-[#1B2A6B]/80 font-semibold">8–10×</strong>{' '}
+            {s.body2}
           </motion.p>
         </motion.div>
       </div>

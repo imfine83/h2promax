@@ -198,4 +198,82 @@ export const en = {
   footer: {
     rights: 'ALL_RIGHTS_RESERVED',
   },
+
+  slides: {
+    slide1: {
+      eyebrow: 'Hydrogen Fuel Savings System',
+      headline1: 'Save up to',
+      headline2: 'of your',
+      headline3: 'fuel costs.',
+      subtitle: 'How to unlock hidden power and efficiency in your engine with an H2 ELEMENT hydrogen generator.',
+    },
+    slide2: {
+      eyebrow: 'The Problem',
+      headline: 'Your engine is wasting fuel with every combustion cycle.',
+      body: 'Fuel prices are rising, but the real issue is inside your engine. Most internal combustion engines lose up to',
+      body2: 'of fuel due to incomplete combustion of the fuel-air mixture.',
+      tagline: 'You are paying for fuel that never gets used.',
+    },
+    slide3: {
+      eyebrow: 'The Solution',
+      headline: 'The solution is unlocking the power of complete combustion.',
+      body: 'Hydrogen is one of the most rapidly flammable gases. It ignites instantly and burns',
+      body2: 'faster than conventional fuel, acting as a catalyst to ensure the entire fuel-air mixture combusts fully and efficiently.',
+      fuelLabel: 'Fuel',
+      catalystLabel: 'catalyst',
+      cleanLabel: 'Clean',
+    },
+    slide5: {
+      headline: 'The Results: More Savings, More Power, A Healthier Engine.',
+      prefix: 'Up to',
+      stats: [
+        { label: 'Reduction in fuel\nconsumption' },
+        { label: 'Increase in\nengine power' },
+        { label: 'Reduction in harmful\nexhaust emissions' },
+      ],
+    },
+    slide6: {
+      eyebrow: 'Benefits',
+      headline: 'Your engine will run quieter, cleaner, and with more torque.',
+      bullets: [
+        { title: 'Increased Power', body: "Power increases by up to 30%, especially noticeable at low revs. The 'pick-up' is improved as the torque shelf shifts to lower engine speeds." },
+        { title: 'Cleaner Engine', body: 'Hydrogen actively breaks down and cleans out existing carbon deposits, reducing abrasive elements inside the engine.' },
+        { title: 'Smoother & Cooler Operation', body: 'The engine runs softer and quieter. Because hydrogen burns faster at lower temperatures, the engine overheats less, extending its service life.' },
+      ],
+    },
+    slide8: {
+      eyebrow: 'Safety',
+      headline: 'Is it safe? Absolutely. Safety is confirmed and engineered into the design.',
+      body: 'The gas is generated on-demand only when the engine is running. It is immediately consumed and is',
+      bodyBold: 'never stored',
+      body2: 'in the system. There is no pressurized tank.',
+      engineOn: 'ENGINE ON',
+      engineOff: 'ENGINE OFF',
+      active: 'ACTIVE',
+      idle: 'IDLE',
+    },
+    slide9: {
+      eyebrow: 'Legality',
+      headline: 'Is it legal? Yes. No vehicle modification registration is required.',
+      body: 'The H2 ELEMENT generator does not interfere with the factory design of the engine or vehicle. It functions as an additional, external system and does not violate vehicle operating rules or regulations.',
+      badge: 'External system — no registration needed',
+    },
+    slide10: {
+      headline: 'Simple to Install, Even Easier to Maintain.',
+      installTitle: 'Installation',
+      maintainTitle: 'Maintenance',
+      installItems: [
+        'Takes only 60–90 minutes.',
+        'Simple, step-by-step instructions included.',
+        'Can be installed by any car electrician or mechanic.',
+        'Our engineers are always in touch to help.',
+      ],
+      maintainItems: [
+        'No special knowledge required.',
+        'Primary task: Periodically top up with water.',
+        'Secondary task: Occasionally flush the system.',
+        'If you forget — hydrogen production stops and fuel consumption returns to normal. No harm is done.',
+      ],
+    },
+  },
 };

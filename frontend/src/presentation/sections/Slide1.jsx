@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import SlideWrapper from './SlideWrapper'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const stagger = {
   hidden: {},
@@ -11,6 +12,9 @@ const line = {
 }
 
 export default function Slide1() {
+  const { t } = useLanguage()
+  const s = t.slides.slide1
+
   return (
     <SlideWrapper>
       {/* H₂ ELEMENT logo top-right */}
@@ -48,7 +52,7 @@ export default function Slide1() {
             variants={line}
             className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.2em] mb-5 md:mb-8 text-[10px] md:text-[11px]"
           >
-            Hydrogen Fuel Savings System
+            {s.eyebrow}
           </motion.p>
 
           {/* Hero headline */}
@@ -57,16 +61,16 @@ export default function Slide1() {
             className="font-black text-[#1B2A6B] leading-[1.05] mb-0"
             style={{ fontSize: 'clamp(2rem, 7vw, 7rem)' }}
           >
-            Save up to{' '}
+            {s.headline1}{' '}
             <span className="text-[#22A756]">65%</span>
-            {' '}of your
+            {' '}{s.headline2}
           </motion.h1>
           <motion.h1
             variants={line}
             className="font-black text-[#1B2A6B] leading-[1.05] mb-6 md:mb-10"
             style={{ fontSize: 'clamp(2rem, 7vw, 7rem)' }}
           >
-            fuel costs.
+            {s.headline3}
           </motion.h1>
 
           {/* Divider */}
@@ -82,8 +86,7 @@ export default function Slide1() {
             className="text-[#1B2A6B]/55 leading-relaxed text-sm md:text-base"
             style={{ maxWidth: '520px' }}
           >
-            How to unlock hidden power and efficiency in your engine
-            {' '}with an H2 ELEMENT hydrogen generator.
+            {s.subtitle}
           </motion.p>
         </motion.div>
       </div>

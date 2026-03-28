@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SplitImageSlide } from './ImageSlide'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -8,29 +9,30 @@ const up = (d = 0) => ({
 })
 
 export default function Slide9() {
+  const { t } = useLanguage()
+  const s = t.slides.slide9
+
   return (
     <SplitImageSlide src="/slides/slide_09.png" imageSide="right" bg="#EAEAE4">
       <motion.p {...up(0.0)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
       >
-        Legality
+        {s.eyebrow}
       </motion.p>
 
       <motion.h2 {...up(0.08)}
         className="font-black text-[#1B2A6B] leading-[1.1] mb-7"
         style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
       >
-        Is it legal? Yes.<br />No vehicle modification<br />registration is required.
+        {s.headline}
       </motion.h2>
 
       <motion.p {...up(0.26)}
         className="text-[#1B2A6B]/55 leading-relaxed mb-8"
         style={{ fontSize: 'clamp(0.92rem, 1.2vw, 1.1rem)', maxWidth: '420px' }}
       >
-        The H2 ELEMENT generator does not interfere with the factory design of
-        the engine or vehicle. It functions as an additional, external system
-        and does not violate vehicle operating rules or regulations.
+        {s.body}
       </motion.p>
 
       {/* Highlight badge */}
@@ -45,7 +47,7 @@ export default function Slide9() {
         </svg>
         <span className="text-[#22A756] font-semibold"
           style={{ fontSize: 'clamp(0.82rem, 1vw, 0.9rem)' }}>
-          External system — no registration needed
+          {s.badge}
         </span>
       </motion.div>
     </SplitImageSlide>

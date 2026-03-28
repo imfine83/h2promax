@@ -1,25 +1,12 @@
 import { motion } from 'framer-motion'
 import SlideWrapper from './SlideWrapper'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.75, delay: d, ease: [0.16, 1, 0.3, 1] },
 })
-
-const installItems = [
-  'Takes only 60–90 minutes.',
-  'Simple, step-by-step instructions included.',
-  'Can be installed by any car electrician or mechanic.',
-  'Our engineers are always in touch to help.',
-]
-
-const maintainItems = [
-  'No special knowledge required.',
-  'Primary task: Periodically top up with water.',
-  'Secondary task: Occasionally flush the system.',
-  'If you forget — hydrogen production stops and fuel consumption returns to normal. No harm is done.',
-]
 
 function Column({ title, icon, items, startDelay, accent = false }) {
   return (
@@ -61,6 +48,9 @@ function Column({ title, icon, items, startDelay, accent = false }) {
 }
 
 export default function Slide10() {
+  const { t } = useLanguage()
+  const s = t.slides.slide10
+
   return (
     <SlideWrapper>
       <div className="w-full h-full flex flex-col relative z-10 overflow-y-auto"
@@ -70,15 +60,15 @@ export default function Slide10() {
           className="font-black text-[#1B2A6B] text-center mb-6 md:mb-12"
           style={{ fontSize: 'clamp(1.3rem, 3.4vw, 3.2rem)' }}
         >
-          Simple to Install, Even Easier to Maintain.
+          {s.headline}
         </motion.h2>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-10 flex-1 items-start">
           <Column
-            title="Installation"
+            title={s.installTitle}
             accent={true}
             startDelay={0.08}
-            items={installItems}
+            items={s.installItems}
             icon={
               <svg viewBox="0 0 28 28" fill="none" style={{ width: 24, height: 24 }}>
                 <path d="M20 3 Q26 3 26 9 Q26 15 20 18 L8 28 Q5 31 2 28 Q-1 25 2 22 L14 12 Q16 5 20 3Z"
@@ -92,10 +82,10 @@ export default function Slide10() {
           <div className="hidden md:block w-px self-stretch" style={{ background: 'rgba(27,42,107,0.1)' }}/>
 
           <Column
-            title="Maintenance"
+            title={s.maintainTitle}
             accent={false}
             startDelay={0.14}
-            items={maintainItems}
+            items={s.maintainItems}
             icon={
               <svg viewBox="0 0 24 34" fill="none" style={{ width: 22, height: 30 }}>
                 <path d="M12 4 Q5 14 5 22 Q5 31 12 32 Q19 31 19 22 Q19 14 12 4Z"

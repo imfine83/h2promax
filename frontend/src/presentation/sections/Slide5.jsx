@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SlideWrapper from './SlideWrapper'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 function useCounter(target, delay = 600, duration = 1600) {
   const [val, setVal] = useState(0)
@@ -20,11 +21,9 @@ function useCounter(target, delay = 600, duration = 1600) {
   return val
 }
 
-const stats = [
+const statValues = [
   {
     value: 65,
-    prefix: 'Up to',
-    label: 'Reduction in fuel\nconsumption',
     color: '#22A756',
     icon: (
       <svg viewBox="0 0 52 52" fill="none" style={{ width: 48, height: 48 }}>
@@ -40,8 +39,6 @@ const stats = [
   },
   {
     value: 30,
-    prefix: 'Up to',
-    label: 'Increase in\nengine power',
     color: '#1B2A6B',
     icon: (
       <svg viewBox="0 0 52 52" fill="none" style={{ width: 48, height: 48 }}>
@@ -57,8 +54,6 @@ const stats = [
   },
   {
     value: 90,
-    prefix: 'Up to',
-    label: 'Reduction in harmful\nexhaust emissions',
     color: '#22A756',
     icon: (
       <svg viewBox="0 0 52 52" fill="none" style={{ width: 48, height: 48 }}>
@@ -70,8 +65,8 @@ const stats = [
   },
 ]
 
-function StatCard({ stat, delay }) {
-  const num = useCounter(stat.value, delay * 1000 + 350, 1800)
+function StatCard({ value, color, icon, prefix, label, delay }) {
+  const num = useCounter(value, delay * 1000 + 350, 1800)
   return (
     <motion.div
       initial={{ opacity: 0, y: 48 }}
@@ -80,31 +75,25 @@ function StatCard({ stat, delay }) {
       className="flex flex-col items-center text-center"
       style={{ flex: '1 1 0', minWidth: 0 }}
     >
-      {/* Icon */}
-      <div className="mb-4 md:mb-6">{stat.icon}</div>
-
-      {/* Separator */}
+      <div className="mb-4 md:mb-6">{icon}</div>
       <div className="w-full h-px mb-4 md:mb-6" style={{ background: 'rgba(27,42,107,0.12)' }}/>
-
-      {/* Prefix */}
       <p className="text-[#1B2A6B]/45 font-semibold uppercase tracking-widest mb-1 text-[9px] md:text-[11px]">
-        {stat.prefix}
+        {prefix}
       </p>
-
-      {/* Animated number */}
-      <p className="font-black leading-none mb-2 md:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 5.5rem)', color: stat.color }}>
+      <p className="font-black leading-none mb-2 md:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 5.5rem)', color }}>
         {num}<span style={{ fontSize: '65%' }}>%</span>
       </p>
-
-      {/* Label */}
       <p className="text-[#1B2A6B]/60 font-medium leading-snug whitespace-pre-line text-xs md:text-sm">
-        {stat.label}
+        {label}
       </p>
     </motion.div>
   )
 }
 
 export default function Slide5() {
+  const { t } = useLanguage()
+  const s = t.slides.slide5
+
   return (
     <SlideWrapper>
       <div className="w-full h-full flex flex-col items-center justify-center relative z-10 px-4 md:px-8"
@@ -117,12 +106,20 @@ export default function Slide5() {
           className="font-black text-[#1B2A6B] text-center leading-tight mb-8 md:mb-14"
           style={{ fontSize: 'clamp(1.3rem, 3.2vw, 3rem)' }}
         >
-          The Results: More Savings,<br />More Power, A Healthier Engine.
+          {s.headline}
         </motion.h2>
 
-        <div className="flex flex-row md:flex-row gap-4 md:gap-8 w-full" style={{ maxWidth: 960 }}>
-          {stats.map((stat, i) => (
-            <StatCard key={i} stat={stat} delay={0.14 + i * 0.14} />
+        <div className="flex flex-row gap-4 md:gap-8 w-full" style={{ maxWidth: 960 }}>
+          {statValues.map((sv, i) => (
+            <StatCard
+              key={i}
+              value={sv.value}
+              color={sv.color}
+              icon={sv.icon}
+              prefix={s.prefix}
+              label={s.stats[i].label}
+              delay={0.14 + i * 0.14}
+            />
           ))}
         </div>
       </div>

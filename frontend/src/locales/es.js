@@ -198,4 +198,82 @@ export const es = {
   footer: {
     rights: 'TODOS_LOS_DERECHOS_RESERVADOS',
   },
+
+  slides: {
+    slide1: {
+      eyebrow: 'Sistema de Ahorro de Combustible por Hidrógeno',
+      headline1: 'Ahorre hasta',
+      headline2: 'de su',
+      headline3: 'costo de combustible.',
+      subtitle: 'Cómo liberar poder y eficiencia ocultos en su motor con un generador de hidrógeno H2 ELEMENT.',
+    },
+    slide2: {
+      eyebrow: 'El Problema',
+      headline: 'Su motor desperdicia combustible en cada ciclo de combustión.',
+      body: 'Los precios del combustible están subiendo, pero el problema real está dentro de su motor. La mayoría de los motores de combustión interna pierden hasta',
+      body2: 'del combustible debido a la combustión incompleta de la mezcla aire-combustible.',
+      tagline: 'Está pagando por combustible que nunca se usa.',
+    },
+    slide3: {
+      eyebrow: 'La Solución',
+      headline: 'La solución es liberar el poder de la combustión completa.',
+      body: 'El hidrógeno es uno de los gases más rápidamente inflamables. Se enciende instantáneamente y arde',
+      body2: 'más rápido que el combustible convencional, actuando como catalizador para asegurar que toda la mezcla aire-combustible se combustione completa y eficientemente.',
+      fuelLabel: 'Combustible',
+      catalystLabel: 'catalizador',
+      cleanLabel: 'Limpio',
+    },
+    slide5: {
+      headline: 'Los Resultados: Más Ahorros, Más Potencia, Un Motor Más Saludable.',
+      prefix: 'Hasta',
+      stats: [
+        { label: 'Reducción en consumo\nde combustible' },
+        { label: 'Aumento de\npotencia del motor' },
+        { label: 'Reducción de\nemisiones dañinas' },
+      ],
+    },
+    slide6: {
+      eyebrow: 'Beneficios',
+      headline: 'Su motor funcionará más silencioso, más limpio y con más torque.',
+      bullets: [
+        { title: 'Mayor Potencia', body: "La potencia aumenta hasta un 30%, especialmente notable a bajas revoluciones. La respuesta mejora al desplazarse el umbral de par hacia menores velocidades del motor." },
+        { title: 'Motor Más Limpio', body: 'El hidrógeno descompone y limpia activamente los depósitos de carbono existentes, reduciendo los elementos abrasivos dentro del motor.' },
+        { title: 'Funcionamiento Más Suave', body: 'El motor funciona más suave y silencioso. El hidrógeno arde más rápido a temperaturas más bajas, el motor se sobrecalienta menos, extendiendo su vida útil.' },
+      ],
+    },
+    slide8: {
+      eyebrow: 'Seguridad',
+      headline: '¿Es seguro? Absolutamente. La seguridad está confirmada y diseñada en el sistema.',
+      body: 'El gas se genera bajo demanda solo cuando el motor está en marcha. Se consume de inmediato y',
+      bodyBold: 'nunca se almacena',
+      body2: 'en el sistema. No hay tanque a presión.',
+      engineOn: 'MOTOR ENCENDIDO',
+      engineOff: 'MOTOR APAGADO',
+      active: 'ACTIVO',
+      idle: 'INACTIVO',
+    },
+    slide9: {
+      eyebrow: 'Legalidad',
+      headline: '¿Es legal? Sí. No se requiere registro de modificación del vehículo.',
+      body: 'El generador H2 ELEMENT no interfiere con el diseño de fábrica del motor o vehículo. Funciona como un sistema adicional y externo y no viola las reglas o regulaciones de operación del vehículo.',
+      badge: 'Sistema externo — no se requiere registro',
+    },
+    slide10: {
+      headline: 'Simple de Instalar, Aún Más Fácil de Mantener.',
+      installTitle: 'Instalación',
+      maintainTitle: 'Mantenimiento',
+      installItems: [
+        'Solo toma 60–90 minutos.',
+        'Instrucciones simples paso a paso incluidas.',
+        'Puede ser instalado por cualquier electricista o mecánico de automóviles.',
+        'Nuestros ingenieros siempre están disponibles para ayudar.',
+      ],
+      maintainItems: [
+        'No se requiere conocimiento especial.',
+        'Tarea primaria: Rellenar periódicamente con agua.',
+        'Tarea secundaria: Lavar el sistema ocasionalmente.',
+        'Si lo olvida — la producción de hidrógeno se detiene y el consumo de combustible vuelve a la normalidad. No hay daño.',
+      ],
+    },
+  },
 };
