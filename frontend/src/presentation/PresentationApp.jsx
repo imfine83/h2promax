@@ -12,16 +12,11 @@ import Slide8  from './sections/Slide8';
 import Slide9  from './sections/Slide9';
 import Slide10 from './sections/Slide10';
 import Slide11 from './sections/Slide11';
-import CTASection from './sections/CTASection';
-
 import SlideProgress from './components/SlideProgress';
-import Navbar        from './components/Navbar';
-import MenuOverlay   from './components/MenuOverlay';
 
 const SLIDES = [
   Slide1, Slide2, Slide3, Slide4, Slide5, Slide6,
   Slide7, Slide8, Slide9, Slide10, Slide11,
-  CTASection,
 ];
 
 const PRESENTATION_COUNT = 11;
@@ -59,14 +54,12 @@ const pageVariants = {
 export default function PresentationApp({ onClose }) {
   const [current, setCurrent]   = useState(0);
   const [direction, setDir]     = useState(1);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const isAnimating = useRef(false);
   const lastTime    = useRef(0);
   const touchStartY = useRef(0);
 
   const isPresentation = current < PRESENTATION_COUNT;
-  const showMenu       = current >= PRESENTATION_COUNT;
 
   const navigate = useCallback((next) => {
     if (next < 0 || next >= TOTAL) return;
@@ -165,12 +158,6 @@ export default function PresentationApp({ onClose }) {
           currentIndex={current}
         />
       )}
-
-      {showMenu && <Navbar onOpen={() => setMenuOpen(true)} />}
-
-      <AnimatePresence>
-        {menuOpen && <MenuOverlay onClose={() => setMenuOpen(false)} />}
-      </AnimatePresence>
     </div>
   );
 }
