@@ -67,7 +67,7 @@ export const en = {
     badge: '// MANUFACTURING',
     title1: 'Own',
     title2: 'Production',
-    description: 'Our company ensures a full cycle of hydrogen generator production — all key stages are concentrated at our own facility. Started in 2022, since 2025 working on a conveyor system.',
+    description: 'Our company ensures a full cycle of hydrogen generator production — all key stages are concentrated at our own facility. Started in 2022, since 2026 working on a conveyor system.',
     facilityTitle: 'Modern Production Facility',
     facilityDesc: 'Up to 1,500 generators per month',
     boilerTitle: 'HYDROGEN BOILER',

@@ -67,7 +67,7 @@ export const es = {
     badge: '// FABRICACIÓN',
     title1: 'Producción',
     title2: 'Propia',
-    description: 'Nuestra empresa garantiza un ciclo completo de producción de generadores de hidrógeno — todas las etapas clave están concentradas en nuestra propia instalación. Inicio en 2022, desde 2025 trabajando en sistema de línea de montaje.',
+    description: 'Nuestra empresa garantiza un ciclo completo de producción de generadores de hidrógeno — todas las etapas clave están concentradas en nuestra propia instalación. Inicio en 2022, desde 2026 trabajando en sistema de línea de montaje.',
     facilityTitle: 'Instalación de Producción Moderna',
     facilityDesc: 'Hasta 1.500 generadores por mes',
     boilerTitle: 'CALDERA DE HIDRÓGENO',
