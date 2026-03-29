@@ -260,6 +260,9 @@ export const en = {
       badge: 'External system — no registration needed',
     },
     slide4: {
+      image: '/slides/slide_04_en.png',
+      /** Full infographic on PNG — no HTML overlay patches */
+      hideOverlays: true,
       title: "How H2 ELEMENT Improves Your Engine's Efficiency",
       steps: [
         { num: '1', title: 'Electrolysis', body: 'After starting the engine, the generator activates, using electrolysis to produce HNO gas (a hydrogen-oxygen mixture).' },

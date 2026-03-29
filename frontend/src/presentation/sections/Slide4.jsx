@@ -11,14 +11,19 @@ const BODY = 'rgba(27,42,107,0.9)'
 export default function Slide4() {
   const { t } = useLanguage()
   const s = t.slides.slide4
+  const src = s.image || '/slides/slide_04.png'
 
   const titleBase = patchPanel(BG)
   const stepBase = patchPanelMask(PATCH)
   const patchTitle = (extra) => ({ ...titleBase, ...extra })
   const patch = (extra) => ({ ...stepBase, ...extra })
 
+  if (s.hideOverlays) {
+    return <SlideImageFrame bg={BG} src={src} />
+  }
+
   return (
-    <SlideImageFrame bg={BG} src="/slides/slide_04.png">
+    <SlideImageFrame bg={BG} src={src}>
       <div style={patchTitle({ top: '0.6%', left: '3.5%', right: '3.5%', padding: '12px 18px', textAlign: 'center' })}>
         <span
           className="font-black block leading-tight"
