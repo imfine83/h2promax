@@ -273,6 +273,8 @@ export const es = {
     slide6before: 'Antes',
     slide6after: 'Después H2 ELEMENT',
     slide7: {
+      image: '/slides/slide_07_es.png',
+      hideOverlays: true,
       title: 'Una solución universal para todos los tipos de motores de combustión interna',
       engineTypesTitle: 'Tipos de Motor Compatibles',
       vehicleTypesTitle: 'Tipos de Vehículo Compatibles',

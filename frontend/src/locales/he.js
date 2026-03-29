@@ -273,6 +273,8 @@ export const he = {
     slide6before: 'לפני',
     slide6after: 'אחרי H2 ELEMENT',
     slide7: {
+      image: '/slides/slide_07_he.png',
+      hideOverlays: true,
       title: 'פתרון אוניברסלי לכל סוגי מנועי הבעירה הפנימית',
       engineTypesTitle: 'סוגי מנוע נתמכים',
       vehicleTypesTitle: 'סוגי רכב נתמכים',
