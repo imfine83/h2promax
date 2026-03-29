@@ -62,7 +62,7 @@ export default function Slide8() {
   const s = t.slides.slide8
 
   return (
-    <SplitImageSlide src="/slides/slide_08.png" imageSide="left" bg="#E8E8E2">
+    <SplitImageSlide src="/slides/slide_08.png" imageSide="left" bg="#E8E8E2" mobileBgHeightPct={92}>
       <motion.p {...up(0.05)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
