@@ -208,6 +208,7 @@ export const en = {
       subtitle: 'How to unlock hidden power and efficiency in your engine with an H2 ELEMENT hydrogen generator.',
     },
     slide2: {
+      image: '/slides/slide_02.png',
       eyebrow: 'The Problem',
       headline: 'Your engine is wasting fuel with every combustion cycle.',
       body: 'Fuel prices are rising, but the real issue is inside your engine. Most internal combustion engines lose up to',

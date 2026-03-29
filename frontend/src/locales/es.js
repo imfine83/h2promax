@@ -208,6 +208,7 @@ export const es = {
       subtitle: 'Cómo liberar poder y eficiencia ocultos en su motor con un generador de hidrógeno H2 ELEMENT.',
     },
     slide2: {
+      image: '/slides/slide_02_es.png',
       eyebrow: 'El Problema',
       headline: 'Su motor desperdicia combustible en cada ciclo de combustión.',
       body: 'Los precios del combustible están subiendo, pero el problema real está dentro de su motor. La mayoría de los motores de combustión interna pierden hasta',
