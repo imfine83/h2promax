@@ -260,6 +260,8 @@ export const he = {
       badge: 'מערכת חיצונית — אין צורך ברישום',
     },
     slide4: {
+      image: '/slides/slide_04_he.png',
+      hideOverlays: true,
       title: 'כיצד H2 ELEMENT משפר את יעילות המנוע שלך',
       steps: [
         { num: '1', title: 'אלקטרוליזה', body: 'לאחר הפעלת המנוע, הגנרטור מפעיל אלקטרוליזה לייצור גז HNO (תערובת מימן-חמצן).' },

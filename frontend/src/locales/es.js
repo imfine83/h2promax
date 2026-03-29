@@ -260,6 +260,8 @@ export const es = {
       badge: 'Sistema externo — no se requiere registro',
     },
     slide4: {
+      image: '/slides/slide_04_es.png',
+      hideOverlays: true,
       title: 'Cómo H2 ELEMENT Mejora la Eficiencia de Su Motor',
       steps: [
         { num: '1', title: 'Electrólisis', body: 'Tras arrancar el motor, el generador activa la electrólisis para producir gas HNO (mezcla hidrógeno-oxígeno).' },
