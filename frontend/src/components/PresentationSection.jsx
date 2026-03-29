@@ -7,6 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function PresentationSection() {
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
+  const slide2Preview = t.slides.slide2?.image || '/slides/slide_02.png';
 
   // Lock/unlock body scroll when presentation is open
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function PresentationSection() {
             <div className="grid grid-cols-2 gap-3">
               {[
                 { src: '/slides/slide_01.png', label: 'Save up to 65%' },
-                { src: '/slides/slide_02.png', label: 'The Problem' },
+                { src: slide2Preview, label: t.slides.slide2.eyebrow },
                 { src: '/slides/slide_03.png', label: 'The Solution' },
                 { src: '/slides/slide_04.png', label: 'How It Works' },
               ].map((item, i) => (
