@@ -55,6 +55,12 @@ let webpackConfig = {
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
       }
+
+      // CRA 5 + Node 22+: fork-ts-checker тянет старый ajv и падает при старте dev-сервера.
+      webpackConfig.plugins = (webpackConfig.plugins || []).filter(
+        (p) => p?.constructor?.name !== "ForkTsCheckerWebpackPlugin"
+      );
+
       return webpackConfig;
     },
   },
