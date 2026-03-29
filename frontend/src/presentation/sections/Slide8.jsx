@@ -10,7 +10,7 @@ const up = (d = 0) => ({
 
 function StatusRow({ active, engineOn, engineOff, activeLabel, idleLabel }) {
   return (
-    <div className="flex items-center gap-4 py-3 px-4 rounded-xl"
+    <div className="flex items-center gap-2 py-2.5 px-3 rounded-xl max-md:min-w-0 md:gap-4 md:py-3 md:px-4"
       style={{ background: active ? 'rgba(34,167,86,0.08)' : 'rgba(27,42,107,0.04)' }}>
       {/* ON/OFF pill */}
       <div className={`px-3 py-1 rounded-lg text-xs font-bold shrink-0`}
@@ -71,22 +71,21 @@ export default function Slide8() {
       </motion.p>
 
       <motion.h2 {...up(0.12)}
-        className="font-black text-[#1B2A6B] leading-[1.1] mb-7"
-        style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
+        className="font-black text-[#1B2A6B] leading-snug mb-4 max-md:text-[1.3rem] max-md:tracking-tight md:mb-7 md:leading-[1.1] md:text-[clamp(1.8rem,3vw,2.8rem)]"
       >
         {s.headline}
       </motion.h2>
 
       <motion.p {...up(0.28)}
-        className="text-[#1B2A6B]/55 leading-relaxed mb-8"
-        style={{ fontSize: 'clamp(0.9rem, 1.15vw, 1.05rem)', maxWidth: '420px' }}
+        className="text-[#1B2A6B]/55 leading-relaxed mb-6 max-md:text-[0.88rem] md:mb-8 md:text-[clamp(0.9rem,1.15vw,1.05rem)]"
+        style={{ maxWidth: '420px' }}
       >
         {s.body}{' '}
         <strong className="text-[#1B2A6B]/80 font-semibold">{s.bodyBold}</strong>{' '}
         {s.body2}
       </motion.p>
 
-      <motion.div {...up(0.42)} className="flex flex-col gap-3">
+      <motion.div {...up(0.42)} className="flex flex-col gap-3 max-md:w-full max-md:overflow-x-auto max-md:pb-1">
         <StatusRow
           active={true}
           engineOn={s.engineOn}

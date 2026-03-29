@@ -23,15 +23,14 @@ export default function Slide2() {
       </motion.p>
 
       <motion.h2 {...up(0.14)}
-        className="font-black text-[#1B2A6B] leading-[1.1] mb-7"
-        style={{ fontSize: 'clamp(2rem, 3.4vw, 3.2rem)' }}
+        className="font-black text-[#1B2A6B] leading-snug mb-4 max-md:text-[1.35rem] max-md:tracking-tight md:mb-7 md:leading-[1.1] md:text-[clamp(2rem,3.4vw,3.2rem)]"
       >
         {s.headline}
       </motion.h2>
 
       <motion.p {...up(0.32)}
-        className="text-[#1B2A6B]/55 leading-relaxed mb-5"
-        style={{ fontSize: 'clamp(0.92rem, 1.2vw, 1.1rem)', maxWidth: '420px' }}
+        className="text-[#1B2A6B]/55 leading-relaxed mb-5 max-md:text-[0.9rem] max-md:leading-relaxed md:text-[clamp(0.92rem,1.2vw,1.1rem)]"
+        style={{ maxWidth: '420px' }}
       >
         {s.body}{' '}
         <strong className="text-[#1B2A6B]/80 font-semibold">50%</strong>{' '}
@@ -39,8 +38,7 @@ export default function Slide2() {
       </motion.p>
 
       <motion.p {...up(0.48)}
-        className="font-semibold text-[#1B2A6B]/75 leading-snug"
-        style={{ fontSize: 'clamp(0.92rem, 1.2vw, 1.1rem)' }}
+        className="font-semibold text-[#1B2A6B]/75 leading-snug max-md:text-[0.88rem] md:text-[clamp(0.92rem,1.2vw,1.1rem)]"
       >
         {s.tagline}
       </motion.p>

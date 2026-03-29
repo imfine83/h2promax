@@ -34,31 +34,12 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
         style={{ bottom: -180, right: -180, width: 520, height: 520, borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
 
-      {/* Mobile: image on top (contain — без обрезки), текст ниже по центру колонки */}
-      <div
-        className="md:hidden w-full flex-[0_0_auto] relative overflow-hidden flex items-center justify-center"
-        style={{
-          minHeight: 'min(36vh, 240px)',
-          maxHeight: 'min(44vh, 300px)',
-          backgroundColor: bg,
-        }}
-      >
-        <div
-          className="absolute inset-3 sm:inset-4"
-          style={{
-            backgroundImage: `url(${src})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: `linear-gradient(to bottom, transparent 55%, ${bg})` }}
-        />
-      </div>
-
-      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto px-5 sm:px-6 pt-2 pb-28 w-full max-w-lg mx-auto">
+      {/*
+        Mobile: только HTML-текст. Полноразмерная картинка сверху убрана — на PNG уже
+        вшит тот же заголовок/абзац, что и в children, из-за этого дублировался контент
+        (ПК: текст слева, иллюстрация справа без повтора).
+      */}
+      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-32 w-full max-w-lg mx-auto">
         {children}
       </div>
 

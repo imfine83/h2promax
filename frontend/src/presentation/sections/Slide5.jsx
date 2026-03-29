@@ -72,18 +72,21 @@ function StatCard({ value, color, icon, prefix, label, delay }) {
       initial={{ opacity: 0, y: 48 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col items-center text-center"
+      className="flex flex-col items-center text-center px-1"
       style={{ flex: '1 1 0', minWidth: 0 }}
     >
-      <div className="mb-4 md:mb-6">{icon}</div>
-      <div className="w-full h-px mb-4 md:mb-6" style={{ background: 'rgba(27,42,107,0.12)' }}/>
-      <p className="text-[#1B2A6B]/45 font-semibold uppercase tracking-widest mb-1 text-[9px] md:text-[11px]">
+      <div className="mb-3 scale-[0.78] origin-top md:mb-6 md:scale-100">{icon}</div>
+      <div className="w-full h-px mb-3 md:mb-6" style={{ background: 'rgba(27,42,107,0.12)' }}/>
+      <p className="text-[#1B2A6B]/45 font-semibold uppercase tracking-widest mb-1 text-[8px] md:text-[11px]">
         {prefix}
       </p>
-      <p className="font-black leading-none mb-2 md:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 5.5rem)', color }}>
-        {num}<span style={{ fontSize: '65%' }}>%</span>
+      <p
+        className="font-black leading-none mb-1.5 tabular-nums max-md:text-[clamp(1.55rem,9vw,2.35rem)] md:mb-4 md:text-[clamp(2.2rem,6vw,5.5rem)]"
+        style={{ color }}
+      >
+        {num}<span className="text-[65%]">%</span>
       </p>
-      <p className="text-[#1B2A6B]/60 font-medium leading-snug whitespace-pre-line text-xs md:text-sm">
+      <p className="text-[#1B2A6B]/60 font-medium leading-snug whitespace-pre-line text-[11px] leading-tight md:text-sm md:leading-snug">
         {label}
       </p>
     </motion.div>
@@ -104,13 +107,12 @@ export default function Slide5() {
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.0, ease: [0.16, 1, 0.3, 1] }}
-          className="font-black text-[#1B2A6B] text-center leading-tight mb-8 md:mb-14"
-          style={{ fontSize: 'clamp(1.3rem, 3.2vw, 3rem)' }}
+          className="font-black text-[#1B2A6B] text-center leading-snug mb-6 max-md:px-1 max-md:text-[clamp(1rem,4.2vw,1.2rem)] md:mb-14 md:leading-tight md:text-[clamp(1.3rem,3.2vw,3rem)]"
         >
           {s.headline}
         </motion.h2>
 
-        <div className="flex flex-col gap-10 sm:flex-row sm:gap-6 md:gap-8 w-full items-stretch" style={{ maxWidth: 960 }}>
+        <div className="flex flex-col gap-7 sm:flex-row sm:gap-6 md:gap-8 w-full items-stretch max-w-[min(100%,20rem)] mx-auto sm:max-w-[960px]">
           {statValues.map((sv, i) => (
             <StatCard
               key={i}
