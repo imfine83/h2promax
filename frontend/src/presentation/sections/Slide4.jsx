@@ -33,7 +33,14 @@ export default function Slide4() {
         </div>
       </div>
 
-      <div style={patch({ top: '6%', left: '47.2%', width: '32.8%', padding: '12px 14px' })}>
+      <div
+        style={patch({
+          top: '32.2%',
+          left: '47.2%',
+          width: '32.8%',
+          padding: '12px 14px 14px 14px',
+        })}
+      >
         <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           2. {s.steps[1].title}
         </div>
@@ -42,7 +49,15 @@ export default function Slide4() {
         </div>
       </div>
 
-      <div style={patch({ top: '50.5%', left: '47.2%', width: '32.8%', padding: '12px 14px' })}>
+      <div
+        style={patch({
+          top: '47.8%',
+          left: '45.5%',
+          width: '35.5%',
+          minHeight: '21%',
+          padding: '12px 16px 18px 14px',
+        })}
+      >
         <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           3. {s.steps[2].title}
         </div>
