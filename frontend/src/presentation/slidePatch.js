@@ -19,6 +19,23 @@ export function patchPanel(bg) {
   }
 }
 
+/**
+ * Плашки поверх PNG со встроенным текстом: плотный фон без «стекла»,
+ * чтобы старые надписи не просвечивали.
+ */
+export function patchPanelMask(bg) {
+  return {
+    position: 'absolute',
+    zIndex: 2,
+    boxSizing: 'border-box',
+    backgroundColor: bg,
+    borderRadius: 12,
+    border: '1px solid rgba(27, 42, 107, 0.22)',
+    boxShadow: '0 2px 14px rgba(0, 0, 0, 0.07)',
+    overflow: 'hidden',
+  }
+}
+
 /** Средние: подзаголовки секций */
 export function patchBand(bg) {
   return {
