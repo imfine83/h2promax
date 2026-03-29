@@ -20,7 +20,7 @@ export const heroFeatures = [
 
 export const benefits = [
 {
-  title: 'Fuel savings 20–40%',
+  title: 'Fuel savings 20–65%',
   description: 'Results are confirmed by measurements on your equipment. Payback — from 12 to 35 days',
   image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png'
 },

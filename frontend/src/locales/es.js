@@ -19,7 +19,7 @@ export const es = {
     subtitle1: 'Beneficios del sistema',
     subtitle2: '',
     items: [
-      { title: 'Ahorro de combustible 20–40%', description: 'Los resultados son confirmados por mediciones en su equipo. Retorno de inversión — de 12 a 35 días', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
+      { title: 'Ahorro de combustible 20–65%', description: 'Los resultados son confirmados por mediciones en su equipo. Retorno de inversión — de 12 a 35 días', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
       { title: 'El motor funciona más suave y por más tiempo', description: 'Menos carga, menor desgaste, estabilización de temperatura desde los primeros viajes', image: 'https://static3.tildacdn.com/tild3534-3066-4264-b464-303232656238/2_2.png' },
       { title: 'Sin riesgos para la garantía y el motor', description: 'Instalación según normativas oficiales, sin modificaciones complejas', image: 'https://static3.tildacdn.com/tild3061-6362-4164-b166-393539666330/2_3.png' },
       { title: 'Resultados transparentes y medibles', description: 'Cada paso es confirmado por medición antes/después bajo supervisión de ingenieros', image: 'https://static3.tildacdn.com/tild6463-3835-4734-b966-306132666339/2_4.png' },

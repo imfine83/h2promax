@@ -19,7 +19,7 @@ export const en = {
     subtitle1: 'Benefits of the',
     subtitle2: 'system',
     items: [
-      { title: 'Fuel savings 20–40%', description: 'Results are confirmed by measurements on your equipment. Payback — from 12 to 35 days', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
+      { title: 'Fuel savings 20–65%', description: 'Results are confirmed by measurements on your equipment. Payback — from 12 to 35 days', image: 'https://static3.tildacdn.com/tild6166-6232-4664-b137-336531346634/2_1.png' },
       { title: 'Engine runs smoother and longer', description: 'Less load, reduced wear, temperature stabilization from the first trips', image: 'https://static3.tildacdn.com/tild3534-3066-4264-b464-303232656238/2_2.png' },
       { title: 'No risks for warranty and engine', description: 'Installation according to official regulations, without complex modifications', image: 'https://static3.tildacdn.com/tild3061-6362-4164-b166-393539666330/2_3.png' },
       { title: 'Transparent, measurable results', description: 'Every step is confirmed by before/after measurement under engineer supervision', image: 'https://static3.tildacdn.com/tild6463-3835-4734-b966-306132666339/2_4.png' },
