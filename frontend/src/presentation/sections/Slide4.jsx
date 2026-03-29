@@ -1,5 +1,6 @@
 import { useLanguage } from '../../contexts/LanguageContext'
 import SlideImageFrame from '../components/SlideImageFrame'
+import { patchPanel } from '../slidePatch'
 
 const BG = '#EBEBE7'
 const NAVY = '#1B2A6B'
@@ -9,18 +10,12 @@ export default function Slide4() {
   const { t } = useLanguage()
   const s = t.slides.slide4
 
-  const patch = (style) => ({
-    position: 'absolute',
-    backgroundColor: BG,
-    boxSizing: 'border-box',
-    zIndex: 2,
-    ...style,
-  })
+  const base = patchPanel(BG)
+  const patch = (extra) => ({ ...base, ...extra })
 
   return (
     <SlideImageFrame bg={BG} src="/slides/slide_04.png">
-      {/* Заголовок по центру верха */}
-      <div style={patch({ top: '0.8%', left: '4%', right: '4%', padding: '8px 14px', textAlign: 'center' })}>
+      <div style={patch({ top: '0.6%', left: '3.5%', right: '3.5%', padding: '12px 18px', textAlign: 'center' })}>
         <span
           className="font-black block leading-tight"
           style={{ color: NAVY, fontSize: 'clamp(0.78rem, 1.9vw, 1.55rem)', lineHeight: 1.15 }}
@@ -29,42 +24,38 @@ export default function Slide4() {
         </span>
       </div>
 
-      {/* 1 — снизу слева у генератора */}
-      <div style={patch({ top: '50%', left: '0%', width: '32.5%', padding: '8px 10px 10px 8px' })}>
-        <div className="font-black mb-1" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
+      <div style={patch({ top: '49.5%', left: '0.4%', width: '32.8%', padding: '12px 14px 14px 12px' })}>
+        <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           1. {s.steps[0].title}
         </div>
-        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.4 }}>
+        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.45 }}>
           {s.steps[0].body}
         </div>
       </div>
 
-      {/* 2 — сверху справа у впуска */}
-      <div style={patch({ top: '6.5%', left: '47.5%', width: '32.5%', padding: '8px 10px' })}>
-        <div className="font-black mb-1" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
+      <div style={patch({ top: '6%', left: '47.2%', width: '32.8%', padding: '12px 14px' })}>
+        <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           2. {s.steps[1].title}
         </div>
-        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.4 }}>
+        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.45 }}>
           {s.steps[1].body}
         </div>
       </div>
 
-      {/* 3 — снизу по центру у цилиндра */}
-      <div style={patch({ top: '51%', left: '47.5%', width: '32.5%', padding: '8px 10px' })}>
-        <div className="font-black mb-1" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
+      <div style={patch({ top: '50.5%', left: '47.2%', width: '32.8%', padding: '12px 14px' })}>
+        <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           3. {s.steps[2].title}
         </div>
-        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.4 }}>
+        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.45 }}>
           {s.steps[2].body}
         </div>
       </div>
 
-      {/* 4 — справа у выпуска */}
-      <div style={patch({ top: '33%', left: '75.5%', right: '0.5%', padding: '8px 8px 8px 10px' })}>
-        <div className="font-black mb-1" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
+      <div style={patch({ top: '32.2%', left: '75%', right: '0.4%', padding: '12px 12px 12px 14px' })}>
+        <div className="font-black mb-1.5" style={{ color: NAVY, fontSize: 'clamp(0.58rem, 1.15vw, 0.9rem)' }}>
           4. {s.steps[3].title}
         </div>
-        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.4 }}>
+        <div style={{ color: BODY, fontSize: 'clamp(0.52rem, 1vw, 0.78rem)', lineHeight: 1.45 }}>
           {s.steps[3].body}
         </div>
       </div>
