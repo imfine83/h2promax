@@ -7,7 +7,7 @@ export const SLIDE_IMG = { w: 1912, h: 1067 }
 export default function SlideImageFrame({ bg, src, children }) {
   return (
     <div
-      className="w-full h-full flex items-center justify-center box-border
+      className="w-full h-full min-h-0 flex-1 flex items-center justify-center box-border
         px-2 sm:px-3 md:px-0
         pt-[max(3.25rem,env(safe-area-inset-top,0px))]
         pb-[max(5.75rem,env(safe-area-inset-bottom,0px))]

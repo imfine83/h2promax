@@ -25,7 +25,7 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
   const imgOnRight = imageSide === 'right'
 
   return (
-    <div className="w-full h-full relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
+    <div className="w-full h-full min-h-0 flex-1 relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
       {/* Decorative ambient circles */}
       <div className="absolute pointer-events-none"
         style={{ top: -160, left: -160, width: 480, height: 480, borderRadius: '50%',
@@ -35,12 +35,40 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
           background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
 
       {/*
-        Mobile: только HTML-текст. Полноразмерная картинка сверху убрана — на PNG уже
-        вшит тот же заголовок/абзац, что и в children, из-за этого дублировался контент
-        (ПК: текст слева, иллюстрация справа без повтора).
+        Mobile: как на ПК по смыслу — сначала текст, снизу иллюстрация (не рядом с тем же
+        абзацем в одном экране = нет «двойного» чтения). Верх PNG притемняем градиентом,
+        если на макете дублируется заголовок.
       */}
-      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-32 w-full max-w-lg mx-auto">
-        {children}
+      <div className="md:hidden flex flex-col flex-1 min-h-0 h-full w-full relative z-10">
+        <div className="flex-1 min-h-0 overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-3 w-full max-w-lg mx-auto">
+          {children}
+        </div>
+        <div
+          className="relative flex-shrink-0 w-full mt-auto border-t border-[rgba(27,42,107,0.06)]"
+          style={{
+            height: 'clamp(11rem, 32vh, 15.5rem)',
+            minHeight: 168,
+            backgroundColor: bg,
+            paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))',
+          }}
+        >
+          <div
+            className="absolute left-2 right-2 top-2 bottom-1"
+            style={{
+              backgroundImage: `url(${src})`,
+              backgroundSize: 'contain',
+              backgroundPosition: imgOnRight ? 'right bottom' : 'left bottom',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 pointer-events-none z-[1]"
+            style={{
+              height: '42%',
+              background: `linear-gradient(to bottom, ${bg} 0%, ${bg} 35%, transparent 100%)`,
+            }}
+          />
+        </div>
       </div>
 
       {/* Desktop: side by side */}

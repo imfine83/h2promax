@@ -117,8 +117,8 @@ export default function PresentationApp({ onClose }) {
 
   return (
     <div
-      className="w-screen h-[100dvh] max-h-[100dvh] overflow-hidden relative bg-[#EAEAE5] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
-      style={{ touchAction: 'none' }}
+      className="w-full min-w-0 min-h-0 h-[100dvh] max-h-[100dvh] overflow-hidden relative bg-[#EAEAE5] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
+      style={{ touchAction: 'none', minHeight: '-webkit-fill-available' }}
     >
       {/* Close button */}
       {onClose && (
@@ -139,9 +139,11 @@ export default function PresentationApp({ onClose }) {
           initial="enter"
           animate="center"
           exit="exit"
-          className="absolute inset-0"
+          className="absolute inset-0 min-h-0 flex flex-col"
         >
-          <SlideComponent onNavigate={navigate} currentIndex={current} />
+          <div className="flex flex-1 min-h-0 w-full h-full flex-col">
+            <SlideComponent onNavigate={navigate} currentIndex={current} />
+          </div>
         </motion.div>
       </AnimatePresence>
 

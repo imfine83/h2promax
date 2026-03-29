@@ -3,7 +3,7 @@ export const SLIDE_BG = '#E9E9E4'
 export default function SlideWrapper({ children, className = '', bg = SLIDE_BG }) {
   return (
     <div
-      className={`w-full h-full relative overflow-hidden ${className}`}
+      className={`w-full h-full min-h-0 flex-1 relative overflow-hidden ${className}`}
       style={{ background: bg }}
     >
       {/* Decorative corner ellipses — match PDF design language */}

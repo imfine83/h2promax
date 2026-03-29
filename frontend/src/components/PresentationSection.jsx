@@ -57,8 +57,8 @@ export default function PresentationSection() {
               </p>
             </div>
 
-            {/* Right — preview grid */}
-            <div className="grid grid-cols-2 gap-3">
+            {/* Right — превью: на узком экране одна колонка на всю ширину (не два слайда «вполовину») */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
               {[
                 { src: '/slides/slide_01.png', label: 'Save up to 65%' },
                 { src: slide2Preview, label: t.slides.slide2.eyebrow },
@@ -67,14 +67,14 @@ export default function PresentationSection() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group relative overflow-hidden cursor-pointer hover:-translate-y-1 transition-all duration-300"
+                  className="group relative overflow-hidden cursor-pointer rounded-sm hover:-translate-y-1 transition-all duration-300 aspect-[16/10] sm:aspect-auto sm:h-28"
                   style={{ border: '1px solid rgba(57,255,20,0.1)' }}
                   onClick={() => setOpen(true)}
                 >
                   <img
                     src={item.src}
                     alt={item.label}
-                    className="w-full h-28 object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                    className="h-full w-full object-cover object-center sm:h-28 sm:object-top group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/80 to-transparent" />
                   <p className="absolute bottom-2 left-2 text-[10px] text-white/50 font-mono-cyber">{item.label}</p>
@@ -93,7 +93,8 @@ export default function PresentationSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.4 } }}
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
-            className="fixed inset-0 z-[9999]"
+            className="fixed inset-0 z-[9999] h-[100dvh] w-full min-h-[100dvh] max-h-[100dvh] overflow-hidden"
+            style={{ minHeight: '-webkit-fill-available' }}
           >
             <PresentationApp onClose={() => setOpen(false)} />
           </motion.div>

@@ -16,7 +16,7 @@ export default function Slide6() {
   const afterLabel  = t.slides.slide6after
 
   return (
-    <div className="w-full h-full relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
+    <div className="w-full h-full min-h-0 flex-1 relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
       {/* Decorative ambient circles */}
       <div className="absolute pointer-events-none"
         style={{ top: -160, left: -160, width: 480, height: 480, borderRadius: '50%',
@@ -25,36 +25,64 @@ export default function Slide6() {
         style={{ bottom: -180, right: -180, width: 520, height: 520, borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
 
-      {/* Mobile: без верхнего PNG (там те же тексты + дубль снизу). Бейджи Before/After — в колонке текста. */}
-      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-32 w-full max-w-lg mx-auto">
-        <div className="flex justify-end gap-1 mb-3">
-          <span className="text-[10px] font-bold px-2 py-1 rounded"
-            style={{ background: 'rgba(27,42,107,0.12)', color: '#1B2A6B' }}>
-            {beforeLabel}
-          </span>
-          <span className="text-[10px] font-bold px-2 py-1 rounded"
-            style={{ background: '#1B2A6B', color: '#fff' }}>
-            {afterLabel}
-          </span>
-        </div>
-        <p className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-4 text-[10px]">{s.eyebrow}</p>
-        <h2 className="font-black text-[#1B2A6B] leading-snug mb-4 text-[1.35rem] sm:text-xl">{s.headline}</h2>
-        <div className="space-y-4">
-          {s.bullets.map((b) => (
-            <div key={b.title} className="flex gap-3">
-              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center"
-                style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}>
-                <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                  <polyline points="1,4.5 4,7.5 10,1" stroke="#22A756" strokeWidth="2"
-                    strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <div>
-                <p className="font-bold text-[#1B2A6B] mb-0.5 text-sm">{b.title}:</p>
-                <p className="text-[#1B2A6B]/55 leading-relaxed text-xs">{b.body}</p>
+      {/* Mobile: текст сверху, иллюстрация снизу (как десктоп, но колонкой) */}
+      <div className="md:hidden flex flex-col flex-1 min-h-0 h-full w-full relative z-10">
+        <div className="flex-1 min-h-0 overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-3 w-full max-w-lg mx-auto">
+          <div className="flex justify-end gap-1 mb-3">
+            <span className="text-[10px] font-bold px-2 py-1 rounded"
+              style={{ background: 'rgba(27,42,107,0.12)', color: '#1B2A6B' }}>
+              {beforeLabel}
+            </span>
+            <span className="text-[10px] font-bold px-2 py-1 rounded"
+              style={{ background: '#1B2A6B', color: '#fff' }}>
+              {afterLabel}
+            </span>
+          </div>
+          <p className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-4 text-[10px]">{s.eyebrow}</p>
+          <h2 className="font-black text-[#1B2A6B] leading-snug mb-4 text-[1.35rem] sm:text-xl">{s.headline}</h2>
+          <div className="space-y-4 pb-4">
+            {s.bullets.map((b) => (
+              <div key={b.title} className="flex gap-3">
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center"
+                  style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}>
+                  <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                    <polyline points="1,4.5 4,7.5 10,1" stroke="#22A756" strokeWidth="2"
+                      strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="font-bold text-[#1B2A6B] mb-0.5 text-sm">{b.title}:</p>
+                  <p className="text-[#1B2A6B]/55 leading-relaxed text-xs">{b.body}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        <div
+          className="relative flex-shrink-0 w-full mt-auto border-t border-[rgba(27,42,107,0.06)]"
+          style={{
+            height: 'clamp(11rem, 32vh, 15.5rem)',
+            minHeight: 168,
+            backgroundColor: bg,
+            paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))',
+          }}
+        >
+          <div
+            className="absolute left-2 right-2 top-2 bottom-1"
+            style={{
+              backgroundImage: 'url(/slides/slide_06.png)',
+              backgroundSize: 'contain',
+              backgroundPosition: 'right bottom',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 pointer-events-none z-[1]"
+            style={{
+              height: '38%',
+              background: `linear-gradient(to bottom, ${bg} 0%, ${bg} 28%, transparent 100%)`,
+            }}
+          />
         </div>
       </div>
 
