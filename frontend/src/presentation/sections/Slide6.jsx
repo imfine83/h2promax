@@ -11,7 +11,7 @@ const up = (d = 0) => ({
 
 const textCol =
   'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col justify-center overflow-y-auto ' +
-  '[&_h2]:text-balance max-md:px-1.5 pt-14 pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+  'max-md:pl-12 max-md:pr-1.5 [&_h2]:text-balance pt-14 pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
   'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
 export default function Slide6() {
@@ -22,10 +22,7 @@ export default function Slide6() {
 
   return (
     <div
-      className={
-        'relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden ' +
-        'max-md:pl-[max(3rem,env(safe-area-inset-left,0px))] max-md:pr-[max(3rem,env(safe-area-inset-right,0px))]'
-      }
+      className="relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden"
       style={{ background: bg }}
     >
       <div

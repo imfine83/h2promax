@@ -8,7 +8,7 @@ export default function SlideImageFrame({ bg, src, children }) {
   return (
     <div
       className="w-full h-full min-h-0 flex-1 flex items-center justify-center box-border
-        px-2 sm:px-3 md:px-0
+        px-0
         pt-[max(3.25rem,env(safe-area-inset-top,0px))]
         pb-[max(5.75rem,env(safe-area-inset-bottom,0px))]
         md:py-0"
