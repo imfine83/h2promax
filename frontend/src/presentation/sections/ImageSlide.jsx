@@ -21,31 +21,36 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
   )
 }
 
-/** Та же сетка на всех ширинах: текст ~44%, иллюстрация ~56%, фон auto 112% по высоте (как на ПК) */
+/**
+ * md+: как на ПК — ряд 44% / 56%, фон auto 112%, стык к тексту.
+ * max-md: колонка (текст | картинка снизу на всю ширину + contain) — иначе узкая колонка даёт только вертикальную полоску PNG.
+ */
 export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
   const imgOnRight = imageSide === 'right'
 
-  /** Без внешних max-md pl/pr у ряда: доли 44/56 считаются от той же ширины, что на ПК (корень уже даёт safe-area). Отступ только у текста со стороны стрелки. */
-  const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-1.5' : 'max-md:pl-1.5 max-md:pr-12'
+  const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-4' : 'max-md:pl-4 max-md:pr-12'
 
   const textCol =
-    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col justify-center overflow-y-auto ' +
+    'relative z-10 flex min-h-0 min-w-0 w-full flex-col justify-center overflow-y-auto text-left ' +
+    'max-md:flex-shrink-0 max-md:max-h-[46vh] ' +
     textColMobilePad +
-    ' [&_h2]:text-balance pt-14 pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+    ' [&_h2]:text-balance max-md:pt-[max(4rem,calc(env(safe-area-inset-top,0px)+2.5rem))] max-md:pb-3 ' +
+    'md:max-h-none md:w-auto md:flex-[0_0_44%] md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
+  const imageBgPositionMd = imgOnRight ? 'md:bg-right' : 'md:bg-left'
+
   const imageCol = (
-    <div
-      className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-no-repeat"
-      style={{
-        backgroundImage: `url(${src})`,
-        backgroundSize: 'auto 112%',
-        backgroundPosition: imgOnRight ? 'right center' : 'left center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <div className="relative min-h-0 min-w-0 w-full flex-1 overflow-hidden max-md:min-h-[38vh] max-md:pb-24 md:pb-0">
       <div
-        className="pointer-events-none absolute inset-0"
+        className={
+          `absolute inset-0 bg-no-repeat max-md:bg-contain max-md:bg-center ` +
+          `md:bg-[length:auto_112%] ${imageBgPositionMd}`
+        }
+        style={{ backgroundImage: `url(${src})` }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 max-md:opacity-20 md:opacity-100"
         style={{
           background: imgOnRight
             ? `linear-gradient(to right, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)`
@@ -61,7 +66,7 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
 
   return (
     <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden"
+      className="relative flex h-full min-h-0 w-full flex-1 flex-col items-stretch overflow-hidden md:flex-row"
       style={{ background: bg }}
     >
       <div
