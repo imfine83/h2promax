@@ -283,6 +283,8 @@ export const es = {
       footer: 'Seleccionamos el modelo específico de generador según el volumen de su motor para garantizar la máxima eficiencia.',
     },
     slide11: {
+      image: '/slides/slide_11_es.png',
+      hideOverlays: true,
       title: 'Esto no es un gasto. Es una inversión en la eficiencia de su flota.',
       body: 'Sabemos que su flota puede usar menos combustible. Para las empresas, un menor consumo de combustible se traduce directamente en una mejor rentabilidad. Optimice sus operaciones, extienda la vida de sus vehículos y vea un retorno claro de la inversión con H2 ELEMENT.',
       box: 'Trabajamos con personas físicas, personas jurídicas y organismos gubernamentales. Consulte nuestras condiciones para asociaciones comerciales.',

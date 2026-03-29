@@ -284,6 +284,8 @@ export const en = {
       footer: "We select the specific generator model based on your engine's volume to guarantee maximum efficiency.",
     },
     slide11: {
+      image: '/slides/slide_11_en.png',
+      hideOverlays: true,
       title: "This isn't a cost. It's an investment in your fleet's efficiency.",
       body: "We know your fleet can use less fuel. For businesses, lower fuel consumption translates directly to a healthier bottom line. Optimize your operations, extend the life of your vehicles, and see a clear return on investment with H2 ELEMENT.",
       box: 'We work with individuals, legal entities, and government agencies. Ask about our terms for business partnerships.',

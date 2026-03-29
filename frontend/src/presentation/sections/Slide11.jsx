@@ -10,9 +10,14 @@ const BODY = 'rgba(27,42,107,0.82)'
 export default function Slide11() {
   const { t } = useLanguage()
   const s = t.slides.slide11
+  const src = s.image || '/slides/slide_11.png'
+
+  if (s.hideOverlays) {
+    return <SlideImageFrame bg={BG} src={src} />
+  }
 
   return (
-    <SlideImageFrame bg={BG} src="/slides/slide_11.png">
+    <SlideImageFrame bg={BG} src={src}>
       <div style={{ ...patchPanel(BG), top: '2.6%', left: '2.6%', width: '47.5%', padding: '12px 16px 14px' }}>
         <span className="font-black block leading-[1.12]" style={{ color: NAVY, fontSize: 'clamp(0.72rem, 1.75vw, 1.48rem)' }}>
           {s.title}
