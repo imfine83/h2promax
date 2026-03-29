@@ -9,11 +9,16 @@ const LABEL = 'rgba(27,42,107,0.78)'
 export default function Slide7() {
   const { t } = useLanguage()
   const s = t.slides.slide7
+  const src = s.image || '/slides/slide_07.png'
 
   const labelSize = { fontSize: 'clamp(0.5rem, 1vw, 0.74rem)' }
 
+  if (s.hideOverlays) {
+    return <SlideImageFrame bg={BG} src={src} />
+  }
+
   return (
-    <SlideImageFrame bg={BG} src="/slides/slide_07.png">
+    <SlideImageFrame bg={BG} src={src}>
       <div style={{ ...patchPanel(BG), top: '0.8%', left: '3.5%', right: '3.5%', padding: '12px 18px', textAlign: 'center' }}>
         <span className="font-black block leading-tight" style={{ color: NAVY, fontSize: 'clamp(0.75rem, 1.85vw, 1.5rem)', lineHeight: 1.18 }}>
           {s.title}

@@ -274,6 +274,8 @@ export const en = {
     slide6before: 'Before',
     slide6after: 'After H2 ELEMENT',
     slide7: {
+      image: '/slides/slide_07_en.png',
+      hideOverlays: true,
       title: 'A universal solution for all types of internal combustion engines',
       engineTypesTitle: 'Supported Engine Types',
       vehicleTypesTitle: 'Supported Vehicle Types',
