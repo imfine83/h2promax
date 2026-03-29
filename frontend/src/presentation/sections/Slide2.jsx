@@ -14,7 +14,7 @@ export default function Slide2() {
   const imageSrc = s.image || '/slides/slide_02.png'
 
   return (
-    <SplitImageSlide src={imageSrc} imageSide="right" bg="#ECEAE3" mobileBgHeightPct={92}>
+    <SplitImageSlide src={imageSrc} imageSide="right" bg="#ECEAE3" mobileBgHeightPct={86}>
       <motion.p {...up(0.05)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}

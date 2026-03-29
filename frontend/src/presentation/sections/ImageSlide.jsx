@@ -30,7 +30,7 @@ export function SplitImageSlide({
   imageSide = 'right',
   bg = '#EAEAE5',
   children,
-  /** Процент высоты фона на max-md; для JIT Tailwind заданы варианты 92 и 96 */
+  /** Процент высоты фона на max-md; для JIT Tailwind заданы 86, 92 и 96 */
   mobileBgHeightPct = 96,
 }) {
   const imgOnRight = imageSide === 'right'
@@ -45,7 +45,11 @@ export function SplitImageSlide({
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const mobileLengthClass =
-    mobileBgHeightPct === 92 ? 'max-md:bg-[length:auto_92%]' : 'max-md:bg-[length:auto_96%]'
+    mobileBgHeightPct === 86
+      ? 'max-md:bg-[length:auto_86%]'
+      : mobileBgHeightPct === 92
+        ? 'max-md:bg-[length:auto_92%]'
+        : 'max-md:bg-[length:auto_96%]'
 
   const imageBgLayer =
     `absolute inset-0 bg-no-repeat ${mobileLengthClass} md:bg-[length:auto_112%] ` +
