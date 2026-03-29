@@ -96,8 +96,9 @@ export default function Slide5() {
 
   return (
     <SlideWrapper>
-      <div className="w-full h-full flex flex-col items-center justify-center relative z-10 px-4 md:px-8"
-        style={{ paddingTop: 'clamp(1.5rem, 5%, 4rem)', paddingBottom: 'clamp(2.5rem, 6%, 4rem)' }}>
+      <div
+        className="w-full h-full flex flex-col items-center justify-center relative z-10 px-4 sm:px-5 md:px-8 pt-[clamp(1.25rem,4vh,4rem)] pb-28 md:pb-[clamp(2rem,6%,4rem)]"
+      >
 
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
@@ -109,7 +110,7 @@ export default function Slide5() {
           {s.headline}
         </motion.h2>
 
-        <div className="flex flex-row gap-4 md:gap-8 w-full" style={{ maxWidth: 960 }}>
+        <div className="flex flex-col gap-10 sm:flex-row sm:gap-6 md:gap-8 w-full items-stretch" style={{ maxWidth: 960 }}>
           {statValues.map((sv, i) => (
             <StatCard
               key={i}

@@ -4,7 +4,7 @@ export default function SlideProgress({ current, total, onNavigate, currentIndex
   const pct = (current / total) * 100
 
   return (
-    <div className="absolute bottom-4 left-0 right-0 z-30 flex items-center justify-center gap-4 select-none px-4 md:bottom-8 md:right-9 md:left-auto md:justify-end">
+    <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 flex items-center justify-center gap-3 sm:gap-4 select-none px-3 sm:px-4 md:bottom-8 md:right-9 md:left-auto md:justify-end">
 
       {/* Slide counter — hidden on very small screens */}
       <div className="hidden sm:flex items-baseline gap-1">

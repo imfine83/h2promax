@@ -53,8 +53,9 @@ export default function Slide10() {
 
   return (
     <SlideWrapper>
-      <div className="w-full h-full flex flex-col relative z-10 overflow-y-auto"
-        style={{ padding: 'clamp(1.5rem, 5%, 4rem) clamp(1.5rem, 6%, 6rem)' }}>
+      <div
+        className="w-full h-full flex flex-col relative z-10 overflow-y-auto px-4 sm:px-6 md:px-8 pt-[clamp(1.25rem,4vh,4rem)] pb-28 md:pb-[clamp(1.5rem,5%,4rem)]"
+      >
 
         <motion.h2 {...up(0.0)}
           className="font-black text-[#1B2A6B] text-center mb-6 md:mb-12"

@@ -6,14 +6,20 @@ export const SLIDE_IMG = { w: 1912, h: 1067 }
 
 export default function SlideImageFrame({ bg, src, children }) {
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ background: bg }}>
+    <div
+      className="w-full h-full flex items-center justify-center box-border
+        px-2 sm:px-3 md:px-0
+        pt-[max(3.25rem,env(safe-area-inset-top,0px))]
+        pb-[max(5.75rem,env(safe-area-inset-bottom,0px))]
+        md:py-0"
+      style={{ background: bg }}
+    >
       <div
-        className="relative"
-        style={{
-          aspectRatio: `${SLIDE_IMG.w} / ${SLIDE_IMG.h}`,
-          width: `min(100%, calc(100vh * ${SLIDE_IMG.w} / ${SLIDE_IMG.h}))`,
-          maxHeight: '100%',
-        }}
+        className={
+          'relative mx-auto max-w-full aspect-[1912/1067] ' +
+          'max-md:h-[min(calc(100dvh-9rem),calc(100vw*1067/1912))] max-md:w-auto ' +
+          'md:h-auto md:max-h-full md:w-[min(100%,calc(100vh*1912/1067))]'
+        }
       >
         <img
           src={src}

@@ -40,7 +40,7 @@ export default function Slide1() {
       </div>
 
       {/* Center content */}
-      <div className="w-full h-full flex flex-col items-center justify-center px-6 md:px-8 text-center relative z-10">
+      <div className="w-full h-full flex flex-col items-center justify-center px-5 sm:px-6 md:px-8 text-center relative z-10 pt-14 pb-28 md:pt-0 md:pb-0">
         <motion.div
           variants={stagger}
           initial="hidden"

@@ -116,12 +116,15 @@ export default function PresentationApp({ onClose }) {
   const SlideComponent = SLIDES[current];
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative bg-[#EAEAE5]" style={{ touchAction: 'none' }}>
+    <div
+      className="w-screen h-[100dvh] max-h-[100dvh] overflow-hidden relative bg-[#EAEAE5] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]"
+      style={{ touchAction: 'none' }}
+    >
       {/* Close button */}
       {onClose && (
         <button
           onClick={onClose}
-          className="absolute top-4 left-4 z-50 flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2A6B]/10 hover:bg-[#1B2A6B]/20 active:bg-[#1B2A6B]/30 text-[#1B2A6B] text-[10px] font-bold tracking-widest transition-all rounded-sm"
+          className="absolute z-50 flex items-center gap-1.5 px-3 py-1.5 bg-[#1B2A6B]/10 hover:bg-[#1B2A6B]/20 active:bg-[#1B2A6B]/30 text-[#1B2A6B] text-[10px] font-bold tracking-widest transition-all rounded-sm top-[max(1rem,env(safe-area-inset-top,0px))] left-[max(1rem,env(safe-area-inset-left,0px))]"
           style={{ fontFamily: 'Orbitron, sans-serif' }}
         >
           ← BACK
@@ -143,7 +146,7 @@ export default function PresentationApp({ onClose }) {
       </AnimatePresence>
 
       {/* Mobile prev/next arrows — only visible on small screens */}
-      <div className="md:hidden absolute inset-y-0 left-0 w-12 flex items-center justify-start pl-1 z-40 pointer-events-none">
+      <div className="md:hidden absolute inset-y-0 left-0 w-11 sm:w-12 flex items-center justify-start pl-[max(0.25rem,env(safe-area-inset-left,0px))] z-40 pointer-events-none">
         {current > 0 && (
           <button
             onClick={() => navigate(current - 1)}
@@ -156,7 +159,7 @@ export default function PresentationApp({ onClose }) {
           </button>
         )}
       </div>
-      <div className="md:hidden absolute inset-y-0 right-0 w-12 flex items-center justify-end pr-1 z-40 pointer-events-none">
+      <div className="md:hidden absolute inset-y-0 right-0 w-11 sm:w-12 flex items-center justify-end pr-[max(0.25rem,env(safe-area-inset-right,0px))] z-40 pointer-events-none">
         {current < TOTAL - 1 && (
           <button
             onClick={() => navigate(current + 1)}

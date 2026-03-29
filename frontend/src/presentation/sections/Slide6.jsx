@@ -26,11 +26,24 @@ export default function Slide6() {
           background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
 
       {/* ── Mobile: image top, text below ── */}
-      <div className="md:hidden w-full flex-shrink-0 relative overflow-hidden" style={{ height: '42%' }}>
+      <div
+        className="md:hidden w-full flex-[0_0_auto] relative overflow-hidden flex items-center justify-center"
+        style={{
+          minHeight: 'min(36vh, 240px)',
+          maxHeight: 'min(44vh, 300px)',
+          backgroundColor: bg,
+        }}
+      >
         {/* Image */}
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'url(/slides/slide_06.png)', backgroundSize: 'cover',
-            backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }} />
+        <div
+          className="absolute inset-3 sm:inset-4"
+          style={{
+            backgroundImage: 'url(/slides/slide_06.png)',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
         {/* Mask the original Before/After text from image */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: `linear-gradient(to bottom, transparent 50%, ${bg})` }} />
@@ -47,7 +60,7 @@ export default function Slide6() {
         </div>
       </div>
 
-      <div className="md:hidden flex-1 relative z-10 flex flex-col justify-start overflow-y-auto px-6 pt-3 pb-16">
+      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto px-5 sm:px-6 pt-2 pb-28 w-full max-w-lg mx-auto">
         <p className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-4 text-[10px]">{s.eyebrow}</p>
         <h2 className="font-black text-[#1B2A6B] leading-[1.1] mb-5 text-2xl">{s.headline}</h2>
         <div className="space-y-4">

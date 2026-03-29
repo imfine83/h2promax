@@ -34,22 +34,31 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
         style={{ bottom: -180, right: -180, width: 520, height: 520, borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
 
-      {/* Mobile: image on top, text below */}
-      <div className="md:hidden w-full flex-shrink-0 relative overflow-hidden" style={{ height: '42%' }}>
+      {/* Mobile: image on top (contain — без обрезки), текст ниже по центру колонки */}
+      <div
+        className="md:hidden w-full flex-[0_0_auto] relative overflow-hidden flex items-center justify-center"
+        style={{
+          minHeight: 'min(36vh, 240px)',
+          maxHeight: 'min(44vh, 300px)',
+          backgroundColor: bg,
+        }}
+      >
         <div
-          className="absolute inset-0"
+          className="absolute inset-3 sm:inset-4"
           style={{
             backgroundImage: `url(${src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
           }}
         />
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: `linear-gradient(to bottom, transparent 50%, ${bg})` }} />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `linear-gradient(to bottom, transparent 55%, ${bg})` }}
+        />
       </div>
 
-      <div className="md:hidden flex-1 relative z-10 flex flex-col justify-start overflow-y-auto px-6 pt-3 pb-16">
+      <div className="md:hidden flex-1 min-h-0 relative z-10 flex flex-col justify-start overflow-y-auto px-5 sm:px-6 pt-2 pb-28 w-full max-w-lg mx-auto">
         {children}
       </div>
 
