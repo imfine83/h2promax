@@ -10,8 +10,8 @@ const up = (d = 0) => ({
 })
 
 const textCol =
-  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_46%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
-  'pl-14 pr-2 pt-14 pb-28 sm:pl-16 sm:pr-3 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_48%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
+  '[&_h2]:text-balance max-md:px-1.5 pt-14 pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
   'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
 export default function Slide6() {
@@ -21,7 +21,13 @@ export default function Slide6() {
   const afterLabel = t.slides.slide6after
 
   return (
-    <div className="relative flex h-full min-h-0 w-full flex-1 flex-row overflow-hidden" style={{ background: bg }}>
+    <div
+      className={
+        'relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden ' +
+        'max-md:pl-[max(3rem,env(safe-area-inset-left,0px))] max-md:pr-[max(3rem,env(safe-area-inset-right,0px))]'
+      }
+      style={{ background: bg }}
+    >
       <div
         className="pointer-events-none absolute"
         style={{
@@ -92,16 +98,14 @@ export default function Slide6() {
 
       <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-contain bg-no-repeat md:bg-[length:auto_112%]"
           style={{
             backgroundImage: 'url(/slides/slide_06.png)',
-            backgroundSize: 'auto 112%',
             backgroundPosition: 'right center',
-            backgroundRepeat: 'no-repeat',
           }}
         />
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 max-md:opacity-75 md:opacity-100"
           style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,233,227,0.6) 18%, transparent 46%)` }}
         />
         <div

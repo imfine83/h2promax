@@ -26,22 +26,23 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
   const imgOnRight = imageSide === 'right'
 
   const textCol =
-    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_46%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
-    'pl-14 pr-2 pt-14 pb-28 sm:pl-16 sm:pr-3 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_48%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
+    '[&_h2]:text-balance max-md:px-1.5 pt-14 pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const imageCol = (
     <div
-      className="relative min-h-0 min-w-0 flex-1 overflow-hidden"
+      className={
+        'relative min-h-0 min-w-0 flex-1 overflow-hidden bg-no-repeat ' +
+        'bg-contain md:bg-[length:auto_112%]'
+      }
       style={{
         backgroundImage: `url(${src})`,
-        backgroundSize: 'auto 112%',
         backgroundPosition: imgOnRight ? 'right center' : 'left center',
-        backgroundRepeat: 'no-repeat',
       }}
     >
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 max-md:opacity-75 md:opacity-100"
         style={{
           background: imgOnRight
             ? `linear-gradient(to right, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)`
@@ -57,7 +58,10 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
 
   return (
     <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-row overflow-hidden"
+      className={
+        'relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden ' +
+        'max-md:pl-[max(3rem,env(safe-area-inset-left,0px))] max-md:pr-[max(3rem,env(safe-area-inset-right,0px))]'
+      }
       style={{ background: bg }}
     >
       <div
