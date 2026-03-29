@@ -10,10 +10,10 @@ const up = (d = 0) => ({
 })
 
 const textCol =
-  'relative z-10 flex min-h-0 min-w-0 w-full flex-col justify-center overflow-y-auto text-left ' +
-  'max-md:flex-shrink-0 max-md:max-h-[46vh] max-md:pl-12 max-md:pr-4 ' +
-  '[&_h2]:text-balance max-md:pt-[max(4rem,calc(env(safe-area-inset-top,0px)+2.5rem))] max-md:pb-3 ' +
-  'md:max-h-none md:w-auto md:flex-[0_0_44%] md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col justify-center overflow-y-auto text-left ' +
+  'max-md:pl-12 max-md:pr-2 ' +
+  '[&_h2]:text-balance max-md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] ' +
+  'pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
   'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
 export default function Slide6() {
@@ -24,7 +24,7 @@ export default function Slide6() {
 
   return (
     <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-col items-stretch overflow-hidden md:flex-row"
+      className="relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden"
       style={{ background: bg }}
     >
       <div
@@ -95,13 +95,13 @@ export default function Slide6() {
         </div>
       </div>
 
-      <div className="relative min-h-0 min-w-0 w-full flex-1 overflow-hidden max-md:min-h-[38vh] max-md:pb-24 md:pb-0">
+      <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
         <div
-          className="absolute inset-0 bg-no-repeat max-md:bg-contain max-md:bg-center md:bg-[length:auto_112%] md:bg-right"
+          className="absolute inset-0 bg-right bg-no-repeat max-md:bg-cover md:bg-[length:auto_112%]"
           style={{ backgroundImage: 'url(/slides/slide_06.png)' }}
         />
         <div
-          className="pointer-events-none absolute inset-0 max-md:opacity-20 md:opacity-100"
+          className="pointer-events-none absolute inset-0"
           style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,233,227,0.6) 18%, transparent 46%)` }}
         />
         <div
