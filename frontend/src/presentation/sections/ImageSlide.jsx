@@ -21,94 +21,77 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
   )
 }
 
+/** Та же сетка, что на ПК: текст ~44% + иллюстрация ~56%, в одну строку на всех ширинах */
 export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
   const imgOnRight = imageSide === 'right'
 
+  const textCol =
+    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_46%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
+    'pl-14 pr-2 pt-14 pb-28 sm:pl-16 sm:pr-3 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+    'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
+
+  const imageCol = (
+    <div
+      className="relative min-h-0 min-w-0 flex-1 overflow-hidden"
+      style={{
+        backgroundImage: `url(${src})`,
+        backgroundSize: 'auto 112%',
+        backgroundPosition: imgOnRight ? 'right center' : 'left center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: imgOnRight
+            ? `linear-gradient(to right, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)`
+            : `linear-gradient(to left, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)`,
+        }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0"
+        style={{ height: 88, background: `linear-gradient(to bottom, transparent, ${bg})` }}
+      />
+    </div>
+  )
+
   return (
-    <div className="w-full h-full min-h-0 flex-1 relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
-      {/* Decorative ambient circles */}
-      <div className="absolute pointer-events-none"
-        style={{ top: -160, left: -160, width: 480, height: 480, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(155,158,168,0.22) 0%, transparent 65%)' }} />
-      <div className="absolute pointer-events-none"
-        style={{ bottom: -180, right: -180, width: 520, height: 520, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
+    <div
+      className="relative flex h-full min-h-0 w-full flex-1 flex-row overflow-hidden"
+      style={{ background: bg }}
+    >
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: -160,
+          left: -160,
+          width: 480,
+          height: 480,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(155,158,168,0.22) 0%, transparent 65%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          bottom: -180,
+          right: -180,
+          width: 520,
+          height: 520,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)',
+        }}
+      />
 
-      {/*
-        Mobile: как на ПК по смыслу — сначала текст, снизу иллюстрация (не рядом с тем же
-        абзацем в одном экране = нет «двойного» чтения). Верх PNG притемняем градиентом,
-        если на макете дублируется заголовок.
-      */}
-      <div className="md:hidden flex flex-col flex-1 min-h-0 h-full w-full relative z-10">
-        <div className="flex-1 min-h-0 overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-3 w-full max-w-lg mx-auto">
-          {children}
-        </div>
-        <div
-          className="relative flex-shrink-0 w-full mt-auto border-t border-[rgba(27,42,107,0.06)]"
-          style={{
-            height: 'clamp(11rem, 32vh, 15.5rem)',
-            minHeight: 168,
-            backgroundColor: bg,
-            paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))',
-          }}
-        >
-          <div
-            className="absolute left-2 right-2 top-2 bottom-1"
-            style={{
-              backgroundImage: `url(${src})`,
-              backgroundSize: 'contain',
-              backgroundPosition: imgOnRight ? 'right bottom' : 'left bottom',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
-          <div
-            className="absolute inset-x-0 top-0 pointer-events-none z-[1]"
-            style={{
-              height: '42%',
-              background: `linear-gradient(to bottom, ${bg} 0%, ${bg} 35%, transparent 100%)`,
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Desktop: side by side */}
       {imgOnRight ? (
         <>
-          <div className="hidden md:flex relative z-10 flex-col justify-center"
-            style={{ flex: '0 0 44%', padding: 'clamp(2rem, 5%, 5rem) clamp(2.5rem, 5.5%, 6rem)' }}>
-            {children}
-          </div>
-          <div className="hidden md:block relative flex-1 overflow-hidden"
-            style={{
-              backgroundImage: `url(${src})`,
-              backgroundSize: 'auto 112%',
-              backgroundPosition: 'right center',
-              backgroundRepeat: 'no-repeat',
-            }}>
-            <div className="absolute inset-0 pointer-events-none"
-              style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)` }} />
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none"
-              style={{ height: 88, background: `linear-gradient(to bottom, transparent, ${bg})` }} />
-          </div>
+          <div className={textCol}>{children}</div>
+          {imageCol}
         </>
       ) : (
         <>
-          <div className="hidden md:block relative flex-1 overflow-hidden"
-            style={{
-              backgroundImage: `url(${src})`,
-              backgroundSize: 'auto 112%',
-              backgroundPosition: 'left center',
-              backgroundRepeat: 'no-repeat',
-            }}>
-            <div className="absolute inset-0 pointer-events-none"
-              style={{ background: `linear-gradient(to left, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)` }} />
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none"
-              style={{ height: 88, background: `linear-gradient(to bottom, transparent, ${bg})` }} />
-          </div>
-          <div className="hidden md:flex relative z-10 flex-col justify-center"
-            style={{ flex: '0 0 44%', padding: 'clamp(2rem, 5%, 5rem) clamp(2.5rem, 5.5%, 6rem)' }}>
-            {children}
-          </div>
+          {imageCol}
+          <div className={textCol}>{children}</div>
         </>
       )}
     </div>

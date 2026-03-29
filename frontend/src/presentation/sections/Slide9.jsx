@@ -22,14 +22,15 @@ export default function Slide9() {
       </motion.p>
 
       <motion.h2 {...up(0.08)}
-        className="font-black text-[#1B2A6B] leading-snug mb-4 max-md:text-[1.3rem] max-md:tracking-tight md:mb-7 md:leading-[1.1] md:text-[clamp(1.8rem,3vw,2.8rem)]"
+        className="font-black text-[#1B2A6B] leading-[1.1] mb-6 md:mb-7"
+        style={{ fontSize: 'clamp(1.05rem, calc(2.5vmin + 2vw), 2.8rem)' }}
       >
         {s.headline}
       </motion.h2>
 
       <motion.p {...up(0.26)}
-        className="text-[#1B2A6B]/55 leading-relaxed mb-6 max-md:text-[0.88rem] md:mb-8 md:text-[clamp(0.92rem,1.2vw,1.1rem)]"
-        style={{ maxWidth: '420px' }}
+        className="text-[#1B2A6B]/55 leading-relaxed mb-6 md:mb-8"
+        style={{ maxWidth: '420px', fontSize: 'clamp(0.8rem, calc(1.15vmin + 1vw), 1.1rem)' }}
       >
         {s.body}
       </motion.p>

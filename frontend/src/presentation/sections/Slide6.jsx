@@ -9,118 +9,79 @@ const up = (d = 0) => ({
   transition: { duration: 0.78, delay: d, ease: [0.16, 1, 0.3, 1] },
 })
 
+const textCol =
+  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_46%] flex-col justify-center overflow-y-auto md:flex-[0_0_44%] ' +
+  'pl-14 pr-2 pt-14 pb-28 sm:pl-16 sm:pr-3 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+  'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
+
 export default function Slide6() {
   const { t } = useLanguage()
   const s = t.slides.slide6
   const beforeLabel = t.slides.slide6before
-  const afterLabel  = t.slides.slide6after
+  const afterLabel = t.slides.slide6after
 
   return (
-    <div className="w-full h-full min-h-0 flex-1 relative overflow-hidden flex flex-col md:flex-row" style={{ background: bg }}>
-      {/* Decorative ambient circles */}
-      <div className="absolute pointer-events-none"
-        style={{ top: -160, left: -160, width: 480, height: 480, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(155,158,168,0.22) 0%, transparent 65%)' }} />
-      <div className="absolute pointer-events-none"
-        style={{ bottom: -180, right: -180, width: 520, height: 520, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)' }} />
+    <div className="relative flex h-full min-h-0 w-full flex-1 flex-row overflow-hidden" style={{ background: bg }}>
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: -160,
+          left: -160,
+          width: 480,
+          height: 480,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(155,158,168,0.22) 0%, transparent 65%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          bottom: -180,
+          right: -180,
+          width: 520,
+          height: 520,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(155,158,168,0.18) 0%, transparent 65%)',
+        }}
+      />
 
-      {/* Mobile: текст сверху, иллюстрация снизу (как десктоп, но колонкой) */}
-      <div className="md:hidden flex flex-col flex-1 min-h-0 h-full w-full relative z-10">
-        <div className="flex-1 min-h-0 overflow-y-auto pl-14 pr-14 sm:pl-16 sm:pr-16 pt-4 pb-3 w-full max-w-lg mx-auto">
-          <div className="flex justify-end gap-1 mb-3">
-            <span className="text-[10px] font-bold px-2 py-1 rounded"
-              style={{ background: 'rgba(27,42,107,0.12)', color: '#1B2A6B' }}>
-              {beforeLabel}
-            </span>
-            <span className="text-[10px] font-bold px-2 py-1 rounded"
-              style={{ background: '#1B2A6B', color: '#fff' }}>
-              {afterLabel}
-            </span>
-          </div>
-          <p className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-4 text-[10px]">{s.eyebrow}</p>
-          <h2 className="font-black text-[#1B2A6B] leading-snug mb-4 text-[1.35rem] sm:text-xl">{s.headline}</h2>
-          <div className="space-y-4 pb-4">
-            {s.bullets.map((b) => (
-              <div key={b.title} className="flex gap-3">
-                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center"
-                  style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}>
-                  <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                    <polyline points="1,4.5 4,7.5 10,1" stroke="#22A756" strokeWidth="2"
-                      strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                <div>
-                  <p className="font-bold text-[#1B2A6B] mb-0.5 text-sm">{b.title}:</p>
-                  <p className="text-[#1B2A6B]/55 leading-relaxed text-xs">{b.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div
-          className="relative flex-shrink-0 w-full mt-auto border-t border-[rgba(27,42,107,0.06)]"
-          style={{
-            height: 'clamp(11rem, 32vh, 15.5rem)',
-            minHeight: 168,
-            backgroundColor: bg,
-            paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))',
-          }}
-        >
-          <div
-            className="absolute left-2 right-2 top-2 bottom-1"
-            style={{
-              backgroundImage: 'url(/slides/slide_06.png)',
-              backgroundSize: 'contain',
-              backgroundPosition: 'right bottom',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
-          <div
-            className="absolute inset-x-0 top-0 pointer-events-none z-[1]"
-            style={{
-              height: '38%',
-              background: `linear-gradient(to bottom, ${bg} 0%, ${bg} 28%, transparent 100%)`,
-            }}
-          />
-        </div>
-      </div>
-
-      {/* ── Desktop: side by side ── */}
-      {/* Text panel */}
-      <div className="hidden md:flex relative z-10 flex-col justify-center"
-        style={{ flex: '0 0 44%', padding: 'clamp(2rem, 5%, 5rem) clamp(2.5rem, 5.5%, 6rem)' }}>
+      <div className={textCol}>
         <motion.p {...up(0.0)}
-          className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
+          className="text-[#1B2A6B]/45 mb-4 font-bold uppercase tracking-[0.24em] md:mb-5"
           style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
         >
           {s.eyebrow}
         </motion.p>
 
         <motion.h2 {...up(0.08)}
-          className="font-black text-[#1B2A6B] leading-[1.1] mb-9"
-          style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}
+          className="mb-6 font-black leading-tight text-[#1B2A6B] md:mb-9 md:leading-[1.1]"
+          style={{ fontSize: 'clamp(1.05rem, calc(2.8vw + 0.2rem), 2.8rem)' }}
         >
           {s.headline}
         </motion.h2>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {s.bullets.map((b, i) => (
-            <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-4">
-              <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center"
-                style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}>
+            <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-3 md:gap-4">
+              <span
+                className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md"
+                style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}
+              >
                 <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                  <polyline points="1,4.5 4,7.5 10,1" stroke="#22A756" strokeWidth="2"
-                    strokeLinecap="round" strokeLinejoin="round"/>
+                  <polyline
+                    points="1,4.5 4,7.5 10,1"
+                    stroke="#22A756"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </span>
-              <div>
-                <p className="font-bold text-[#1B2A6B] mb-1"
-                  style={{ fontSize: 'clamp(0.88rem, 1.1vw, 1rem)' }}>
+              <div className="min-w-0">
+                <p className="mb-0.5 font-bold text-[#1B2A6B] md:mb-1" style={{ fontSize: 'clamp(0.78rem, calc(1vw + 0.2rem), 1rem)' }}>
                   {b.title}:
                 </p>
-                <p className="text-[#1B2A6B]/55 leading-relaxed"
-                  style={{ fontSize: 'clamp(0.84rem, 1.05vw, 0.96rem)' }}>
+                <p className="leading-relaxed text-[#1B2A6B]/55" style={{ fontSize: 'clamp(0.72rem, calc(0.95vw + 0.15rem), 0.96rem)' }}>
                   {b.body}
                 </p>
               </div>
@@ -129,34 +90,39 @@ export default function Slide6() {
         </div>
       </div>
 
-      {/* Image panel with Before/After HTML overlay */}
-      <div className="hidden md:block relative flex-1 overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'url(/slides/slide_06.png)', backgroundSize: 'auto 112%',
-            backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }} />
-        {/* Gradient blend */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,233,227,0.6) 18%, transparent 46%)` }} />
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none"
-          style={{ height: 88, background: `linear-gradient(to bottom, transparent, ${bg})` }} />
+      <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/slides/slide_06.png)',
+            backgroundSize: 'auto 112%',
+            backgroundPosition: 'right center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,233,227,0.6) 18%, transparent 46%)` }}
+        />
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 right-0"
+          style={{ height: 88, background: `linear-gradient(to bottom, transparent, ${bg})` }}
+        />
 
-        {/* Before / After HTML labels — positioned over the image */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="absolute top-6 right-8 flex gap-2 z-20"
+          className="absolute right-3 top-3 z-20 flex gap-1.5 md:right-8 md:top-6 md:gap-2"
         >
           <span
-            className="text-xs font-bold px-3 py-1.5 rounded-lg"
+            className="rounded-lg px-2 py-1 text-[10px] font-bold md:px-3 md:py-1.5 md:text-xs"
             style={{ background: 'rgba(27,42,107,0.14)', color: '#1B2A6B', backdropFilter: 'blur(4px)' }}
           >
             {beforeLabel}
           </span>
           <span
-            className="text-xs font-bold px-3 py-1.5 rounded-lg"
-            style={{ background: '#1B2A6B', color: '#fff' }}
+            className="rounded-lg bg-[#1B2A6B] px-2 py-1 text-[10px] font-bold text-white md:px-3 md:py-1.5 md:text-xs"
           >
             {afterLabel}
           </span>
