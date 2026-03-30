@@ -22,7 +22,8 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
 }
 
 /**
- * Ряд как на ПК: текст 44% + картинка 56%; фон иллюстрации на всех ширинах — auto 112% + right/left (как десктоп).
+ * Ряд как на ПК: текст 44% + картинка 56%.
+ * max-md: фон auto 82% по высоте + лёгкий сдвиг позиции; md+: auto 112% + right/left как на десктопе.
  */
 export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
   const imgOnRight = imageSide === 'right'
@@ -37,7 +38,10 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const imageBgLayer =
-    'absolute inset-0 bg-[length:auto_112%] bg-no-repeat ' + (imgOnRight ? 'bg-right' : 'bg-left')
+    'absolute inset-0 bg-no-repeat max-md:bg-[length:auto_82%] md:bg-[length:auto_112%] ' +
+    (imgOnRight
+      ? 'max-md:[background-position:86%_center] md:bg-right'
+      : 'max-md:[background-position:14%_center] md:bg-left')
 
   const imageCol = (
     <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
