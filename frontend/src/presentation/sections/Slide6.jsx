@@ -97,7 +97,7 @@ export default function Slide6() {
 
       <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
         <div
-          className="absolute inset-0 bg-no-repeat max-md:bg-[length:auto_70%] max-md:[background-position:86%_center] md:bg-right md:bg-[length:auto_112%]"
+          className="absolute inset-0 bg-no-repeat max-lg:bg-[length:auto_70%] max-lg:[background-position:86%_center] lg:bg-right lg:bg-[length:auto_112%]"
           style={{ backgroundImage: 'url(/slides/slide_06.png)' }}
         />
         <div
