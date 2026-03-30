@@ -52,27 +52,26 @@ export default function Slide6() {
 
       <div className={textCol}>
         <motion.p {...up(0.0)}
-          className="text-[#1B2A6B]/45 mb-4 font-bold uppercase tracking-[0.24em] md:mb-5"
+          className="text-[#1B2A6B]/45 mb-3 font-bold uppercase tracking-[0.24em] max-lg:tracking-[0.18em] md:mb-5"
           style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
         >
           {s.eyebrow}
         </motion.p>
 
         <motion.h2 {...up(0.08)}
-          className="mb-6 font-black leading-tight text-[#1B2A6B] md:mb-9 md:leading-[1.1]"
-          style={{ fontSize: 'clamp(1.05rem, calc(2.8vw + 0.2rem), 2.8rem)' }}
+          className="mb-4 max-lg:mb-3 max-lg:leading-[1.15] font-black leading-tight text-[#1B2A6B] max-lg:[font-size:clamp(0.88rem,3.6vw,1.28rem)] lg:mb-9 lg:leading-[1.1] lg:[font-size:clamp(1.05rem,calc(2.8vw+0.2rem),2.8rem)]"
         >
           {s.headline}
         </motion.h2>
 
-        <div className="space-y-4 md:space-y-6">
+        <div className="space-y-2.5 max-lg:space-y-2 md:space-y-6">
           {s.bullets.map((b, i) => (
-            <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-3 md:gap-4">
+            <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-2 md:gap-4">
               <span
-                className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md"
-                style={{ background: 'rgba(34,167,86,0.15)', minWidth: 20 }}
+                className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md md:h-5 md:w-5"
+                style={{ background: 'rgba(34,167,86,0.15)', minWidth: 16 }}
               >
-                <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                <svg className="md:scale-100 scale-90" width="11" height="9" viewBox="0 0 11 9" fill="none">
                   <polyline
                     points="1,4.5 4,7.5 10,1"
                     stroke="#22A756"
@@ -83,10 +82,10 @@ export default function Slide6() {
                 </svg>
               </span>
               <div className="min-w-0">
-                <p className="mb-0.5 font-bold text-[#1B2A6B] md:mb-1" style={{ fontSize: 'clamp(0.78rem, calc(1vw + 0.2rem), 1rem)' }}>
+                <p className="mb-0 max-lg:mb-px max-lg:text-[0.8rem] max-lg:leading-snug font-bold text-[#1B2A6B] md:mb-1 md:text-[clamp(0.78rem,calc(1vw+0.2rem),1rem)]">
                   {b.title}:
                 </p>
-                <p className="leading-relaxed text-[#1B2A6B]/55" style={{ fontSize: 'clamp(0.72rem, calc(0.95vw + 0.15rem), 0.96rem)' }}>
+                <p className="max-lg:text-[0.78rem] max-lg:leading-snug leading-relaxed text-[#1B2A6B]/55 md:text-[clamp(0.72rem,calc(0.95vw+0.15rem),0.96rem)]">
                   {b.body}
                 </p>
               </div>

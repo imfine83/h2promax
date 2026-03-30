@@ -26,8 +26,57 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
  * Фон: до lg (<1024px) — auto 60% + сдвиг (телефон в альбоме и планшеты часто >767px, max-md их не ловил).
  * lg+: auto 112% + right/left как на десктопе.
  * Колонка картинки: лёгкий inset-outline, скругление у шва/края; на <lg градиент слабее (меньше «грязи» при уменьшенном фоне).
+ *
+ * Опционально на <lg: mobileLgBgHeightPct (50–60), mobileLgPosRightPct / mobileLgPosLeftPct — якорь картинки в %.
  */
-export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
+function mobileLgHeightClass(pct) {
+  switch (pct) {
+    case 50:
+      return 'max-lg:bg-[length:auto_50%]'
+    case 52:
+      return 'max-lg:bg-[length:auto_52%]'
+    case 55:
+      return 'max-lg:bg-[length:auto_55%]'
+    default:
+      return 'max-lg:bg-[length:auto_60%]'
+  }
+}
+
+function mobileLgPosRightClass(pct) {
+  switch (pct) {
+    case 90:
+      return 'max-lg:[background-position:90%_center]'
+    case 92:
+      return 'max-lg:[background-position:92%_center]'
+    case 94:
+      return 'max-lg:[background-position:94%_center]'
+    case 96:
+      return 'max-lg:[background-position:96%_center]'
+    default:
+      return 'max-lg:[background-position:86%_center]'
+  }
+}
+
+function mobileLgPosLeftClass(pct) {
+  switch (pct) {
+    case 10:
+      return 'max-lg:[background-position:10%_center]'
+    case 8:
+      return 'max-lg:[background-position:8%_center]'
+    default:
+      return 'max-lg:[background-position:14%_center]'
+  }
+}
+
+export function SplitImageSlide({
+  src,
+  imageSide = 'right',
+  bg = '#EAEAE5',
+  children,
+  mobileLgBgHeightPct = 60,
+  mobileLgPosRightPct = 86,
+  mobileLgPosLeftPct = 14,
+}) {
   const imgOnRight = imageSide === 'right'
 
   const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-2' : 'max-md:pl-2 max-md:pr-12'
@@ -40,10 +89,12 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const imageBgLayer =
-    'absolute inset-0 bg-no-repeat max-lg:bg-[length:auto_60%] lg:bg-[length:auto_112%] ' +
+    'absolute inset-0 bg-no-repeat ' +
+    mobileLgHeightClass(mobileLgBgHeightPct) +
+    ' lg:bg-[length:auto_112%] ' +
     (imgOnRight
-      ? 'max-lg:[background-position:86%_center] lg:bg-right'
-      : 'max-lg:[background-position:14%_center] lg:bg-left')
+      ? `${mobileLgPosRightClass(mobileLgPosRightPct)} lg:bg-right`
+      : `${mobileLgPosLeftClass(mobileLgPosLeftPct)} lg:bg-left`)
 
   const imageColShell =
     'relative min-h-0 min-w-0 flex-1 overflow-hidden shadow-[inset_0_0_0_1px_rgba(27,42,107,0.04)] ' +
