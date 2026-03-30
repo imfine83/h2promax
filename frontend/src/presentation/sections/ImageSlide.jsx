@@ -52,6 +52,8 @@ function mobileLgPosRightClass(pct) {
       return 'max-lg:[background-position:94%_center]'
     case 96:
       return 'max-lg:[background-position:96%_center]'
+    case 98:
+      return 'max-lg:[background-position:98%_center]'
     default:
       return 'max-lg:[background-position:86%_center]'
   }
@@ -76,16 +78,27 @@ export function SplitImageSlide({
   mobileLgBgHeightPct = 60,
   mobileLgPosRightPct = 86,
   mobileLgPosLeftPct = 14,
+  /** max-md: eyebrow + заголовок сверху по центру; основной текст остаётся в боковой колонке */
+  phoneStackedHeader = null,
 }) {
   const imgOnRight = imageSide === 'right'
 
   const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-2' : 'max-md:pl-2 max-md:pr-12'
 
+  const textColJustify = phoneStackedHeader
+    ? 'max-md:justify-start md:justify-center '
+    : 'justify-center '
+
+  const textColTopPad = phoneStackedHeader
+    ? 'max-md:pt-1 md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] '
+    : 'max-md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] '
+
   const textCol =
-    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col justify-center overflow-y-auto text-left ' +
+    'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col overflow-y-auto text-left ' +
+    textColJustify +
     textColMobilePad +
-    ' [&_h2]:text-balance max-md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] ' +
-    'pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
+    textColTopPad +
+    '[&_h2]:text-balance pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const imageBgLayer =
@@ -122,7 +135,7 @@ export function SplitImageSlide({
 
   return (
     <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden"
+      className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden lg:flex-row"
       style={{ background: bg }}
     >
       <div
@@ -148,17 +161,27 @@ export function SplitImageSlide({
         }}
       />
 
-      {imgOnRight ? (
-        <>
-          <div className={textCol}>{children}</div>
-          {imageCol}
-        </>
-      ) : (
-        <>
-          {imageCol}
-          <div className={textCol}>{children}</div>
-        </>
+      {phoneStackedHeader != null && (
+        <div
+          className="relative z-20 flex w-full shrink-0 flex-col items-center px-3 pb-2 pt-[max(3.25rem,calc(env(safe-area-inset-top,0px)+2.25rem))] text-center md:hidden"
+        >
+          {phoneStackedHeader}
+        </div>
       )}
+
+      <div className="flex min-h-0 min-w-0 flex-1 flex-row items-stretch overflow-hidden">
+        {imgOnRight ? (
+          <>
+            <div className={textCol}>{children}</div>
+            {imageCol}
+          </>
+        ) : (
+          <>
+            {imageCol}
+            <div className={textCol}>{children}</div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

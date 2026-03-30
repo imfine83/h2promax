@@ -77,16 +77,38 @@ export default function Slide8() {
   const s = t.slides.slide8
 
   return (
-    <SplitImageSlide src="/slides/slide_08.png" imageSide="left" bg="#E8E8E2">
+    <SplitImageSlide
+      src="/slides/slide_08.png"
+      imageSide="left"
+      bg="#E8E8E2"
+      phoneStackedHeader={
+        <>
+          <motion.p
+            {...up(0.05)}
+            className="mb-2 text-[#1B2A6B]/45 font-bold uppercase tracking-[0.2em]"
+            style={{ fontSize: 'clamp(0.58rem, 2.8vw, 0.72rem)' }}
+          >
+            {s.eyebrow}
+          </motion.p>
+          <motion.h2
+            {...up(0.12)}
+            className="max-w-[min(92vw,22rem)] font-black leading-[1.12] text-[#1B2A6B]"
+            style={{ fontSize: 'clamp(0.95rem, 4vw, 1.32rem)' }}
+          >
+            {s.headline}
+          </motion.h2>
+        </>
+      }
+    >
       <motion.p {...up(0.05)}
-        className="mb-3 text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] max-lg:mb-2 max-lg:tracking-[0.18em] md:mb-5"
+        className="mb-3 text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] max-lg:mb-2 max-lg:tracking-[0.18em] max-md:hidden md:mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
       >
         {s.eyebrow}
       </motion.p>
 
       <motion.h2 {...up(0.12)}
-        className="mb-4 font-black leading-[1.1] text-[#1B2A6B] max-lg:mb-3 max-lg:leading-[1.12] max-lg:[font-size:clamp(0.88rem,3.4vw,1.22rem)] md:mb-7 lg:[font-size:clamp(1.05rem,calc(2.5vmin+2vw),2.8rem)]"
+        className="mb-4 font-black leading-[1.1] text-[#1B2A6B] max-lg:mb-3 max-lg:leading-[1.12] max-lg:[font-size:clamp(0.88rem,3.4vw,1.22rem)] max-md:hidden md:mb-7 lg:[font-size:clamp(1.05rem,calc(2.5vmin+2vw),2.8rem)]"
       >
         {s.headline}
       </motion.h2>

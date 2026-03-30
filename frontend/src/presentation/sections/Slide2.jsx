@@ -19,17 +19,35 @@ export default function Slide2() {
       imageSide="right"
       bg="#ECEAE3"
       mobileLgBgHeightPct={50}
-      mobileLgPosRightPct={94}
+      mobileLgPosRightPct={98}
+      phoneStackedHeader={
+        <>
+          <motion.p
+            {...up(0.05)}
+            className="mb-2 text-[#1B2A6B]/45 font-bold uppercase tracking-[0.2em]"
+            style={{ fontSize: 'clamp(0.58rem, 2.8vw, 0.72rem)' }}
+          >
+            {s.eyebrow}
+          </motion.p>
+          <motion.h2
+            {...up(0.14)}
+            className="max-w-[min(92vw,22rem)] font-black leading-[1.12] text-[#1B2A6B]"
+            style={{ fontSize: 'clamp(0.95rem, 4.2vw, 1.35rem)' }}
+          >
+            {s.headline}
+          </motion.h2>
+        </>
+      }
     >
       <motion.p {...up(0.05)}
-        className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
+        className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5 max-md:hidden"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
       >
         {s.eyebrow}
       </motion.p>
 
       <motion.h2 {...up(0.14)}
-        className="font-black text-[#1B2A6B] leading-[1.1] mb-6 md:mb-7"
+        className="font-black text-[#1B2A6B] leading-[1.1] mb-6 max-md:hidden md:mb-7"
         style={{ fontSize: 'clamp(1.1rem, calc(2.5vmin + 2.2vw), 3.2rem)' }}
       >
         {s.headline}

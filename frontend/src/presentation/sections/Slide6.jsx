@@ -10,9 +10,9 @@ const up = (d = 0) => ({
 })
 
 const textCol =
-  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col justify-center overflow-y-auto text-left ' +
-  'max-md:pl-12 max-md:pr-2 ' +
-  '[&_h2]:text-balance max-md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] ' +
+  'relative z-10 flex min-h-0 min-w-0 flex-[0_0_44%] flex-col overflow-y-auto text-left ' +
+  'max-md:justify-start max-md:pl-12 max-md:pr-2 max-md:pt-2 md:justify-center ' +
+  '[&_h2]:text-balance md:pt-[max(3.75rem,calc(env(safe-area-inset-top,0px)+2.25rem))] ' +
   'pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
   'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
@@ -24,7 +24,7 @@ export default function Slide6() {
 
   return (
     <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-row items-stretch overflow-hidden"
+      className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden lg:flex-row"
       style={{ background: bg }}
     >
       <div
@@ -50,21 +50,40 @@ export default function Slide6() {
         }}
       />
 
+      {/* Телефон: eyebrow + заголовок по центру сверху */}
+      <div className="relative z-20 flex w-full shrink-0 flex-col items-center px-3 pb-1 pt-[max(3.25rem,calc(env(safe-area-inset-top,0px)+2.25rem))] text-center md:hidden">
+        <motion.p
+          {...up(0.0)}
+          className="mb-1.5 text-[#1B2A6B]/45 font-bold uppercase tracking-[0.2em]"
+          style={{ fontSize: 'clamp(0.58rem, 2.8vw, 0.72rem)' }}
+        >
+          {s.eyebrow}
+        </motion.p>
+        <motion.h2
+          {...up(0.08)}
+          className="max-w-[min(92vw,22rem)] font-black leading-[1.12] text-[#1B2A6B]"
+          style={{ fontSize: 'clamp(0.95rem, 4vw, 1.28rem)' }}
+        >
+          {s.headline}
+        </motion.h2>
+      </div>
+
+      <div className="flex min-h-0 min-w-0 flex-1 flex-row items-stretch overflow-hidden">
       <div className={textCol}>
         <motion.p {...up(0.0)}
-          className="text-[#1B2A6B]/45 mb-3 font-bold uppercase tracking-[0.24em] max-lg:tracking-[0.18em] md:mb-5"
+          className="text-[#1B2A6B]/45 mb-3 font-bold uppercase tracking-[0.24em] max-lg:tracking-[0.18em] max-md:hidden md:mb-5"
           style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
         >
           {s.eyebrow}
         </motion.p>
 
         <motion.h2 {...up(0.08)}
-          className="mb-4 max-lg:mb-3 max-lg:leading-[1.15] font-black leading-tight text-[#1B2A6B] max-lg:[font-size:clamp(0.88rem,3.6vw,1.28rem)] lg:mb-9 lg:leading-[1.1] lg:[font-size:clamp(1.05rem,calc(2.8vw+0.2rem),2.8rem)]"
+          className="mb-4 max-lg:mb-3 max-lg:leading-[1.15] font-black leading-tight text-[#1B2A6B] max-lg:[font-size:clamp(0.88rem,3.6vw,1.28rem)] max-md:hidden lg:mb-9 lg:leading-[1.1] lg:[font-size:clamp(1.05rem,calc(2.8vw+0.2rem),2.8rem)]"
         >
           {s.headline}
         </motion.h2>
 
-        <div className="space-y-2.5 max-lg:space-y-2 md:space-y-6">
+        <div className="mt-0 space-y-2 max-md:space-y-1.5 max-lg:space-y-2 md:mt-0 md:space-y-6">
           {s.bullets.map((b, i) => (
             <motion.div key={b.title} {...up(0.2 + i * 0.14)} className="flex gap-2 md:gap-4">
               <span
@@ -126,6 +145,7 @@ export default function Slide6() {
             {afterLabel}
           </span>
         </motion.div>
+      </div>
       </div>
     </div>
   )
