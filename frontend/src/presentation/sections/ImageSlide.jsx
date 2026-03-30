@@ -22,17 +22,9 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
 }
 
 /**
- * Всегда ряд как на ПК: текст 44% + картинка 56%.
- * md+: auto 112% + right/left. max-md: масштаб по высоте (по умолчанию 96%, см. mobileBgHeightPct) и сдвиг позиции.
+ * Ряд как на ПК: текст 44% + картинка 56%; фон иллюстрации на всех ширинах — auto 112% + right/left (как десктоп).
  */
-export function SplitImageSlide({
-  src,
-  imageSide = 'right',
-  bg = '#EAEAE5',
-  children,
-  /** Процент высоты фона на max-md; для JIT Tailwind заданы 86, 92 и 96 */
-  mobileBgHeightPct = 96,
-}) {
+export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
   const imgOnRight = imageSide === 'right'
 
   const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-2' : 'max-md:pl-2 max-md:pr-12'
@@ -44,18 +36,8 @@ export function SplitImageSlide({
     'pb-28 md:overflow-y-visible md:pb-10 md:pl-6 md:pr-5 md:pt-12 ' +
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
-  const mobileLengthClass =
-    mobileBgHeightPct === 86
-      ? 'max-md:bg-[length:auto_86%]'
-      : mobileBgHeightPct === 92
-        ? 'max-md:bg-[length:auto_92%]'
-        : 'max-md:bg-[length:auto_96%]'
-
   const imageBgLayer =
-    `absolute inset-0 bg-no-repeat ${mobileLengthClass} md:bg-[length:auto_112%] ` +
-    (imgOnRight
-      ? 'max-md:[background-position:86%_center] md:bg-right'
-      : 'max-md:[background-position:14%_center] md:bg-left')
+    'absolute inset-0 bg-[length:auto_112%] bg-no-repeat ' + (imgOnRight ? 'bg-right' : 'bg-left')
 
   const imageCol = (
     <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">

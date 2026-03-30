@@ -13,7 +13,7 @@ export default function Slide9() {
   const s = t.slides.slide9
 
   return (
-    <SplitImageSlide src="/slides/slide_09.png" imageSide="right" bg="#EAEAE4" mobileBgHeightPct={86}>
+    <SplitImageSlide src="/slides/slide_09.png" imageSide="right" bg="#EAEAE4">
       <motion.p {...up(0.0)}
         className="text-[#1B2A6B]/45 font-bold uppercase tracking-[0.24em] mb-5"
         style={{ fontSize: 'clamp(0.62rem, 0.8vw, 0.74rem)' }}
