@@ -25,6 +25,7 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
  * Ряд как на ПК: текст 44% + картинка 56%.
  * Фон: до lg (<1024px) — auto 60% + сдвиг (телефон в альбоме и планшеты часто >767px, max-md их не ловил).
  * lg+: auto 112% + right/left как на десктопе.
+ * Колонка картинки: лёгкий inset-outline, скругление у шва/края; на <lg градиент слабее (меньше «грязи» при уменьшенном фоне).
  */
 export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
   const imgOnRight = imageSide === 'right'
@@ -44,11 +45,17 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
       ? 'max-lg:[background-position:86%_center] lg:bg-right'
       : 'max-lg:[background-position:14%_center] lg:bg-left')
 
+  const imageColShell =
+    'relative min-h-0 min-w-0 flex-1 overflow-hidden shadow-[inset_0_0_0_1px_rgba(27,42,107,0.04)] ' +
+    (imgOnRight
+      ? 'max-lg:rounded-r-2xl lg:rounded-l-xl'
+      : 'max-lg:rounded-l-2xl lg:rounded-r-xl')
+
   const imageCol = (
-    <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
+    <div className={imageColShell}>
       <div className={imageBgLayer} style={{ backgroundImage: `url(${src})` }} />
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 max-lg:opacity-40 lg:opacity-100"
         style={{
           background: imgOnRight
             ? `linear-gradient(to right, ${bg} 0%, rgba(234,234,229,0.7) 18%, transparent 48%)`

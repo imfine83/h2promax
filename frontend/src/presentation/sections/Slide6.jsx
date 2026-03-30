@@ -95,13 +95,13 @@ export default function Slide6() {
         </div>
       </div>
 
-      <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden">
+      <div className="relative min-h-0 min-w-0 flex-1 overflow-hidden shadow-[inset_0_0_0_1px_rgba(27,42,107,0.04)] max-lg:rounded-r-2xl lg:rounded-l-xl">
         <div
           className="absolute inset-0 bg-no-repeat max-lg:bg-[length:auto_60%] max-lg:[background-position:86%_center] lg:bg-right lg:bg-[length:auto_112%]"
           style={{ backgroundImage: 'url(/slides/slide_06.png)' }}
         />
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 max-lg:opacity-40 lg:opacity-100"
           style={{ background: `linear-gradient(to right, ${bg} 0%, rgba(234,233,227,0.6) 18%, transparent 46%)` }}
         />
         <div
