@@ -23,7 +23,7 @@ export function FullImageSlide({ src, alt, bg = '#EAEAE5' }) {
 
 /**
  * Ряд как на ПК: текст 44% + картинка 56%.
- * Фон: до lg (<1024px) — auto 70% + сдвиг (телефон в альбоме и планшеты часто >767px, max-md их не ловил).
+ * Фон: до lg (<1024px) — auto 60% + сдвиг (телефон в альбоме и планшеты часто >767px, max-md их не ловил).
  * lg+: auto 112% + right/left как на десктопе.
  */
 export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', children }) {
@@ -39,7 +39,7 @@ export function SplitImageSlide({ src, imageSide = 'right', bg = '#EAEAE5', chil
     'lg:px-10 lg:py-10 xl:px-[clamp(2.5rem,5.5%,6rem)] xl:py-[clamp(2rem,5%,5rem)]'
 
   const imageBgLayer =
-    'absolute inset-0 bg-no-repeat max-lg:bg-[length:auto_70%] lg:bg-[length:auto_112%] ' +
+    'absolute inset-0 bg-no-repeat max-lg:bg-[length:auto_60%] lg:bg-[length:auto_112%] ' +
     (imgOnRight
       ? 'max-lg:[background-position:86%_center] lg:bg-right'
       : 'max-lg:[background-position:14%_center] lg:bg-left')
