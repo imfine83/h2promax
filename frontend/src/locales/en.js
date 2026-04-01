@@ -1,5 +1,5 @@
 export const en = {
-  nav: ['HOME', 'CATALOG', 'PRODUCTION', 'DEALERS', 'CASES', 'NEWS', 'CERTIFICATES', 'FAQ', 'CONTACTS'],
+  nav: ['HOME', 'CATALOG', 'ABOUT PRODUCTION', 'DEALERS', 'CASES', 'NEWS', 'CERTIFICATES', 'FAQ', 'CONTACTS'],
 
   hero: {
     title1: 'FUEL',

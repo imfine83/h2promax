@@ -3,7 +3,7 @@
 export const navItems = [
 { label: 'HOME', href: '#top' },
 { label: 'CATALOG', href: '#catalog' },
-{ label: 'PRODUCTION', href: '#production' },
+{ label: 'ABOUT PRODUCTION', href: '#production' },
 { label: 'DEALERS', href: '#dealers' },
 { label: 'CASES', href: '#cases' },
 { label: 'NEWS', href: '#news' },
