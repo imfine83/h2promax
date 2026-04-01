@@ -32,20 +32,32 @@ const TeamSection = () => {
           </h2>
         </div>
 
-        <div className="mx-auto mb-14 max-w-3xl space-y-10 text-center">
-          <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#00f0ff]/70" style={{ fontFamily: 'Orbitron' }}>
+        <div className="mx-auto mb-14 max-w-3xl space-y-8 text-center sm:space-y-10">
+          <div className="rounded-sm border border-[#00f0ff]/20 bg-[#00f0ff]/[0.04] px-5 py-6 sm:px-8 sm:py-7">
+            <h3
+              className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[#00f0ff] sm:text-xs"
+              style={{ fontFamily: 'Orbitron', textShadow: '0 0 18px rgba(0,240,255,0.2)' }}
+            >
               {tm.whoTitle}
             </h3>
-            <p className="text-base leading-relaxed text-white/70 md:text-lg" style={{ fontFamily: 'Rajdhani, system-ui, sans-serif' }}>
+            <p
+              className="text-lg font-semibold leading-relaxed text-white/90 sm:text-xl md:text-[1.35rem] md:leading-relaxed"
+              style={{ fontFamily: 'Rajdhani, system-ui, sans-serif' }}
+            >
               {tm.whoBody}
             </p>
           </div>
-          <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#39ff14]/70" style={{ fontFamily: 'Orbitron' }}>
+          <div className="rounded-sm border border-[#39ff14]/20 bg-[#39ff14]/[0.04] px-5 py-6 sm:px-8 sm:py-7">
+            <h3
+              className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[#39ff14] sm:text-xs"
+              style={{ fontFamily: 'Orbitron', textShadow: '0 0 18px rgba(57,255,20,0.18)' }}
+            >
               {tm.missionTitle}
             </h3>
-            <p className="text-base leading-relaxed text-white/70 md:text-lg" style={{ fontFamily: 'Rajdhani, system-ui, sans-serif' }}>
+            <p
+              className="text-lg font-semibold leading-relaxed text-white/90 sm:text-xl md:text-[1.35rem] md:leading-relaxed"
+              style={{ fontFamily: 'Rajdhani, system-ui, sans-serif' }}
+            >
               {tm.missionBody}
             </p>
           </div>
