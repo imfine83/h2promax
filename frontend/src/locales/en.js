@@ -177,6 +177,21 @@ export const en = {
     ],
   },
 
+  team: {
+    badge: '// TEAM_ROSTER',
+    titleBefore: 'Our',
+    titleAccent: 'Team',
+    whoTitle: 'Who we are',
+    whoBody: 'A group of entrepreneurs inspired by a single idea.',
+    missionTitle: 'Our mission',
+    missionBody:
+      "Preserving the environment through hydrogen technology — improving people's quality of life by helping them save fuel, reducing carbon emissions, and extending engine life.",
+    roles: {
+      founder: 'Founder',
+      productManager: 'Product Manager',
+    },
+  },
+
   certificates: {
     title: 'Certificates',
     empty: 'We are updating this section. Official certificates will be published here soon.',

@@ -177,6 +177,21 @@ export const es = {
     ],
   },
 
+  team: {
+    badge: '// EQUIPO',
+    titleBefore: 'Nuestro',
+    titleAccent: 'Equipo',
+    whoTitle: 'Quiénes somos',
+    whoBody: 'Un grupo de emprendedores inspirados por una misma idea.',
+    missionTitle: 'Nuestra misión',
+    missionBody:
+      'Preservar el medio ambiente mediante la tecnología del hidrógeno — mejorar la calidad de vida de las personas ayudando a ahorrar combustible, reduciendo las emisiones de carbono y alargando la vida útil del motor.',
+    roles: {
+      founder: 'Fundador',
+      productManager: 'Director de producto',
+    },
+  },
+
   certificates: {
     title: 'Certificados',
     empty: 'Estamos actualizando esta sección. Los certificados oficiales se publicarán aquí pronto.',
