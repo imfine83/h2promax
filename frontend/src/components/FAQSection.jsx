@@ -26,19 +26,44 @@ const FAQSection = () => {
             const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff'];
             const color = colors[index % colors.length];
             return (
-              <div key={index} className="transition-all duration-300"
-                   style={{ border: `1px solid ${isOpen ? color + '30' : 'rgba(255,255,255,0.05)'}` }}>
-                <button onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-4 text-left hover:bg-white/[0.02] transition-colors">
-                  <span className="font-bold text-white/70 pr-4 text-sm" style={{ fontFamily: 'Orbitron', fontSize: '11px' }}>
+              <div
+                key={index}
+                className={`transition-all duration-300 rounded-sm ${isOpen ? 'bg-white/[0.04]' : ''}`}
+                style={{ border: `1px solid ${isOpen ? color + '40' : 'rgba(255,255,255,0.06)'}` }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between gap-3 p-4 text-left transition-colors hover:bg-white/[0.03] md:p-5"
+                >
+                  <span
+                    className={`pr-2 font-bold leading-snug md:leading-tight ${isOpen ? 'text-white' : 'text-white/80'}`}
+                    style={{ fontFamily: 'Orbitron', fontSize: 'clamp(0.875rem, 2.4vw, 1.05rem)' }}
+                  >
                     {item.question}
                   </span>
-                  <ChevronDown size={16} style={{ color }}
-                    className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    size={20}
+                    style={{ color }}
+                    className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
-                <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="px-4 pb-4" style={{ borderTop: `1px solid ${color}10` }}>
-                    <p className="text-white/25 leading-relaxed text-xs pt-3">{item.answer}</p>
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-out ${isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div
+                    className="px-4 pb-5 md:px-5 md:pb-6"
+                    style={{ borderTop: `1px solid ${isOpen ? color + '22' : 'transparent'}` }}
+                  >
+                    <p
+                      className="pt-4 leading-relaxed text-white/80 md:pt-4"
+                      style={{
+                        fontFamily: 'Rajdhani, system-ui, sans-serif',
+                        fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)',
+                      }}
+                    >
+                      {item.answer}
+                    </p>
                   </div>
                 </div>
               </div>
