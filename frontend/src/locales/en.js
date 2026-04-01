@@ -85,8 +85,26 @@ export const en = {
     badge: '// GLOBAL_NETWORK',
     title1: 'Dealer & Service',
     title2: 'Network',
-    subtitle: 'The H2 ELEMENT authorized dealer and service center network covers multiple countries worldwide.',
+    subtitle:
+      'The H2 ELEMENT authorized dealer and service network covers Canada, the United States, twelve countries in Latin America, and Israel.',
     becomeDealer: 'BECOME A DEALER',
+    countries: [
+      'Canada',
+      'USA',
+      'Mexico',
+      'Guatemala',
+      'Panama',
+      'Colombia',
+      'Venezuela',
+      'Peru',
+      'Bolivia',
+      'Chile',
+      'Argentina',
+      'Uruguay',
+      'Paraguay',
+      'Brazil',
+      'Israel',
+    ],
   },
 
   cases: {
@@ -276,6 +294,7 @@ export const en = {
     slide7: {
       image: '/slides/slide_07_en.png',
       hideOverlays: true,
+      eyebrow: 'Compatibility',
       title: 'A universal solution for all types of internal combustion engines',
       engineTypesTitle: 'Supported Engine Types',
       vehicleTypesTitle: 'Supported Vehicle Types',

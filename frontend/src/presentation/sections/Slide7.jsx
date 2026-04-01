@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useLanguage } from '../../contexts/LanguageContext'
 import SlideImageFrame from '../components/SlideImageFrame'
 import { patchPanel, patchBand, patchChip } from '../slidePatch'
@@ -6,6 +7,12 @@ const BG = '#EDECE7'
 const NAVY = '#1B2A6B'
 const LABEL = 'rgba(27,42,107,0.78)'
 
+const up = (d = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.78, delay: d, ease: [0.16, 1, 0.3, 1] },
+})
+
 export default function Slide7() {
   const { t } = useLanguage()
   const s = t.slides.slide7
@@ -13,12 +20,31 @@ export default function Slide7() {
 
   const labelSize = { fontSize: 'clamp(0.5rem, 1vw, 0.74rem)' }
 
+  const phoneStackedHeader = (
+    <>
+      <motion.p
+        {...up(0.05)}
+        className="mb-2 font-bold uppercase tracking-[0.2em] text-[#1B2A6B]/45"
+        style={{ fontSize: 'clamp(0.58rem, 2.8vw, 0.72rem)' }}
+      >
+        {s.eyebrow}
+      </motion.p>
+      <motion.h2
+        {...up(0.12)}
+        className="max-w-[min(92vw,22rem)] font-black leading-[1.12] text-[#1B2A6B]"
+        style={{ fontSize: 'clamp(0.95rem, 4vw, 1.32rem)' }}
+      >
+        {s.title}
+      </motion.h2>
+    </>
+  )
+
   if (s.hideOverlays) {
-    return <SlideImageFrame bg={BG} src={src} />
+    return <SlideImageFrame bg={BG} src={src} phoneStackedHeader={phoneStackedHeader} />
   }
 
   return (
-    <SlideImageFrame bg={BG} src={src}>
+    <SlideImageFrame bg={BG} src={src} phoneStackedHeader={phoneStackedHeader}>
       <div style={{ ...patchPanel(BG), top: '0.8%', left: '3.5%', right: '3.5%', padding: '12px 18px', textAlign: 'center' }}>
         <span className="font-black block leading-tight" style={{ color: NAVY, fontSize: 'clamp(0.75rem, 1.85vw, 1.5rem)', lineHeight: 1.18 }}>
           {s.title}

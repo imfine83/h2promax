@@ -1,5 +1,4 @@
 import React from 'react';
-import { dealerCountries } from '../data/mockData';
 import { MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -21,12 +20,12 @@ const DealerNetwork = () => {
           <p className="mt-4 text-white/25 max-w-3xl mx-auto text-sm">{d.subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-12">
-          {dealerCountries.map((country, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
+          {(d.countries || []).map((country, index) => {
             const colors = ['#39ff14', '#00f0ff', '#ff2d95', '#ffe600', '#b026ff'];
             const color = colors[index % colors.length];
             return (
-              <div key={index}
+              <div key={`${country}-${index}`}
                 className="group flex items-center gap-2 px-3 py-2.5 transition-all duration-300 cursor-pointer hover:scale-105"
                 style={{ border: `1px solid ${color}15`, background: `${color}05` }}>
                 <MapPin size={12} style={{ color }} className="flex-shrink-0" />

@@ -81,12 +81,6 @@ export const productionStats = [
 { icon: 'rocket', title: 'Own R&D department', description: 'Ensures updates and expansion of the product lineup' }];
 
 
-export const dealerCountries = [
-'USA', 'GERMANY', 'FRANCE', 'TURKEY', 'THAILAND',
-'BELARUS', 'MOLDOVA', 'ARMENIA', 'AZERBAIJAN',
-'UZBEKISTAN', 'TAJIKISTAN', 'KYRGYZSTAN', 'KAZAKHSTAN'];
-
-
 export const caseStudies = [
 { car: 'Hyundai', before: '6.2', after: '3.5', unit: 'L / 100 km' },
 { car: 'TANK 300', before: '14.5', after: '10.2', unit: 'L / 100 km' },

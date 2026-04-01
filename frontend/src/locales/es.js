@@ -85,8 +85,26 @@ export const es = {
     badge: '// RED_GLOBAL',
     title1: 'Red de Distribuidores',
     title2: 'y Servicio',
-    subtitle: 'La red de distribuidores autorizados y centros de servicio H2 ELEMENT cubre múltiples países en todo el mundo.',
+    subtitle:
+      'La red de distribuidores y servicio autorizado H2 ELEMENT cubre Canadá, Estados Unidos, doce países de Latinoamérica e Israel.',
     becomeDealer: 'SER DISTRIBUIDOR',
+    countries: [
+      'Canadá',
+      'EE. UU.',
+      'México',
+      'Guatemala',
+      'Panamá',
+      'Colombia',
+      'Venezuela',
+      'Perú',
+      'Bolivia',
+      'Chile',
+      'Argentina',
+      'Uruguay',
+      'Paraguay',
+      'Brasil',
+      'Israel',
+    ],
   },
 
   cases: {
@@ -275,6 +293,7 @@ export const es = {
     slide7: {
       image: '/slides/slide_07_es.png',
       hideOverlays: true,
+      eyebrow: 'Compatibilidad',
       title: 'Una solución universal para todos los tipos de motores de combustión interna',
       engineTypesTitle: 'Tipos de Motor Compatibles',
       vehicleTypesTitle: 'Tipos de Vehículo Compatibles',

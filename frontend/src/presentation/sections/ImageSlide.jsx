@@ -83,7 +83,11 @@ export function SplitImageSlide({
 }) {
   const imgOnRight = imageSide === 'right'
 
-  const textColMobilePad = imgOnRight ? 'max-md:pl-12 max-md:pr-2' : 'max-md:pl-2 max-md:pr-12'
+  const textColMobilePad = phoneStackedHeader
+    ? 'max-md:px-10 '
+    : imgOnRight
+      ? 'max-md:pl-12 max-md:pr-2'
+      : 'max-md:pl-2 max-md:pr-12'
 
   const textColJustify = phoneStackedHeader
     ? 'max-md:justify-start md:justify-center '
