@@ -19,7 +19,7 @@ const ContactSection = () => {
 
   const contactItems = [
     { icon: Phone, label: c.phone, value: '+1 (847)650-66-99', href: 'tel:+18476506699', color: '#39ff14' },
-    { icon: Mail, label: c.email, value: 'dealer@h2element.com', href: 'mailto:dealer@h2element.com', color: '#00f0ff' },
+    { icon: Mail, label: c.email, value: 'imfineinusa@gmail.com', href: 'mailto:imfineinusa@gmail.com', color: '#00f0ff' },
     { icon: MapPin, label: c.office, value: 'H2 Element International', href: null, color: '#ff2d95' },
   ];
 
@@ -86,7 +86,7 @@ const ContactSection = () => {
                 <span className="text-[10px] text-[#39ff14]/30 font-mono-cyber">system.info</span>
               </div>
               <p className="text-[10px] text-white/15 font-mono-cyber leading-relaxed">
-                {'>'} sales@h2element.com<br />
+                {'>'} imfineinusa@gmail.com<br />
                 {'>'} {c.hours}<br />
                 {'>'} {c.response}
               </p>
