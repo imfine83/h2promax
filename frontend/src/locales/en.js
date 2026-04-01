@@ -86,7 +86,7 @@ export const en = {
     title1: 'Dealer & Service',
     title2: 'Network',
     subtitle:
-      'The H2 ELEMENT authorized dealer and service network covers Canada, the United States, twelve countries in Latin America, and Israel.',
+      'The H2 ELEMENT authorized dealer and service network covers Canada, the United States, twelve countries in Latin America, Israel, and Australia.',
     becomeDealer: 'BECOME A DEALER',
     countries: [
       'Canada',
@@ -104,6 +104,7 @@ export const en = {
       'Paraguay',
       'Brazil',
       'Israel',
+      'Australia',
     ],
   },
 

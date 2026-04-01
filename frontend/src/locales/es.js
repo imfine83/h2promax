@@ -86,7 +86,7 @@ export const es = {
     title1: 'Red de Distribuidores',
     title2: 'y Servicio',
     subtitle:
-      'La red de distribuidores y servicio autorizado H2 ELEMENT cubre Canadá, Estados Unidos, doce países de Latinoamérica e Israel.',
+      'La red de distribuidores y servicio autorizado H2 ELEMENT cubre Canadá, Estados Unidos, doce países de Latinoamérica, Israel y Australia.',
     becomeDealer: 'SER DISTRIBUIDOR',
     countries: [
       'Canadá',
@@ -104,6 +104,7 @@ export const es = {
       'Paraguay',
       'Brasil',
       'Israel',
+      'Australia',
     ],
   },
 
