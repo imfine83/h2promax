@@ -179,6 +179,7 @@ export const en = {
 
   certificates: {
     title: 'Certificates',
+    empty: 'We are updating this section. Official certificates will be published here soon.',
   },
 
   faq: {

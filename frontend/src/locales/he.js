@@ -179,6 +179,7 @@ export const he = {
 
   certificates: {
     title: 'תעודות',
+    empty: 'אנחנו מעדכנים את הסעיף. תעודות רשמיות יפורסמו כאן בקרוב.',
   },
 
   faq: {

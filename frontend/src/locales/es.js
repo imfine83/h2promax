@@ -179,6 +179,7 @@ export const es = {
 
   certificates: {
     title: 'Certificados',
+    empty: 'Estamos actualizando esta sección. Los certificados oficiales se publicarán aquí pronto.',
   },
 
   faq: {
