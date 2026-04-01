@@ -36,6 +36,7 @@ export const es = {
     mixLabel: 'MEZCLA H2+O2',
     mixDesc: 'No requiere calibración',
     viewProducts: 'VER PRODUCTOS',
+    openPresentation: '¿CÓMO FUNCIONA?',
     steps: [
       { title: 'Divide el agua en H2 y O2', desc: 'Funciona en paralelo con los componentes estándar' },
       { title: 'Se mezcla con el aire en la admisión', desc: 'No requiere calibración' },

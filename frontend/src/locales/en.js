@@ -36,6 +36,7 @@ export const en = {
     mixLabel: 'H2+O2 MIX',
     mixDesc: 'Does not require calibration',
     viewProducts: 'VIEW PRODUCTS',
+    openPresentation: 'HOW DOES IT WORK?',
     steps: [
       { title: 'Splits water into H2 and O2', desc: 'Works parallel to standard components' },
       { title: 'Mixes with air at intake', desc: 'Does not require calibration' },

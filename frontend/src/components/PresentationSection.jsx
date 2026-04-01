@@ -48,7 +48,7 @@ export default function PresentationSection() {
                 style={{ fontFamily: 'Orbitron', boxShadow: '0 0 20px rgba(57,255,20,0.3)' }}
               >
                 <Play size={16} fill="#0a0a0f" />
-                VIEW PRESENTATION
+                {t.howItWorks.openPresentation}
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
 

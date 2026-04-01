@@ -36,6 +36,7 @@ export const he = {
     mixLabel: 'תערובת H2+O2',
     mixDesc: 'אינו דורש כיול',
     viewProducts: 'צפה במוצרים',
+    openPresentation: 'איך זה עובד?',
     steps: [
       { title: 'מפצל מים ל-H2 ו-O2', desc: 'פועל במקביל לרכיבים הסטנדרטיים' },
       { title: 'מתערבב עם אוויר בצריכה', desc: 'אינו דורש כיול' },
