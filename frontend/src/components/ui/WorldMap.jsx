@@ -1,15 +1,43 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
+import { MapPin } from "lucide-react";
 
-/** TopoJSON: Natural Earth 110m countries — reliable CDN, works with react-simple-maps */
+/** TopoJSON: Natural Earth 110m — jsDelivr */
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-const AQUA = "#2ee6e6";
-const AQUA_DIM = "#1a9aa3";
-const NAVY = "#060d1a";
-const LAND_DEFAULT = "#1a2744";
-const LAND_STROKE = "#2a3a5c";
+/** Only these territories are interactive on the map (ISO 3166-1 alpha-3). */
+const INTERACTIVE_ISO = new Set([
+  "USA",
+  "MEX",
+  "GTM",
+  "PAN",
+  "COL",
+  "VEN",
+  "PER",
+  "BOL",
+  "CHL",
+  "ARG",
+  "URY",
+  "PRY",
+  "BRA",
+  "AUS",
+]);
+
+const AQUA = "#5eb8c4";
+const AQUA_SOFT = "rgba(94, 184, 196, 0.45)";
+const NAVY_PAGE = "#060d1a";
+const LAND_DIM = "#0f1624";
+const LAND_NEUTRAL = "#1a2436";
+const STROKE_DIM = "#1e2838";
+const STROKE_NEUTRAL = "#2a3548";
+
+const T_MS = "0.25s";
+
+function getIso(geo) {
+  const p = geo.properties || {};
+  return String(p.ISO_A3 || p.ISO_A3_EH || p.iso_a3 || "").toUpperCase();
+}
 
 function countryLabel(geo) {
   const p = geo.properties || {};
@@ -27,7 +55,7 @@ function countryMeta(geo) {
   const p = geo.properties || {};
   return {
     name: countryLabel(geo),
-    iso: p.ISO_A3 || p.iso_a3 || p.ISO_A3_EH || "—",
+    iso: getIso(geo) || "—",
     region: p.REGION_UN || p.region_un,
     subregion: p.SUBREGION || p.subregion,
     pop: p.POP_EST,
@@ -35,12 +63,16 @@ function countryMeta(geo) {
   };
 }
 
-export default function WorldMap() {
+/**
+ * @param {{ countries?: string[] }} props — localized labels from dealerNetwork (display only)
+ */
+export default function WorldMap({ countries = [] }) {
   const [geoObject, setGeoObject] = useState(null);
   const [loadError, setLoadError] = useState(null);
-  const [hovered, setHovered] = useState(null);
   const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
   const [selected, setSelected] = useState(null);
+
+  const list = useMemo(() => countries.filter(Boolean), [countries]);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,180 +93,252 @@ export default function WorldMap() {
     };
   }, []);
 
-  const onMove = useCallback((geo, evt) => {
-    const name = countryLabel(geo);
-    setHovered(name);
-    setTooltip({
-      show: true,
-      text: name,
-      x: evt.clientX,
-      y: evt.clientY,
-    });
-  }, []);
+  const isInteractive = useCallback((geo) => INTERACTIVE_ISO.has(getIso(geo)), []);
+
+  const onMoveInteractive = useCallback(
+    (geo, evt) => {
+      if (!isInteractive(geo)) return;
+      const iso = getIso(geo);
+      setHoveredIso(iso);
+      setTooltip({
+        show: true,
+        text: countryLabel(geo),
+        x: evt.clientX,
+        y: evt.clientY,
+      });
+    },
+    [isInteractive]
+  );
 
   const onLeave = useCallback(() => {
-    setHovered(null);
     setTooltip((t) => ({ ...t, show: false }));
   }, []);
 
-  const onClickCountry = useCallback((geo, evt) => {
-    evt.stopPropagation();
-    setSelected(countryMeta(geo));
-  }, []);
+  const onClickCountry = useCallback(
+    (geo, evt) => {
+      if (!isInteractive(geo)) return;
+      evt.stopPropagation();
+      setSelected(countryMeta(geo));
+    },
+    [isInteractive]
+  );
 
   return (
     <div
-      className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-1 py-6 sm:px-3 sm:py-8"
-      style={{ background: NAVY }}
+      className="mx-auto flex w-full max-w-5xl flex-col"
+      style={{ background: NAVY_PAGE }}
     >
-      {/* Map stage — centered, full width */}
+      {/* —— Country list (markets) — premium B2B, no neon — */}
+      {list.length > 0 && (
+        <div className="mb-10 w-full px-1 sm:px-0">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {list.map((label, index) => (
+              <div
+                key={`${label}-${index}`}
+                className="flex items-center gap-2.5 border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 transition-all duration-300 ease-out hover:border-[#5eb8c4]/25 hover:bg-white/[0.04]"
+                style={{ transitionDuration: "250ms" }}
+              >
+                <MapPin size={13} className="shrink-0 text-[#5eb8c4]/80" strokeWidth={2} />
+                <span
+                  className="text-left text-xs font-semibold tracking-wide text-white/65"
+                  style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
+                >
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* —— Map — */}
       <div
-        className="relative flex w-full justify-center"
+        className="relative flex w-full flex-col items-center"
         style={{
-          minHeight: 320,
-          borderRadius: 16,
+          borderRadius: 14,
           background:
-            "radial-gradient(ellipse 85% 70% at 50% 45%, rgba(46, 230, 230, 0.06) 0%, transparent 55%), linear-gradient(180deg, #0a1224 0%, #060d1a 100%)",
-          boxShadow: "inset 0 0 0 1px rgba(46, 230, 230, 0.12), 0 12px 40px rgba(0, 0, 0, 0.45)",
+            "linear-gradient(180deg, #0a111d 0%, #060d1a 100%), radial-gradient(ellipse 80% 60% at 50% 40%, rgba(94, 184, 196, 0.05) 0%, transparent 60%)",
+          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
         }}
       >
-        {!geoObject && !loadError && (
-          <div
-            className="flex min-h-[320px] w-full items-center justify-center text-sm font-semibold tracking-wide text-[#7eb8c0]"
-            style={{ fontFamily: "Orbitron, system-ui, sans-serif" }}
-          >
-            Loading map…
-          </div>
-        )}
+        <div className="relative w-full px-2 pb-2 pt-4 sm:px-4 sm:pb-4 sm:pt-6">
+          {!geoObject && !loadError && (
+            <div
+              className="flex min-h-[300px] w-full items-center justify-center text-sm font-medium text-white/35"
+              style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
+            >
+              Loading map…
+            </div>
+          )}
 
-        {loadError && (
-          <div
-            className="flex min-h-[320px] w-full flex-col items-center justify-center gap-2 px-4 text-center text-sm text-rose-300/90"
-            style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
-          >
-            <span>Could not load map data.</span>
-            <span className="text-xs text-white/40">{loadError}</span>
-          </div>
-        )}
+          {loadError && (
+            <div
+              className="flex min-h-[300px] w-full flex-col items-center justify-center gap-1 px-4 text-center text-sm text-rose-300/80"
+              style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
+            >
+              <span>Could not load map data.</span>
+              <span className="text-xs text-white/30">{loadError}</span>
+            </div>
+          )}
 
-        {geoObject && (
-          <ComposableMap
-            projection="geoEqualEarth"
-            projectionConfig={{
-              scale: 228,
-              center: [0, 12],
-            }}
-            width={960}
-            height={520}
-            className="mx-auto block w-full max-h-[min(56vh,520px)]"
-            style={{
-              width: "100%",
-              height: "auto",
-              maxWidth: "min(100%, 960px)",
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-              background: "transparent",
-            }}
-          >
-            <Geographies geography={geoObject}>
-              {({ geographies }) =>
-                geographies.map((geo) => {
-                  const name = countryLabel(geo);
-                  const isSelected = selected?.name === name;
-                  const isHover = hovered === name;
-                  return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      onMouseEnter={(e) => onMove(geo, e)}
-                      onMouseMove={(e) => onMove(geo, e)}
-                      onMouseLeave={onLeave}
-                      onClick={(e) => onClickCountry(geo, e)}
-                      style={{
-                        default: {
-                          fill: isSelected ? AQUA : LAND_DEFAULT,
-                          stroke: LAND_STROKE,
-                          strokeWidth: 0.55,
-                          outline: "none",
-                          cursor: "pointer",
-                          transition: "fill 0.22s ease, stroke 0.22s ease, filter 0.22s ease",
-                          filter: isSelected ? "drop-shadow(0 0 10px rgba(46,230,230,0.45))" : "none",
-                        },
-                        hover: {
-                          fill: isSelected ? AQUA : isHover ? AQUA_DIM : LAND_DEFAULT,
-                          stroke: AQUA,
-                          strokeWidth: 1,
-                          outline: "none",
-                          cursor: "pointer",
-                          transition: "fill 0.18s ease, stroke 0.18s ease, filter 0.18s ease",
-                          filter: "drop-shadow(0 0 14px rgba(46,230,230,0.35))",
-                        },
-                        pressed: {
-                          fill: "#5af0f0",
-                          stroke: AQUA,
-                          strokeWidth: 1.2,
-                          outline: "none",
-                          transition: "fill 0.12s ease",
-                        },
-                      }}
-                    />
-                  );
-                })
-              }
-            </Geographies>
-          </ComposableMap>
-        )}
-
-        {/* Country name on hover — follows cursor */}
-        <AnimatePresence>
-          {tooltip.show && tooltip.text && (
-            <motion.div
-              initial={{ opacity: 0, y: 6, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 4, scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 420, damping: 28 }}
-              className="pointer-events-none fixed z-[100] rounded-lg border px-3 py-2 text-sm font-semibold shadow-lg"
+          {geoObject && (
+            <ComposableMap
+              projection="geoEqualEarth"
+              projectionConfig={{
+                scale: 228,
+                center: [0, 12],
+              }}
+              width={960}
+              height={520}
+              className="mx-auto block w-full max-h-[min(52vh,500px)]"
               style={{
-                left: tooltip.x + 12,
-                top: tooltip.y - 44,
-                background: "rgba(8, 18, 32, 0.96)",
-                color: AQUA,
-                borderColor: "rgba(46, 230, 230, 0.35)",
-                fontFamily: "Orbitron, system-ui, sans-serif",
-                boxShadow: "0 4px 24px rgba(0, 0, 0, 0.5)",
-                maxWidth: "min(280px, 90vw)",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
+                width: "100%",
+                height: "auto",
+                maxWidth: "min(100%, 960px)",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
+                background: "transparent",
               }}
             >
-              {tooltip.text}
-            </motion.div>
+              <Geographies geography={geoObject}>
+                {({ geographies }) =>
+                  geographies.map((geo) => {
+                    const iso = getIso(geo);
+                    const interactive = INTERACTIVE_ISO.has(iso);
+                    const isSelected = selected?.iso === iso;
+
+                    if (!interactive) {
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          tabIndex={-1}
+                          style={{
+                            default: {
+                              fill: LAND_DIM,
+                              stroke: STROKE_DIM,
+                              strokeWidth: 0.45,
+                              outline: "none",
+                              cursor: "default",
+                              pointerEvents: "none",
+                              opacity: 0.72,
+                              transition: `fill ${T_MS} ease, opacity ${T_MS} ease`,
+                            },
+                            hover: {
+                              fill: LAND_DIM,
+                              stroke: STROKE_DIM,
+                              strokeWidth: 0.45,
+                              outline: "none",
+                              pointerEvents: "none",
+                              opacity: 0.72,
+                            },
+                            pressed: {
+                              fill: LAND_DIM,
+                              outline: "none",
+                              pointerEvents: "none",
+                            },
+                          }}
+                        />
+                      );
+                    }
+
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        onMouseEnter={(e) => onMoveInteractive(geo, e)}
+                        onMouseMove={(e) => onMoveInteractive(geo, e)}
+                        onMouseLeave={onLeave}
+                        onClick={(e) => onClickCountry(geo, e)}
+                        style={{
+                          default: {
+                            fill: isSelected ? AQUA : LAND_NEUTRAL,
+                            stroke: isSelected ? AQUA : STROKE_NEUTRAL,
+                            strokeWidth: isSelected ? 0.9 : 0.55,
+                            outline: "none",
+                            cursor: "pointer",
+                            transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
+                            filter: isSelected
+                              ? `drop-shadow(0 0 12px ${AQUA_SOFT})`
+                              : "none",
+                          },
+                          hover: {
+                            fill: isSelected ? AQUA : "#243044",
+                            stroke: AQUA,
+                            strokeWidth: 1,
+                            outline: "none",
+                            cursor: "pointer",
+                            transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
+                            filter: `drop-shadow(0 0 14px ${AQUA_SOFT})`,
+                          },
+                          pressed: {
+                            fill: "#6ec8d4",
+                            stroke: AQUA,
+                            strokeWidth: 1.1,
+                            outline: "none",
+                            transition: `fill 0.2s ease`,
+                          },
+                        }}
+                      />
+                    );
+                  })
+                }
+              </Geographies>
+            </ComposableMap>
           )}
-        </AnimatePresence>
+
+          <AnimatePresence>
+            {tooltip.show && tooltip.text && (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 2 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-none fixed z-[100] rounded-md border px-3 py-1.5 text-xs font-semibold shadow-md"
+                style={{
+                  left: tooltip.x + 12,
+                  top: tooltip.y - 40,
+                  background: "rgba(10, 16, 28, 0.96)",
+                  color: AQUA,
+                  borderColor: "rgba(94, 184, 196, 0.35)",
+                  fontFamily: "Rajdhani, system-ui, sans-serif",
+                  boxShadow: "0 8px 28px rgba(0, 0, 0, 0.4)",
+                  maxWidth: "min(260px, 88vw)",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {tooltip.text}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
-      {/* Selected country — compact, no giant placeholder */}
-      <div className="mt-6 w-full max-w-lg px-2">
+      {/* Selection / hint */}
+      <div className="mt-8 w-full max-w-lg self-center px-2">
         <AnimatePresence mode="wait">
           {selected ? (
             <motion.div
-              key={selected.name}
-              initial={{ opacity: 0, y: 10 }}
+              key={selected.iso}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
+              exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25 }}
-              className="rounded-xl border border-[#2ee6e6]/20 bg-[#0d1629]/95 px-5 py-4 text-center"
-              style={{ boxShadow: "0 0 32px rgba(46, 230, 230, 0.08)" }}
+              className="rounded-lg border border-white/[0.1] bg-white/[0.03] px-5 py-4 text-center"
             >
               <div
-                className="mb-2 text-lg font-extrabold tracking-wide text-[#2ee6e6]"
-                style={{ fontFamily: "Orbitron, system-ui, sans-serif" }}
+                className="mb-1 text-base font-semibold tracking-wide text-[#c5dde3]"
+                style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
               >
                 {selected.name}
               </div>
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#c5e8ec]" style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}>
+              <div
+                className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm text-white/50"
+                style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
+              >
                 <InfoRow label="ISO" value={selected.iso} />
                 {selected.region && <InfoRow label="Region" value={selected.region} />}
                 {selected.subregion && <InfoRow label="Subregion" value={selected.subregion} />}
@@ -245,10 +349,10 @@ export default function WorldMap() {
               key="hint"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center text-xs text-[#5a7a85] sm:text-sm"
+              className="text-center text-xs text-white/35 sm:text-sm"
               style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
             >
-              Hover a country to see its name · Click to select
+              Hover or click a highlighted market on the map for details.
             </motion.p>
           )}
         </AnimatePresence>
@@ -261,8 +365,8 @@ function InfoRow({ label, value }) {
   if (value == null || value === "" || value === "—") return null;
   return (
     <span>
-      <span className="font-bold uppercase tracking-wider text-[#2ee6e6]/80">{label}: </span>
-      <span className="font-semibold text-[#e8fdfe]">{value}</span>
+      <span className="font-semibold uppercase tracking-wider text-[#5eb8c4]/70">{label}: </span>
+      <span className="text-white/70">{value}</span>
     </span>
   );
 }
