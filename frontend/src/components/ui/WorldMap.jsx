@@ -6,23 +6,27 @@ import { MapPin } from "lucide-react";
 /** TopoJSON: Natural Earth 110m — jsDelivr */
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-/** Only these territories are interactive on the map (ISO 3166-1 alpha-3). */
-const INTERACTIVE_ISO = new Set([
-  "USA",
-  "MEX",
-  "GTM",
-  "PAN",
-  "COL",
-  "VEN",
-  "PER",
-  "BOL",
-  "CHL",
-  "ARG",
-  "URY",
-  "PRY",
-  "BRA",
-  "AUS",
-]);
+/** Interactive markets — matched against `countryLabel(geo)` (Natural Earth / world-atlas names). */
+const INTERACTIVE_COUNTRIES = [
+  "United States of America",
+  "Mexico",
+  "Guatemala",
+  "Panama",
+  "Colombia",
+  "Venezuela",
+  "Peru",
+  "Bolivia",
+  "Chile",
+  "Argentina",
+  "Uruguay",
+  "Paraguay",
+  "Brazil",
+  "Australia",
+];
+
+const INTERACTIVE_COUNTRIES_SET = new Set(INTERACTIVE_COUNTRIES);
+// world-atlas 110m uses NAME "United States" while ADMIN is "United States of America"
+INTERACTIVE_COUNTRIES_SET.add("United States");
 
 const AQUA = "#5eb8c4";
 const AQUA_SOFT = "rgba(94, 184, 196, 0.45)";
@@ -64,7 +68,8 @@ function countryMeta(geo) {
 }
 
 function isInteractiveGeo(geo) {
-  return INTERACTIVE_ISO.has(getIso(geo));
+  const label = countryLabel(geo);
+  return INTERACTIVE_COUNTRIES_SET.has(label);
 }
 
 /**
@@ -246,8 +251,8 @@ export default function WorldMap({ countries = [] }) {
                     {/* Layer 2: interactive markets — on top so clicks/hover always hit the right path */}
                     {geographies.map((geo) => {
                       if (!isInteractiveGeo(geo)) return null;
-                      const iso = getIso(geo);
-                      const isSelected = selectedCountry?.iso === iso;
+                      const label = countryLabel(geo);
+                      const isSelected = selectedCountry?.name === label;
                       return (
                         <Geography
                           key={`hit-${geo.rsmKey}`}
@@ -331,7 +336,7 @@ export default function WorldMap({ countries = [] }) {
         <AnimatePresence mode="wait">
           {selectedCountry ? (
             <motion.div
-              key={selectedCountry.iso}
+              key={selectedCountry.name}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
