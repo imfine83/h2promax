@@ -18,7 +18,7 @@ const DealerNetwork = () => {
           <h2 className="text-4xl md:text-5xl font-black text-white mt-4" style={{ fontFamily: 'Orbitron' }}>
             {d.title1} <span className="text-[#39ff14]" style={{ textShadow: '0 0 20px rgba(57,255,20,0.3)' }}>{d.title2}</span>
           </h2>
-          <div className="mt-8 mb-10 w-full max-w-5xl mx-auto overflow-hidden rounded-lg">
+          <div className="mt-8 mb-10 w-full max-w-5xl mx-auto overflow-visible rounded-lg">
             <WorldMap />
           </div>
           <p className="text-white/25 max-w-3xl mx-auto text-sm">{d.subtitle}</p>
