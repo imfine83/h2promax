@@ -63,6 +63,10 @@ function countryMeta(geo) {
   };
 }
 
+function isInteractiveGeo(geo) {
+  return INTERACTIVE_ISO.has(getIso(geo));
+}
+
 /**
  * @param {{ countries?: string[] }} props — localized labels from dealerNetwork (display only)
  */
@@ -70,7 +74,7 @@ export default function WorldMap({ countries = [] }) {
   const [geoObject, setGeoObject] = useState(null);
   const [loadError, setLoadError] = useState(null);
   const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
-  const [selected, setSelected] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const list = useMemo(() => countries.filter(Boolean), [countries]);
 
@@ -93,42 +97,42 @@ export default function WorldMap({ countries = [] }) {
     };
   }, []);
 
-  const isInteractive = useCallback((geo) => INTERACTIVE_ISO.has(getIso(geo)), []);
+  const handleInteractiveEnter = useCallback((geo, evt) => {
+    if (!isInteractiveGeo(geo)) return;
+    setTooltip({
+      show: true,
+      text: countryLabel(geo),
+      x: evt.clientX,
+      y: evt.clientY,
+    });
+  }, []);
 
-  const onMoveInteractive = useCallback(
-    (geo, evt) => {
-      if (!isInteractive(geo)) return;
-      const iso = getIso(geo);
-      setHoveredIso(iso);
-      setTooltip({
-        show: true,
-        text: countryLabel(geo),
-        x: evt.clientX,
-        y: evt.clientY,
-      });
-    },
-    [isInteractive]
-  );
+  const handleInteractiveMove = useCallback((geo, evt) => {
+    if (!isInteractiveGeo(geo)) return;
+    setTooltip({
+      show: true,
+      text: countryLabel(geo),
+      x: evt.clientX,
+      y: evt.clientY,
+    });
+  }, []);
 
-  const onLeave = useCallback(() => {
+  const handleInteractiveLeave = useCallback(() => {
     setTooltip((t) => ({ ...t, show: false }));
   }, []);
 
-  const onClickCountry = useCallback(
-    (geo, evt) => {
-      if (!isInteractive(geo)) return;
-      evt.stopPropagation();
-      setSelected(countryMeta(geo));
-    },
-    [isInteractive]
-  );
+  const handleCountryClick = useCallback((geo, evt) => {
+    if (!isInteractiveGeo(geo)) return;
+    evt.preventDefault();
+    evt.stopPropagation();
+    setSelectedCountry(countryMeta(geo));
+  }, []);
 
   return (
     <div
       className="mx-auto flex w-full max-w-5xl flex-col"
       style={{ background: NAVY_PAGE }}
     >
-      {/* —— Country list (markets) — premium B2B, no neon — */}
       {list.length > 0 && (
         <div className="mb-10 w-full px-1 sm:px-0">
           <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -151,7 +155,6 @@ export default function WorldMap({ countries = [] }) {
         </div>
       )}
 
-      {/* —— Map — */}
       <div
         className="relative flex w-full flex-col items-center"
         style={{
@@ -190,7 +193,7 @@ export default function WorldMap({ countries = [] }) {
               }}
               width={960}
               height={520}
-              className="mx-auto block w-full max-h-[min(52vh,500px)]"
+              className="mx-auto block w-full max-h-[min(52vh,500px)] touch-manipulation"
               style={{
                 width: "100%",
                 height: "auto",
@@ -202,16 +205,14 @@ export default function WorldMap({ countries = [] }) {
               }}
             >
               <Geographies geography={geoObject}>
-                {({ geographies }) =>
-                  geographies.map((geo) => {
-                    const iso = getIso(geo);
-                    const interactive = INTERACTIVE_ISO.has(iso);
-                    const isSelected = selected?.iso === iso;
-
-                    if (!interactive) {
+                {({ geographies }) => (
+                  <>
+                    {/* Layer 1: non-interactive — drawn first; pointer-events none so events pass through */}
+                    {geographies.map((geo) => {
+                      if (isInteractiveGeo(geo)) return null;
                       return (
                         <Geography
-                          key={geo.rsmKey}
+                          key={`dim-${geo.rsmKey}`}
                           geography={geo}
                           tabIndex={-1}
                           style={{
@@ -241,49 +242,58 @@ export default function WorldMap({ countries = [] }) {
                           }}
                         />
                       );
-                    }
-
-                    return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onMouseEnter={(e) => onMoveInteractive(geo, e)}
-                        onMouseMove={(e) => onMoveInteractive(geo, e)}
-                        onMouseLeave={onLeave}
-                        onClick={(e) => onClickCountry(geo, e)}
-                        style={{
-                          default: {
-                            fill: isSelected ? AQUA : LAND_NEUTRAL,
-                            stroke: isSelected ? AQUA : STROKE_NEUTRAL,
-                            strokeWidth: isSelected ? 0.9 : 0.55,
-                            outline: "none",
-                            cursor: "pointer",
-                            transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
-                            filter: isSelected
-                              ? `drop-shadow(0 0 12px ${AQUA_SOFT})`
-                              : "none",
-                          },
-                          hover: {
-                            fill: isSelected ? AQUA : "#243044",
-                            stroke: AQUA,
-                            strokeWidth: 1,
-                            outline: "none",
-                            cursor: "pointer",
-                            transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
-                            filter: `drop-shadow(0 0 14px ${AQUA_SOFT})`,
-                          },
-                          pressed: {
-                            fill: "#6ec8d4",
-                            stroke: AQUA,
-                            strokeWidth: 1.1,
-                            outline: "none",
-                            transition: `fill 0.2s ease`,
-                          },
-                        }}
-                      />
-                    );
-                  })
-                }
+                    })}
+                    {/* Layer 2: interactive markets — on top so clicks/hover always hit the right path */}
+                    {geographies.map((geo) => {
+                      if (!isInteractiveGeo(geo)) return null;
+                      const iso = getIso(geo);
+                      const isSelected = selectedCountry?.iso === iso;
+                      return (
+                        <Geography
+                          key={`hit-${geo.rsmKey}`}
+                          geography={geo}
+                          tabIndex={0}
+                          onMouseEnter={(e) => handleInteractiveEnter(geo, e)}
+                          onMouseMove={(e) => handleInteractiveMove(geo, e)}
+                          onMouseLeave={handleInteractiveLeave}
+                          onClick={(e) => handleCountryClick(geo, e)}
+                          style={{
+                            default: {
+                              fill: isSelected ? AQUA : LAND_NEUTRAL,
+                              stroke: isSelected ? AQUA : STROKE_NEUTRAL,
+                              strokeWidth: isSelected ? 0.9 : 0.55,
+                              outline: "none",
+                              cursor: "pointer",
+                              pointerEvents: "auto",
+                              transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
+                              filter: isSelected
+                                ? `drop-shadow(0 0 12px ${AQUA_SOFT})`
+                                : "none",
+                            },
+                            hover: {
+                              fill: isSelected ? AQUA : "#243044",
+                              stroke: AQUA,
+                              strokeWidth: 1,
+                              outline: "none",
+                              cursor: "pointer",
+                              pointerEvents: "auto",
+                              transition: `fill ${T_MS} ease, stroke ${T_MS} ease, filter ${T_MS} ease`,
+                              filter: `drop-shadow(0 0 14px ${AQUA_SOFT})`,
+                            },
+                            pressed: {
+                              fill: "#6ec8d4",
+                              stroke: AQUA,
+                              strokeWidth: 1.1,
+                              outline: "none",
+                              pointerEvents: "auto",
+                              transition: `fill 0.2s ease`,
+                            },
+                          }}
+                        />
+                      );
+                    })}
+                  </>
+                )}
               </Geographies>
             </ComposableMap>
           )}
@@ -317,12 +327,11 @@ export default function WorldMap({ countries = [] }) {
         </div>
       </div>
 
-      {/* Selection / hint */}
       <div className="mt-8 w-full max-w-lg self-center px-2">
         <AnimatePresence mode="wait">
-          {selected ? (
+          {selectedCountry ? (
             <motion.div
-              key={selected.iso}
+              key={selectedCountry.iso}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
@@ -333,15 +342,17 @@ export default function WorldMap({ countries = [] }) {
                 className="mb-1 text-base font-semibold tracking-wide text-[#c5dde3]"
                 style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
               >
-                {selected.name}
+                {selectedCountry.name}
               </div>
               <div
                 className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm text-white/50"
                 style={{ fontFamily: "Rajdhani, system-ui, sans-serif" }}
               >
-                <InfoRow label="ISO" value={selected.iso} />
-                {selected.region && <InfoRow label="Region" value={selected.region} />}
-                {selected.subregion && <InfoRow label="Subregion" value={selected.subregion} />}
+                <InfoRow label="ISO" value={selectedCountry.iso} />
+                {selectedCountry.region && <InfoRow label="Region" value={selectedCountry.region} />}
+                {selectedCountry.subregion && (
+                  <InfoRow label="Subregion" value={selectedCountry.subregion} />
+                )}
               </div>
             </motion.div>
           ) : (
